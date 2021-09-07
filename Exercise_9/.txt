@@ -1,0 +1,20 @@
+In this exercise the function interfaces aren't fully specified so you need to design the interface yourself.
+Note that all the information that the functions need must be passed as parameters.
+
+Define a structure to store rental car information. The structure must contain the following information:
+Make of the car, model of the car, rental category, registration plate, current mileage,
+availability (available/currently rented).
+https://www.zestcarrental.com/blog/2015/06/09/car-hire-classes-explained/
+Write a function that prints a list of available cars in the given category (passed as a parameter).
+The list must contain all information about the cars in formatted columns where text is aligned
+to the left and numbers are aligned to the right. If an '*' is given as paramter the
+program prints all cars.
+Write a function that sets the state of a car (available/not available).
+The registration plate of the car to change is given as a parameter. Function must return a status
+that indicated if the car was found or not.
+The program must define a 15-element array of car information and initialize the array with
+an initializer that initializes all elements of the array. The program allows user to do four things:
+1. print all cars
+2. print free cars of given category
+3. change state of a car
+4. quit the program.

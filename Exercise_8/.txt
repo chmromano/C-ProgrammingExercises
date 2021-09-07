@@ -1,0 +1,4 @@
+Write a function that converts the first letter of every word in a string to uppercase.
+Write a program that asks user to enter a string and then calls the function above.
+The program keeps asking for strings until user enters "stop" or "STOP".
+When user enters stop the program terminates.
