@@ -15,6 +15,7 @@ int main() {
     char my_string[STRING_SIZE];
 
     printf("Enter the phrase you want to encrypt (maximum 100 characters):\n");
+
     fgets(my_string, STRING_SIZE, stdin);
     if (my_string[strlen(my_string) - 1] == '\n') {
         my_string[strlen(my_string) - 1] = '\0';
@@ -43,7 +44,7 @@ int main() {
 
     printf("Encrypted string:\n%s\n", my_string);
 
-    encrypt(my_string, 26 - shift);
+    encrypt(my_string, -shift);
 
     printf("Decrypted string:\n%s", my_string);
 
