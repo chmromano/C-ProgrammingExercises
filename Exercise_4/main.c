@@ -20,14 +20,17 @@ int main(void) {
 
     validate_input(&cur_hours, &cur_minutes);
 
-    printf("How long do you want to sleep (24 hour format, hh:mm): ");
+    printf("Enter how long you want to sleep (24 hour format, hh:mm): ");
 
     validate_input(&sleep_hours, &sleep_minutes);
 
+
+    //Doing all time calculations in minutes
     cur_total = cur_hours * 60 + cur_minutes;
 
     wake_total = cur_total + sleep_hours * 60 + sleep_minutes;
 
+    //If result is more than 24 hours, subtract 24 hours from result
     if (wake_total > 24 * 60) {
         wake_total -= 24 * 60;
     }
@@ -38,7 +41,7 @@ int main(void) {
         wake_hours = 0;
     }
 
-    printf("You will wake up at %02d:%02d", wake_hours, wake_minutes);
+    printf("You will wake up at %02d:%02d.", wake_hours, wake_minutes);
 
     return 0;
 }
@@ -53,12 +56,12 @@ void validate_input(int *hours, int *minutes) {
 
             while ((ch = getchar()) != '\n' && ch != EOF);
 
-            printf("Enter time in hh:mm 24 hour format: ");
+            printf("Wrong input. Enter a valid time (24 hour format, hh:mm): ");
             continue;
         }
 
         if (*hours > 23 || *hours < 0 || *minutes > 59 || *minutes < 0) {
-            printf("Enter hours in range 0-23, minutes range 0-59: ");
+            printf("Wrong input. Valid ranges are 0-23:0-59: ");
         } else {
             valid_input = true;
         }

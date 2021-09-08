@@ -12,7 +12,7 @@ int main() {
     int ch;
 
     int shift = 0;
-    char my_string[STRING_SIZE];
+    char my_string[STRING_SIZE] = {};
 
     printf("Enter the phrase you want to encrypt (maximum 100 characters):\n");
 
@@ -44,7 +44,7 @@ int main() {
 
     printf("Encrypted string:\n%s\n", my_string);
 
-    encrypt(my_string, -shift);
+    encrypt(my_string, (-1) * shift);
 
     printf("Decrypted string:\n%s", my_string);
 
@@ -53,14 +53,24 @@ int main() {
 
 void encrypt(char string[], int shift) {
     for (int i = 0; i < strlen(string); i++) {
-        if (string[i] != (char) 32) {
-            string[i] += shift;
+        //Using temporary variable, otherwise character's ASCII int value can go above 126, causing problems
+        int temp = (int) string[i];
 
-            if ((int) string[i] > 90) {
-                string[i] -= 26;
-            } else if ((int) string[i] < 65) {
-                string[i] += 26;
+        if (temp != 32) {
+            /*My function assumes that the shift will be to the right.
+            To make it a left shift simply change the line below to perform
+            a subtraction, or input a negative shift value.*/
+            temp += shift;
+
+            while ((int) temp > 90 || (int) temp < 65) {
+                if ((int) temp > 90) {
+                    temp -= 26;
+                } else if ((int) temp < 65) {
+                    temp += 26;
+                }
             }
+
+            string[i] = temp;
         }
     }
 }

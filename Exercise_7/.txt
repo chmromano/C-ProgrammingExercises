@@ -1,6 +1,12 @@
-Write a function that converts all white space in a string to underscores.
-Write a program that asks user to enter a string and then calls the function above.
-The program keeps asking for strings until user enters "stop" or "STOP".
+
+Write a function that converts all white space
+in a string to underscores.
+Write a program that asks user to enter a
+string and then calls the function above.
+The program keeps asking for strings until
+user enters "stop" or "STOP".
 When user enters stop the program terminates.
-Note. To avoid platform dependent problems with string use strncmp and compare
+
+Note. To avoid platform dependent problems with
+string use strncmp and compare
 only the first four characters to detect stop.

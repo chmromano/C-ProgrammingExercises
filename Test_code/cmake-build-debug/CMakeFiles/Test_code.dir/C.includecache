@@ -9,4 +9,10 @@
 /Users/christopher/CLionProjects/Test_code/main.c
 stdio.h
 -
+string.h
+-
+ctype.h
+-
+stdbool.h
+-
 

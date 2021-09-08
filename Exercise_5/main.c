@@ -28,7 +28,7 @@ int main(void) {
     printf("Source vector:\n");
 
     for (int i = 0; i < 3; i++) {
-        printf("%d ", source_vector[i]);
+        printf("%4d ", source_vector[i]);
         printf("\n");
     }
 
@@ -37,7 +37,7 @@ int main(void) {
     printf("Result vector:\n");
 
     for (int i = 0; i < 3; i++) {
-        printf("%d ", result_vector[i]);
+        printf("%4d ", result_vector[i]);
         printf("\n");
     }
 
