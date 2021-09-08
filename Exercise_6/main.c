@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include <stdbool.h>
 
-#define STRING_SIZE 101
+#define STRING_SIZE 102
 
 void encrypt(char string[], int shift);
 
@@ -16,12 +16,22 @@ int main() {
 
     printf("Enter the phrase you want to encrypt (maximum 100 characters):\n");
 
-    fgets(my_string, STRING_SIZE, stdin);
-    if (my_string[strlen(my_string) - 1] == '\n') {
-        my_string[strlen(my_string) - 1] = '\0';
+    /*Should work to validate string until max length. To make it work actual array size is 1 more than would actually
+    be required to store mac string (101 for 100 characters + null, but 102 array size in my case for validation).*/
+    while (valid_input == false) {
+        fgets(my_string, STRING_SIZE, stdin);
+        if (my_string[strlen(my_string) - 1] == '\n') {
+            my_string[strlen(my_string) - 1] = '\0';
+            valid_input = true;
+        } else {
+            while ((ch = getchar()) != '\n' && ch != EOF);
+            printf("String too long. Enter a string (maximum 100 characters):\n");
+        }
     }
 
     printf("Enter the amount of shift:\n");
+
+    valid_input = false;
 
     while (valid_input == false) {
         if (scanf("%d", &shift) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {

@@ -58,15 +58,7 @@ void validate_string(char string[]) {
         fgets(string, STRING_SIZE, stdin);
         if (string[strlen(string) - 1] == '\n') {
             string[strlen(string) - 1] = '\0';
-
-            printf("TEST");
         }
-
-        getchar();
-
-        printf("TEST2");
-
-        getchar();
 
         if ((ch = getchar()) != '\n' && ch != EOF) {
 
