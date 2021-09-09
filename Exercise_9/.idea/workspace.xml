@@ -14,17 +14,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb0eaf1-eb38-45f1-abe6-b91b5e7dcfde" name="Changes" comment="Finished EX7 and EX8">
-      <change afterPath="$PROJECT_DIR$/../Exercise_1/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_1/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_1/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_6/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_6/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_7/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_7/main.c" afterDir="false" />
+    <list default="true" id="ecb0eaf1-eb38-45f1-abe6-b91b5e7dcfde" name="Changes" comment="EX9 in progress">
       <change beforePath="$PROJECT_DIR$/../Exercise_8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_8/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_8/cmake-build-debug/CMakeFiles/Exercise_8.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_8/cmake-build-debug/CMakeFiles/Exercise_8.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_8/cmake-build-debug/Exercise_8" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_8/cmake-build-debug/Exercise_8" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_8/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_8/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_8/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_8/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_9" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_9" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
@@ -61,6 +60,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="Exercise_9" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Exercise_9" TARGET_NAME="Exercise_9" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Exercise_9" RUN_TARGET_NAME="Exercise_9">
@@ -68,9 +68,9 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -84,7 +84,8 @@
       <updated>1631022182876</updated>
       <workItem from="1631022186747" duration="509000" />
       <workItem from="1631022973534" duration="82000" />
-      <workItem from="1631167914988" duration="5542000" />
+      <workItem from="1631167914988" duration="5591000" />
+      <workItem from="1631180519726" duration="4025000" />
     </task>
     <task id="LOCAL-00001" summary="Finished EX7 and EX8">
       <created>1631167937758</created>
@@ -100,7 +101,21 @@
       <option name="project" value="LOCAL" />
       <updated>1631167954508</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="EX9 in progress">
+      <created>1631177597094</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1631177597094</updated>
+    </task>
+    <task id="LOCAL-00004" summary="EX9 in progress">
+      <created>1631177607704</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1631177607704</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,6 +136,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Finished EX7 and EX8" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished EX7 and EX8" />
+    <MESSAGE value="EX9 in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="EX9 in progress" />
   </component>
 </project>

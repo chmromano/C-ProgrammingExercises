@@ -53,10 +53,10 @@ void convert_upper_string(char string[]) {
     bool is_first_cap = false;
 
     for (int i = 0; i < strlen(string); i++) {
-        if (is_first_cap == false && isalpha(string[i]) != 0) {
+        if (is_first_cap == false && isalpha(string[i]) == true) {
             string[i] = toupper(string[i]);
             is_first_cap = true;
-        } else if (is_first_cap == true && isblank(string[i]) != 0) {
+        } else if (is_first_cap == true && isblank(string[i]) == true) {
             is_first_cap = false;
         }
     }

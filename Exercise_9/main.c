@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <ctype.h>
+#include <string.h>
 
 #define STRING_LENGTH 20
 #define ARRAY_LENGTH 15
+#define CATEGORY_LIST "MNECISFPX"
 
 struct car {
     char make[STRING_LENGTH];
@@ -15,10 +18,17 @@ struct car {
 
 void list_cars(char character, struct car array[]);
 
+bool change_state(char string[], struct car array[]);
+
 void validate_number(int *input);
+
+void validate_character(char *character);
+
+void validate_string(char string[]);
 
 int main() {
     bool run = true;
+
     int command_input = 0;
     char category_input;
     char license_plate_input[STRING_LENGTH] = {};
@@ -27,7 +37,7 @@ int main() {
             {"Smart",        "Fortwo",   'M', "TXS243", 24543,  true},
             {"Renault",      "Twizy",    'N', "ALC241", 9023,   true},
             {"Audi",         "A1",       'E', "MKA947", 76023,  false},
-            {"Toyota",       "Aygo",     'E', "HFU827", 100293, true},
+            {"Toyota",       "Aygo",     'E', "HFU824", 100293, true},
             {"Ford",         "Focus",    'C', "OKS652", 76201,  true},
             {"Volkswagen",   "ID.3",     'C', "ELC724", 91242,  false},
             {"BMW",          "3 Series", 'I', "JSU735", 86302,  true},
@@ -35,29 +45,42 @@ int main() {
             {"Jaguar",       "XF",       'S', "UWH571", 34029,  false},
             {"BMW",          "8 Series", 'P', "LWP982", 90283,  true},
             {"Jaguar",       "XJ",       'P', "JGW375", 45932,  false},
-            {"Toyota",       "RAV4",     'F', "WZD62",  24543,  true},
+            {"Toyota",       "RAV4",     'F', "WZD624",  24543,  true},
             {"Volkswagen",   "Arteon",   'F', "JPA374", 72342,  false},
             {"Aston Martin", "DB11",     'X', "JMB007", 8293,   false},
             {"Lamborghini",  "Huracán",  'X', "LMB287", 13028,  true},
     };
 
     while (run == true) {
-        printf("Available commands:\n1. Print all cars\n2. Print all available cars of a category\n"
-               "3. Change car availability\n4. Quit the program\n");
-        
+        printf("\nAvailable commands:\n\n1. Print all cars\n2. Print all available cars of a category\n"
+               "3. Change car availability\n4. Quit the program\n\nChoose a command: ");
+
         validate_number(&command_input);
 
         switch (command_input) {
             case 1:
+                list_cars('*', rentals);
                 break;
             case 2:
+                printf("\nChoose a category (M, N, E, C, I, S, F, P, or X): ");
+                validate_character(&category_input);
+                list_cars(category_input, rentals);
                 break;
             case 3:
+                printf("\nEnter a license plate: ");
+                validate_string(license_plate_input);
+                if ((change_state(license_plate_input, rentals)) == true) {
+                    printf("\nChange successful.\n");
+                } else {
+                    printf("\nLicense plate not found.\n");
+                }
                 break;
             case 4:
+                printf("\nProgram stopped.\n");
                 run = false;
                 break;
             default:
+                printf("\nIncorrect input. ");
                 break;
         }
     }
@@ -67,21 +90,41 @@ int main() {
 
 void list_cars(char character, struct car array[]) {
 
-    printf("Make Model Category Plate Mileage Availability");
+    printf("\nMake Model Category Plate Mileage Availability");
 
     for (int i = 0; i < ARRAY_LENGTH; i++) {
         if ((array[i].category == character && array[i].availability == true) || character == '*') {
-
+            printf("%s %s %c %s %d", array[i].make, array[i].model, array[i].category, array[i].plate,
+                   array[i].mileage);
+            if (array[i].availability == true) {
+                printf("Available\n");
+            } else if (array[i].availability == false) {
+                printf("Unavailable\n");
+            }
         }
     }
 }
 
+bool change_state(char string[], struct car array[]) {
+
+    //License plate letters are converted to uppercase
+    for (int i = 0; i < strlen(string); i++) {
+        string[i] = toupper(string[i]);
+    }
+
+    for (int i = 0; i < ARRAY_LENGTH; i++) {
+        if (strcmp(string, array[i].plate) == 0) {
+            array[i].availability = !(array[i].availability);
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void validate_number(int *input) {
     int ch;
-
     bool valid_input = false;
-
-    printf("Choose a command: ");
 
     while (valid_input == false) {
         if (scanf("%d", input) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
@@ -89,10 +132,46 @@ void validate_number(int *input) {
             while ((ch = getchar()) != '\n' && ch != EOF);
 
             printf("Invalid characters. Please enter a number from 1 to 4: ");
-        } else if (*input < 1 || *input > 4) {
-            printf("Please enter a number from 1 to 4: ");
         } else {
             valid_input = true;
+        }
+    }
+}
+
+void validate_character(char *character) {
+    int ch;
+    bool valid_input = false;
+
+    while (valid_input == false) {
+        if (scanf("%c", character) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
+
+            while ((ch = getchar()) != '\n' && ch != EOF);
+
+            printf("Error. Choose a valid category (M, N, E, C, I, S, F, P, or X): ");
+        }
+
+        *character = toupper(*character);
+
+        if (strchr(CATEGORY_LIST, *character) == NULL) {
+            printf("Error. Choose a valid category (M, N, E, C, I, S, F, P, or X): ");
+        } else {
+            valid_input = true;
+        }
+    }
+}
+
+void validate_string(char string[]) {
+    bool valid_input = false;
+    int ch;
+
+    while (valid_input == false) {
+        fgets(string, STRING_LENGTH, stdin);
+        if (string[strlen(string) - 1] == '\n') {
+            string[strlen(string) - 1] = '\0';
+            valid_input = true;
+        } else {
+            while ((ch = getchar()) != '\n' && ch != EOF);
+            printf("Plate too long. Enter a plate (maximum 18 characters):\n");
         }
     }
 }
