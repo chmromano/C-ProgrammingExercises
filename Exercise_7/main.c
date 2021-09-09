@@ -47,11 +47,9 @@ void string_validation(char string[]) {
 }
 
 void convert_underscore_string(char string[]) {
-    bool capitalised_first = false;
-
-    for (int i = 1; i <= strlen(string); i++) {
-        if (string[i - 1] == 32 && string[i] != 32) {
-            string[i] = toupper(string[i]);
+    for (int i = 0; i < strlen(string); i++) {
+        if (isblank(string[i]) != 0) {
+            string[i] = 95;
         }
     }
 }
