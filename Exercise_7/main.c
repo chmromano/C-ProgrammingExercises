@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
 
 #define STRING_SIZE 102
 
 void string_validation(char string[]);
 
-void convert_string(char string[]);
+void convert_underscore_string(char string[]);
 
 int main() {
     bool loop = true;
@@ -21,7 +22,7 @@ int main() {
         if ((strncmp(my_string, "STOP", 4)) == 0 || (strncmp(my_string, "stop", 4)) == 0) {
             loop = false;
         } else {
-            convert_string(my_string);
+            convert_underscore_string(my_string);
             printf("%s\n", my_string);
         }
     }
@@ -45,10 +46,12 @@ void string_validation(char string[]) {
     }
 }
 
-void convert_string(char string[]) {
-    for (int i = 0; i < strlen(string); i++) {
-        if (string[i] == 32) {
-            string[i] = 95;
+void convert_underscore_string(char string[]) {
+    bool capitalised_first = false;
+
+    for (int i = 1; i <= strlen(string); i++) {
+        if (string[i - 1] == 32 && string[i] != 32) {
+            string[i] = toupper(string[i]);
         }
     }
 }

@@ -12,19 +12,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecb0eaf1-eb38-45f1-abe6-b91b5e7dcfde" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Exercise_4/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_5/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_6/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_4/cmake-build-debug/CMakeFiles/Exercise_4.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_4/cmake-build-debug/CMakeFiles/Exercise_4.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_4/cmake-build-debug/Exercise_4" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_4/cmake-build-debug/Exercise_4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_4/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_4/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_5/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_5/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_6/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_6/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_7/.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_7/.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_4/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_4/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/CMakeFiles/Exercise_7.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/CMakeFiles/Exercise_7.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/CMakeFiles/Exercise_7.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/CMakeFiles/Exercise_7.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/Exercise_7" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/Exercise_7" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_7/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_7/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_8/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_8/.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_8/.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_8/cmake-build-debug/CMakeFiles/Exercise_8.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_8/cmake-build-debug/CMakeFiles/Exercise_8.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_8/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_8/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_8/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_8/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,11 +63,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -84,6 +79,7 @@
       <updated>1631022182876</updated>
       <workItem from="1631022186747" duration="509000" />
       <workItem from="1631022973534" duration="82000" />
+      <workItem from="1631167914988" duration="1000" />
     </task>
     <servers />
   </component>

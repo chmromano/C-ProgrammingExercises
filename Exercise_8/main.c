@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
 
 #define STRING_SIZE 102
 
@@ -46,9 +47,11 @@ void string_validation(char string[]) {
 }
 
 void convert_upper_string(char string[]) {
+    string[0] = toupper(string[0]);
+
     for (int i = 0; i < strlen(string); i++) {
         if (string[i] == 32) {
-            string[i] = 95;
+            string[i + 1] = toupper(string[i + 1]);
         }
     }
 }
