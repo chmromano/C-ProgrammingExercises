@@ -47,11 +47,15 @@ void string_validation(char string[]) {
 }
 
 void convert_upper_string(char string[]) {
-    string[0] = toupper(string[0]);
+
+    bool is_first_cap = false;
 
     for (int i = 0; i < strlen(string); i++) {
-        if (string[i] == 32) {
-            string[i + 1] = toupper(string[i + 1]);
+        if (is_first_cap == false && isalpha(string[i]) != 0) {
+            string[i] = toupper(string[i]);
+            is_first_cap = true;
+        } else if (is_first_cap == true && isblank(string[i]) != 0) {
+            is_first_cap = false;
         }
     }
 }

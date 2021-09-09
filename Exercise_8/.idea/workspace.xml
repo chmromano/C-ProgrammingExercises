@@ -16,9 +16,11 @@
   <component name="ChangeListManager">
     <list default="true" id="eae1d691-b97f-4d84-aea6-189fd991b7c1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_7/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_7/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_7/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_8.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_8.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_8" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_8" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_9/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_9/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +75,7 @@
       <workItem from="1631022979049" duration="70000" />
       <workItem from="1631089437833" duration="1504000" />
       <workItem from="1631167707084" duration="202000" />
-      <workItem from="1631170308768" duration="291000" />
+      <workItem from="1631170308768" duration="1396000" />
     </task>
     <servers />
   </component>
