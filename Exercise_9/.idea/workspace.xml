@@ -14,8 +14,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb0eaf1-eb38-45f1-abe6-b91b5e7dcfde" name="Changes" comment="EX9 logic finished, missing print formatting">
-      <change beforePath="$PROJECT_DIR$/../Exercise_8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_8/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ecb0eaf1-eb38-45f1-abe6-b91b5e7dcfde" name="Changes" comment="EX9 formatting WIP">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_9" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_9" afterDir="false" />
@@ -81,7 +80,7 @@
       <workItem from="1631022973534" duration="82000" />
       <workItem from="1631167914988" duration="5591000" />
       <workItem from="1631180519726" duration="4194000" />
-      <workItem from="1631191324306" duration="2361000" />
+      <workItem from="1631191324306" duration="4361000" />
     </task>
     <task id="LOCAL-00001" summary="Finished EX7 and EX8">
       <created>1631167937758</created>
@@ -125,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631185423328</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="EX9 formatting WIP">
+      <created>1631193742167</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1631193742167</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +154,7 @@
     <MESSAGE value="Finished EX7 and EX8" />
     <MESSAGE value="EX9 in progress" />
     <MESSAGE value="EX9 logic finished, missing print formatting" />
-    <option name="LAST_COMMIT_MESSAGE" value="EX9 logic finished, missing print formatting" />
+    <MESSAGE value="EX9 formatting WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="EX9 formatting WIP" />
   </component>
 </project>

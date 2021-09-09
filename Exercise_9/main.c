@@ -34,21 +34,22 @@ int main() {
     char license_plate_input[STRING_LENGTH] = {};
 
     struct car rentals[ARRAY_LENGTH] = {
-            {"Smart",        "Fortwo",   'M', "TXS243", 24543,  true},
-            {"Renault",      "Twizy",    'N', "ALC241", 9023,   true},
-            {"Audi",         "A1",       'E', "MKA947", 76023,  false},
-            {"Toyota",       "Aygo",     'E', "HFU824", 100293, true},
-            {"Ford",         "Focus",    'C', "OKS652", 76201,  true},
-            {"Volkswagen",   "ID.3",     'C', "ELC724", 91242,  false},
-            {"BMW",          "3 Series", 'I', "JSU735", 86302,  true},
-            {"Volvo",        "S90",      'S', "VZW376", 63592,  true},
-            {"Jaguar",       "XF",       'S', "UWH571", 34029,  false},
-            {"BMW",          "8 Series", 'P', "LWP982", 90283,  true},
-            {"Jaguar",       "XJ",       'P', "JGW375", 45932,  false},
-            {"Toyota",       "RAV4",     'F', "WZD624", 24543,  true},
-            {"Volkswagen",   "Arteon",   'F', "JPA374", 72342,  false},
-            {"Aston Martin", "DB11",     'X', "JMB007", 8293,   false},
-            {"Lamborghini",  "Huracán",  'X', "LMB287", 13028,  true},
+            //If you really need more than 20 characters to store any of the strings please modify STRING_LENGTH
+            {"Smart",                   "Fortwo",    'M', "TXS243", 24543,  true},
+            {"Renault",                 "Twizy",     'N', "ALC241", 9023,   true},
+            {"Audi",                    "A1",        'E', "MKA947", 846023, false},
+            {"Toyota",                  "Aygo",      'E', "HFU824", 100293, true},
+            {"Ford",                    "Focus",     'C', "OKS652", 76201,  true},
+            {"Volkswagen", "ID.3",      'C', "ELC724", 91242,  false},
+            {"BMW",                     "3 Series",  'I', "JSU735", 86302,  true},
+            {"Volvo",                   "S90",       'S', "VZW376", 63592,  true},
+            {"Jaguar",                  "XF",        'S', "UWH571", 34029,  false},
+            {"BMW",                     "8 Series",  'P', "LWP982", 90283,  true},
+            {"Jaguar",                  "XJ",        'P', "JGW375", 45932,  false},
+            {"Toyota",                  "RAV4",      'F', "WZD624", 24543,  true},
+            {"Volkswagen",              "Arteon",    'F', "JPA374", 72342,  false},
+            {"Aston Martin",            "DB11",      'X', "JMB007", 8293,   false},
+            {"Lamborghini",             "Aventador", 'X', "LMB287", 13028,  true},
     };
 
     while (run == true) {
@@ -60,20 +61,25 @@ int main() {
         switch (command_input) {
             case 1:
                 list_cars('*', rentals);
+                printf("\nPress enter to continue.");
+                getchar();
                 break;
             case 2:
                 printf("\nChoose a category (M, N, E, C, I, S, F, P, or X): ");
                 validate_character(&category_input);
                 list_cars(category_input, rentals);
+                printf("\nPress enter to continue.");
+                getchar();
                 break;
             case 3:
                 printf("\nEnter a license plate: ");
                 validate_string(license_plate_input);
                 if ((change_state(license_plate_input, rentals)) == true) {
-                    printf("\nChange successful.\n");
+                    printf("\nChange successful. Press enter to continue.");
                 } else {
-                    printf("\nLicense plate not found.\n");
+                    printf("\nLicense plate not found. Press enter to continue.");
                 }
+                getchar();
                 break;
             case 4:
                 printf("\nProgram stopped.\n");
@@ -113,33 +119,34 @@ void list_cars(char character, struct car array[]) {
                 plate_size = strlen(array[i].plate);
             }
 
+            //FIX THIS
             int temp_mileage = array[i].mileage;
             while (temp_mileage != 0) {
-                temp_mileage /= 10;
+                temp_mileage = temp_mileage / 10;
                 digits++;
             }
             if (digits > mileage_size) {
                 mileage_size = digits;
             }
+
+            digits = 0;
         }
     }
 
-    printf("\n%-*s | %-*s | %-*c | %-*s | %*d | %-*s", make_size, "Make", model_size, "Model", category_size, "Category",
-           plate_size, "Plate", mileage_size, "Mileage", availability_size, "Availability");
+    printf("\n%-*s | %-*s | %-*s | %-*s | %-*s | %-*s\n", make_size, "Make", model_size, "Model", category_size,
+           "Category", plate_size, "Plate", mileage_size, "Mileage", availability_size, "Availability");
 
-    /*
     for (int i = 0; i < ARRAY_LENGTH; i++) {
         if ((array[i].category == character && array[i].availability == true) || character == '*') {
-            printf("%*s %*s %*c %*s %-*d", array[i].make, array[i].model, array[i].category, array[i].plate,
-                   array[i].mileage);
+            printf("%-*s | %-*s | %-*c | %-*s | %*d | ", make_size, array[i].make, model_size, array[i].model,
+                   category_size, array[i].category, plate_size, array[i].plate, mileage_size, array[i].mileage);
             if (array[i].availability == true) {
-                printf("Available\n");
+                printf("%-*s\n", availability_size, "Available");
             } else if (array[i].availability == false) {
-                printf("Unavailable\n");
+                printf("%-*s\n", availability_size, "Unavailable");
             }
         }
     }
-     */
 }
 
 
