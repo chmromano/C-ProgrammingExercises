@@ -45,7 +45,7 @@ int main() {
             {"Jaguar",       "XF",       'S', "UWH571", 34029,  false},
             {"BMW",          "8 Series", 'P', "LWP982", 90283,  true},
             {"Jaguar",       "XJ",       'P', "JGW375", 45932,  false},
-            {"Toyota",       "RAV4",     'F', "WZD624",  24543,  true},
+            {"Toyota",       "RAV4",     'F', "WZD624", 24543,  true},
             {"Volkswagen",   "Arteon",   'F', "JPA374", 72342,  false},
             {"Aston Martin", "DB11",     'X', "JMB007", 8293,   false},
             {"Lamborghini",  "Huracán",  'X', "LMB287", 13028,  true},
