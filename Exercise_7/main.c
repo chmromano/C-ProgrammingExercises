@@ -28,6 +28,8 @@ int main() {
     }
 
     printf("Program stopped.");
+
+    return 0;
 }
 
 void string_validation(char string[]) {
