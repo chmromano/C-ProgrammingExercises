@@ -88,13 +88,49 @@ int main() {
     return 0;
 }
 
-void list_cars(char character, struct car array[]) {
 
-    printf("\nMake Model Category Plate Mileage Availability");
+void list_cars(char character, struct car array[]) {
+    int make_size = strlen("Make");
+    int model_size = strlen("Model");
+    int category_size = strlen("Category");
+    int plate_size = strlen("Plate");
+    int mileage_size = strlen("Mileage");
+    int availability_size = strlen("Availability");
+
+    int digits = 0;
 
     for (int i = 0; i < ARRAY_LENGTH; i++) {
         if ((array[i].category == character && array[i].availability == true) || character == '*') {
-            printf("%s %s %c %s %d", array[i].make, array[i].model, array[i].category, array[i].plate,
+            if (strlen(array[i].make) > make_size) {
+                make_size = strlen(array[i].make);
+            }
+
+            if (strlen(array[i].model) > model_size) {
+                model_size = strlen(array[i].model);
+            }
+
+            if (strlen(array[i].plate) > plate_size) {
+                plate_size = strlen(array[i].plate);
+            }
+
+            int temp_mileage = array[i].mileage;
+            while (temp_mileage != 0) {
+                temp_mileage /= 10;
+                digits++;
+            }
+            if (digits > mileage_size) {
+                mileage_size = digits;
+            }
+        }
+    }
+
+    printf("\n%-*s | %-*s | %-*c | %-*s | %*d | %-*s", make_size, "Make", model_size, "Model", category_size, "Category",
+           plate_size, "Plate", mileage_size, "Mileage", availability_size, "Availability");
+
+    /*
+    for (int i = 0; i < ARRAY_LENGTH; i++) {
+        if ((array[i].category == character && array[i].availability == true) || character == '*') {
+            printf("%*s %*s %*c %*s %-*d", array[i].make, array[i].model, array[i].category, array[i].plate,
                    array[i].mileage);
             if (array[i].availability == true) {
                 printf("Available\n");
@@ -103,7 +139,9 @@ void list_cars(char character, struct car array[]) {
             }
         }
     }
+     */
 }
+
 
 bool change_state(char string[], struct car array[]) {
 
