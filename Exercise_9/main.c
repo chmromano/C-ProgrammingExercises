@@ -35,21 +35,21 @@ int main() {
 
     struct car rentals[ARRAY_LENGTH] = {
             //If you really need more than 20 characters to store any of the strings please modify STRING_LENGTH
-            {"Smart",                   "Fortwo",    'M', "TXS243", 24543,  true},
-            {"Renault",                 "Twizy",     'N', "ALC241", 9023,   true},
-            {"Audi",                    "A1",        'E', "MKA947", 846023, false},
-            {"Toyota",                  "Aygo",      'E', "HFU824", 100293, true},
-            {"Ford",                    "Focus",     'C', "OKS652", 76201,  true},
-            {"Volkswagen", "ID.3",      'C', "ELC724", 91242,  false},
-            {"BMW",                     "3 Series",  'I', "JSU735", 86302,  true},
-            {"Volvo",                   "S90",       'S', "VZW376", 63592,  true},
-            {"Jaguar",                  "XF",        'S', "UWH571", 34029,  false},
-            {"BMW",                     "8 Series",  'P', "LWP982", 90283,  true},
-            {"Jaguar",                  "XJ",        'P', "JGW375", 45932,  false},
-            {"Toyota",                  "RAV4",      'F', "WZD624", 24543,  true},
-            {"Volkswagen",              "Arteon",    'F', "JPA374", 72342,  false},
-            {"Aston Martin",            "DB11",      'X', "JMB007", 8293,   false},
-            {"Lamborghini",             "Aventador", 'X', "LMB287", 13028,  true},
+            {"Smart",        "Fortwo",    'M', "TXS243", 24543,  true},
+            {"Renault",      "Twizy",     'N', "ALC241", 9023,   true},
+            {"Audi",         "A1",        'E', "MKA947", 846023, false},
+            {"Toyota",       "Aygo",      'E', "HFU824", 100293, true},
+            {"Ford",         "Focus",     'C', "OKS652", 76201,  true},
+            {"Volkswagen",   "ID.3",      'C', "ELC724", 91242,  false},
+            {"BMW",          "3 Series",  'I', "JSU735", 86302,  true},
+            {"Volvo",        "S90",       'S', "VZW376", 63592,  true},
+            {"Jaguar",       "XF",        'S', "UWH571", 34029,  false},
+            {"BMW",          "8 Series",  'P', "LWP982", 90283,  true},
+            {"Jaguar",       "XJ",        'P', "JGW375", 45932,  false},
+            {"Toyota",       "RAV4",      'F', "WZD624", 24543,  true},
+            {"Volkswagen",   "Arteon",    'F', "JPA374", 72342,  false},
+            {"Aston Martin", "DB11",      'X', "JMB007", 8293,   false},
+            {"Lamborghini",  "Aventador", 'X', "LMB287", 13028,  true},
     };
 
     while (run == true) {
@@ -108,18 +108,17 @@ void list_cars(char character, struct car array[]) {
     for (int i = 0; i < ARRAY_LENGTH; i++) {
         if ((array[i].category == character && array[i].availability == true) || character == '*') {
             if (strlen(array[i].make) > make_size) {
-                make_size = strlen(array[i].make);
+                make_size = (int) strlen(array[i].make);
             }
 
             if (strlen(array[i].model) > model_size) {
-                model_size = strlen(array[i].model);
+                model_size = (int) strlen(array[i].model);
             }
 
             if (strlen(array[i].plate) > plate_size) {
-                plate_size = strlen(array[i].plate);
+                plate_size = (int) strlen(array[i].plate);
             }
 
-            //FIX THIS
             int temp_mileage = array[i].mileage;
             while (temp_mileage != 0) {
                 temp_mileage = temp_mileage / 10;

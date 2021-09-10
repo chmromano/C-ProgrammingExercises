@@ -14,7 +14,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecb0eaf1-eb38-45f1-abe6-b91b5e7dcfde" name="Changes" comment="EX9 formatting WIP">
+    <list default="true" id="ecb0eaf1-eb38-45f1-abe6-b91b5e7dcfde" name="Changes" comment="EX9 finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_9" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_9" afterDir="false" />
@@ -32,6 +32,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="2" />
   </component>
   <component name="ProjectId" id="1xoWzNUVO5LxuCQM0TJV5eSI53K" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -62,9 +65,9 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -80,7 +83,8 @@
       <workItem from="1631022973534" duration="82000" />
       <workItem from="1631167914988" duration="5591000" />
       <workItem from="1631180519726" duration="4194000" />
-      <workItem from="1631191324306" duration="4361000" />
+      <workItem from="1631191324306" duration="4417000" />
+      <workItem from="1631253718793" duration="572000" />
     </task>
     <task id="LOCAL-00001" summary="Finished EX7 and EX8">
       <created>1631167937758</created>
@@ -131,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631193742167</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="EX9 finished">
+      <created>1631198010861</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1631198010861</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +166,7 @@
     <MESSAGE value="EX9 in progress" />
     <MESSAGE value="EX9 logic finished, missing print formatting" />
     <MESSAGE value="EX9 formatting WIP" />
-    <option name="LAST_COMMIT_MESSAGE" value="EX9 formatting WIP" />
+    <MESSAGE value="EX9 finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="EX9 finished" />
   </component>
 </project>
