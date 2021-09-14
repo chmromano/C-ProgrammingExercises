@@ -86,7 +86,7 @@ int main() {
                 run = false;
                 break;
             default:
-                printf("\nIncorrect input. ");
+                printf("\nIncorrect input.\n");
                 break;
         }
     }
@@ -175,7 +175,7 @@ void validate_number(int *input) {
 
             while ((ch = getchar()) != '\n' && ch != EOF);
 
-            printf("Invalid characters. Please enter a number from 1 to 4: ");
+            printf("\nInvalid characters. Please enter a number from 1 to 4: ");
         } else {
             valid_input = true;
         }
@@ -191,13 +191,13 @@ void validate_character(char *character) {
 
             while ((ch = getchar()) != '\n' && ch != EOF);
 
-            printf("Error. Choose a valid category (M, N, E, C, I, S, F, P, or X): ");
+            printf("\nError. Choose a valid category (M, N, E, C, I, S, F, P, or X): ");
         }
 
         *character = toupper(*character);
 
         if (strchr(CATEGORY_LIST, *character) == NULL) {
-            printf("Error. Choose a valid category (M, N, E, C, I, S, F, P, or X): ");
+            printf("\nError. Choose a valid category (M, N, E, C, I, S, F, P, or X): ");
         } else {
             valid_input = true;
         }
