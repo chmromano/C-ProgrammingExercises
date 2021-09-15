@@ -54,10 +54,10 @@ RM = "/Users/christopher/Library/Application Support/JetBrains/Toolbox/apps/CLio
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/christopher/CLionProjects/Exercise_7
+CMAKE_SOURCE_DIR = /Users/christopher/CLionProjects/Exercise_07
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/christopher/CLionProjects/Exercise_7/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/christopher/CLionProjects/Exercise_07/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/Exercise_7.dir/clean
 CMakeFiles/Exercise_7.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Exercise_7.dir/build.make CMakeFiles/Exercise_7.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Exercise_7.dir/build.make CMakeFiles/Exercise_7.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/christopher/CLionProjects/Exercise_7/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target Exercise_7"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/christopher/CLionProjects/Exercise_07/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target Exercise_7"
 .PHONY : CMakeFiles/Exercise_7.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Exercise_7.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/christopher/CLionProjects/Exercise_7/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/christopher/CLionProjects/Exercise_07/cmake-build-debug/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Exercise_7.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/christopher/CLionProjects/Exercise_7/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/christopher/CLionProjects/Exercise_07/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Exercise_7.dir/rule
 
 # Convenience name for target.

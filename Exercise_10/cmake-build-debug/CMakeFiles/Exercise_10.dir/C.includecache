@@ -6,13 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/christopher/CLionProjects/Exercise_9/main.c
+/Users/christopher/CLionProjects/Exercise_10/main.c
 stdio.h
 -
 stdbool.h
--
-ctype.h
--
-string.h
 -
 
