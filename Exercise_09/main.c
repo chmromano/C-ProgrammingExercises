@@ -105,6 +105,7 @@ void list_cars(char character, struct car array[]) {
 
     int digits = 0;
 
+    //First part of function loops through the array of structs to find the longest length of each struct element
     for (int i = 0; i < ARRAY_LENGTH; i++) {
         if ((array[i].category == character && array[i].availability == true) || character == '*') {
             if (strlen(array[i].make) > make_size) {
@@ -132,6 +133,7 @@ void list_cars(char character, struct car array[]) {
         }
     }
 
+    //Using a combination of the longest values and dynamic width modifiers columns can be dynamically aligned
     printf("\n%-*s | %-*s | %-*s | %-*s | %-*s | %-*s\n", make_size, "Make", model_size, "Model", category_size,
            "Category", plate_size, "Plate", mileage_size, "Mileage", availability_size, "Availability");
 
@@ -148,7 +150,7 @@ void list_cars(char character, struct car array[]) {
     }
 }
 
-
+//Returns true if plate is found, false if not
 bool change_state(char string[], struct car array[]) {
 
     //License plate letters are converted to uppercase
@@ -159,12 +161,15 @@ bool change_state(char string[], struct car array[]) {
     for (int i = 0; i < ARRAY_LENGTH; i++) {
         if (strcmp(string, array[i].plate) == 0) {
             array[i].availability = !(array[i].availability);
+            //Assuming number plates are unique, no need to keep looking after 1 matching plate is found
             return true;
         }
     }
 
     return false;
 }
+
+//Various input validation functions
 
 void validate_number(int *input) {
     int ch;
