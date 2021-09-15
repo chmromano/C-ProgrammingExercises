@@ -15,27 +15,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecb0eaf1-eb38-45f1-abe6-b91b5e7dcfde" name="Changes" comment="EX9 finished">
-      <change afterPath="$PROJECT_DIR$/../Exercise_07/cmake-build-debug/CMakeFiles/Exercise_7.dir/C.includecache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_07/cmake-build-debug/CMakeFiles/Exercise_7.dir/depend.internal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_07/cmake-build-debug/CMakeFiles/Exercise_7.dir/main.c.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_08/cmake-build-debug/CMakeFiles/Exercise_8.dir/C.includecache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_08/cmake-build-debug/CMakeFiles/Exercise_8.dir/depend.internal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_08/cmake-build-debug/CMakeFiles/Exercise_8.dir/main.c.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/C.includecache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/depend.internal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_07/cmake-build-debug/CMakeFiles/Exercise_7.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_07/cmake-build-debug/CMakeFiles/Exercise_7.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_07/cmake-build-debug/Exercise_7" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_07/cmake-build-debug/Exercise_7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_07/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_07/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_08/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_08/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_08/cmake-build-debug/CMakeFiles/Exercise_8.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_08/cmake-build-debug/CMakeFiles/Exercise_8.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_08/cmake-build-debug/Exercise_8" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_08/cmake-build-debug/Exercise_8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_08/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_08/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_9.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_9" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +89,7 @@
       <workItem from="1631686035115" duration="1224000" />
       <workItem from="1631689649522" duration="15000" />
       <workItem from="1631689671656" duration="3000" />
-      <workItem from="1631689712830" duration="1457000" />
+      <workItem from="1631689712830" duration="1488000" />
     </task>
     <task id="LOCAL-00001" summary="Finished EX7 and EX8">
       <created>1631167937758</created>
@@ -174,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631254299274</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="EX9 finished">
+      <created>1631691261193</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1631691261193</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
