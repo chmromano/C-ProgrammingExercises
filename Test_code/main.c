@@ -3,98 +3,45 @@
 #include <ctype.h>
 #include <stdbool.h>
 
-#define STRING_SIZE 101
+#define STRING_SIZE 20
 
-void validate_string(char string[]);
-
-void encrypt(char string[], int shift);
+void merge_whitespace(char *string);
 
 int main() {
-    bool valid_input = false;
-    int ch;
+    char string1[] = "   This  time with   \t\tleading spaces. \tOne\n"
+                     "\n"
+                     " more for the road ";
+    char string2[] = "    we live  in     Helsinki";
+    char string3[] = "i      go back to Switzerland    \n\nin   October";
 
-    int shift = 0;
-    char my_string[STRING_SIZE] = {};
+    merge_whitespace(string1);
+    merge_whitespace(string2);
+    merge_whitespace(string3);
 
-    printf("Enter the phrase you want to encrypt (maximum 100 characters):\n");
-
-    validate_string(my_string);
-
-    printf("Enter the amount of shift:\n");
-
-    while (valid_input == false) {
-        if (scanf("%d", &shift) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
-
-            while ((ch = getchar()) != '\n' && ch != EOF);
-
-            printf("Incorrect characters. Please enter a valid number:\n");
-        } else {
-            valid_input = true;
-        }
-    }
-
-    for (int i = 0; i < strlen(my_string); i++) {
-        my_string[i] = toupper(my_string[i]);
-    }
-
-    printf("Original string:\n%s\n", my_string);
-
-    encrypt(my_string, shift);
-
-    printf("Encrypted string:\n%s\n", my_string);
-
-    encrypt(my_string, -shift);
-
-    printf("Decrypted string:\n%s", my_string);
+    printf("%s\n%s\n%s", string1, string2, string3);
 
     return 0;
 }
 
-void validate_string(char string[]) {
-    bool valid_input = false;
-    int ch;
+void merge_whitespace(char *string) {
+    int i = 0;
+    int length = strlen(string);
 
-    while (valid_input == false) {
-        fgets(string, STRING_SIZE, stdin);
-        if (string[strlen(string) - 1] == '\n') {
-            string[strlen(string) - 1] = '\0';
-        }
+    bool first_space_found = false;
 
-        if ((ch = getchar()) != '\n' && ch != EOF) {
-
-            printf("TEST3");
-
-            while ((ch = getchar()) != '\n' && ch != EOF);
-
-            printf("TEST4");
-
-            printf("String too long. Enter a string (maximum 100 characters):\n");
-        } else {
-
-            printf("TEST5");
-
-            valid_input = true;
-        }
-
-        printf("TEST6");
-    }
-}
-
-void encrypt(char string[], int shift) {
-    for (int i = 0; i < strlen(string); i++) {
-        if (string[i] != (char) 32) {
-            /*My function assumes that the shift will be to the right.
-            To make it a left shift simply change the line below to perform
-            a subtraction, or input a negative shift value.*/
-            string[i] += shift;
-
-            while (string[i] > 90 || string[i] < 65) {
-                if ((int) string[i] > 90) {
-                    string[i] -= 26;
-                } else if ((int) string[i] < 65) {
-                    string[i] += 26;
-                }
+    while (i < length) {
+        if ((string[i] == 9 || string[i] == 10 || string[i] == 11 || string[i] == 12 || string[i] == 13 || string[i] == 32)
+            && first_space_found == false) {
+            first_space_found = true;
+            i++;
+        } else if ((string[i] == 9 || string[i] == 10 || string[i] == 11 || string[i] == 12 || string[i] == 13 || string[i] == 32)
+                   && first_space_found == true) {
+            for (int j = i; j < length; j++) {
+                string[j] = string[j + 1];
             }
+        } else if ((string[i] != 9 || string[i] != 10 || string[i] != 11 || string[i] != 12 || string[i] != 13 || string[i] != 32)) {
+            first_space_found = false;
+            i++;
         }
     }
 }
