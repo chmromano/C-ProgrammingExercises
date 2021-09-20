@@ -9,4 +9,10 @@
 /Users/christopher/CLionProjects/Exercise_11/main.c
 stdio.h
 -
+stdbool.h
+-
+string.h
+-
+stdlib.h
+-
 
