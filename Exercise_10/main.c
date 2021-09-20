@@ -1,18 +1,23 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
+#include <stdlib.h>
 
 #define STRING_LENGTH 102
 
+#define STRING_INTEGERS "1234567890"
+#define STRING_DOUBLES "1234567890."
+
 bool read_int(int *input, FILE *file);
 
-bool read_float(float *input, FILE *file);
+bool read_double(double *input, FILE *file);
 
 int main() {
     bool successful_execution = true;
     int n_expected = 0;
     int n_actual = 0;
-    float sum = 0;
-    float temp_float = 0;
+    double sum = 0;
+    double temp_double = 0;
 
     FILE *my_file;
     my_file = fopen("numbers.txt", "r");
@@ -23,8 +28,8 @@ int main() {
         if (read_int(&n_expected, my_file) == true) {
 
             for (int i = 0; i < n_expected; i++) {
-                if (read_float(&temp_float, my_file) == true) {
-                    sum += temp_float;
+                if (read_double(&temp_double, my_file) == true) {
+                    sum += temp_double;
                     n_actual++;
                 } else {
                     successful_execution = false;
@@ -43,9 +48,9 @@ int main() {
             }
 
             if (n_actual == 1) {
-                printf("Average of %d number is: %.2f", n_actual, sum / (float) n_actual);
+                printf("Average of %d number is: %.2f", n_actual, sum / (double) n_actual);
             } else {
-                printf("Average of %d numbers is: %.2f", n_actual, sum / (float) n_actual);
+                printf("Average of %d numbers is: %.2f", n_actual, sum / (double) n_actual);
             }
 
         } else {
@@ -57,7 +62,6 @@ int main() {
     return 0;
 }
 
-
 bool read_int(int *input, FILE *file) {
 
     bool read_success = true;
@@ -66,16 +70,25 @@ bool read_int(int *input, FILE *file) {
 
     if (fgets(temp_string, STRING_LENGTH, file) == NULL) {
         read_success = false;
+    } else {
+        if (temp_string[strlen(temp_string) - 1] == '\n') {
+            temp_string[strlen(temp_string) - 1] = '\0';
+        }
     }
 
-    if (sscanf(temp_string, "%d", input) != 1) {
-        read_success = false;
+    for (int i = 0; i < strlen(temp_string); i++) {
+        if (strchr(STRING_INTEGERS, temp_string[i]) == NULL) {
+            read_success = false;
+            break;
+        }
     }
+
+    *input = atoi(temp_string);
 
     return read_success;
 }
 
-bool read_float(float *input, FILE *file) {
+bool read_double(double *input, FILE *file) {
 
     bool read_success = true;
 
@@ -83,11 +96,20 @@ bool read_float(float *input, FILE *file) {
 
     if (fgets(temp_string, STRING_LENGTH, file) == NULL) {
         read_success = false;
+    } else {
+        if (temp_string[strlen(temp_string) - 1] == '\n') {
+            temp_string[strlen(temp_string) - 1] = '\0';
+        }
     }
 
-    if (sscanf(temp_string, "%f", input) != 1) {
-        read_success = false;
+    for (int i = 0; i < strlen(temp_string); i++) {
+        if (strchr(STRING_DOUBLES, temp_string[i]) == NULL) {
+            read_success = false;
+            break;
+        }
     }
+
+    *input = atof(temp_string);
 
     return read_success;
 }
