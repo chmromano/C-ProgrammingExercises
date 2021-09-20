@@ -1,13 +1,18 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-int verify_int();
+#define STRING_LENGTH 102
 
-float verify_float();
+bool read_int(int *input, FILE *file);
+
+bool read_float(float *input, FILE *file);
 
 int main() {
-    int n_to_read = 0;
+    bool successful_execution = true;
+    int n_expected = 0;
+    int n_actual = 0;
     float sum = 0;
+    float temp_float = 0;
 
     FILE *my_file;
     my_file = fopen("numbers.txt", "r");
@@ -15,50 +20,74 @@ int main() {
     if (my_file == NULL) {
         printf("\nThere was an error opening the file.\n");
     } else {
-        fscanf(my_file, "%d", &n_to_read);
+        if (read_int(&n_expected, my_file) == true) {
 
-        for (int i = 0; i < n_to_read; i++) {
-            float tmp_float = 0;
-            fscanf(my_file, "%f", &tmp_float);
-            sum += tmp_float;
+            for (int i = 0; i < n_expected; i++) {
+                if (read_float(&temp_float, my_file) == true) {
+                    sum += temp_float;
+                    n_actual++;
+                } else {
+                    successful_execution = false;
+                    break;
+                }
+            }
+
+            if (successful_execution == false) {
+                if (n_actual == 1) {
+                    printf("Error! Tried to read %d numbers, %d number was read.\n", n_expected, n_actual);
+                } else if (n_expected == 1) {
+                    printf("Error! Tried to read %d number, %d numbers were read.\n", n_expected, n_actual);
+                } else {
+                    printf("Error! Tried to read %d numbers, %d numbers were read.\n", n_expected, n_actual);
+                }
+            }
+
+            if (n_actual == 1) {
+                printf("Average of %d number is: %.2f", n_actual, sum / (float) n_actual);
+            } else {
+                printf("Average of %d numbers is: %.2f", n_actual, sum / (float) n_actual);
+            }
+
+        } else {
+            printf("Error! No numbers could be read!");
         }
-
-        printf("Average of %d numbers is: %.2f", n_to_read, sum / (float) n_to_read);
     }
 
+    fclose(my_file);
     return 0;
 }
 
-/*
-int verify_int() {
-    int ch;
-    bool valid_input = false;
 
-    while (valid_input == false) {
-        if (scanf("%d", input) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
+bool read_int(int *input, FILE *file) {
 
-            while ((ch = getchar()) != '\n' && ch != EOF);
+    bool read_success = true;
 
-            printf("\nInvalid characters. Please enter a number from 1 to 4: ");
-        } else {
-            valid_input = true;
-        }
+    char temp_string[STRING_LENGTH] = {};
+
+    if (fgets(temp_string, STRING_LENGTH, file) == NULL) {
+        read_success = false;
     }
+
+    if (sscanf(temp_string, "%d", input) != 1) {
+        read_success = false;
+    }
+
+    return read_success;
 }
 
-float verify_float() {
-    int ch;
-    bool valid_input = false;
+bool read_float(float *input, FILE *file) {
 
-    while (valid_input == false) {
-        if (scanf("%d", input) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
+    bool read_success = true;
 
-            while ((ch = getchar()) != '\n' && ch != EOF);
+    char temp_string[STRING_LENGTH] = {};
 
-            printf("\nInvalid characters. Please enter a number from 1 to 4: ");
-        } else {
-            valid_input = true;
-        }
+    if (fgets(temp_string, STRING_LENGTH, file) == NULL) {
+        read_success = false;
     }
+
+    if (sscanf(temp_string, "%f", input) != 1) {
+        read_success = false;
+    }
+
+    return read_success;
 }
-*/
