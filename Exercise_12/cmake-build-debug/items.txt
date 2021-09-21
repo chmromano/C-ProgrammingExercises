@@ -1,0 +1,7 @@
+589.90;MSI GeForce RTX 2070 SUPER VENTUS OC
+249.90;AMD Ryzen 5 3600
+309;Samsung Galaxy Tab S6 Lite
+2900;Asus Zenbook Pro Duo OLED
+275;WD BLACK SN850 NVMe SSD
+449;Oculus Quest 2 256GB
+29.90;Logitech G MX518

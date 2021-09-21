@@ -6,7 +6,7 @@
 #define STRING_LENGTH 102
 
 #define STRING_INTEGERS "1234567890"
-#define STRING_DOUBLES "1234567890."
+#define STRING_DOUBLES "-1234567890."
 
 bool read_int(int *input, FILE *file);
 
@@ -52,7 +52,6 @@ int main() {
             } else {
                 printf("Average of %d numbers is: %.2f", n_actual, sum / (double) n_actual);
             }
-
         } else {
             printf("Error! No numbers could be read!");
         }
@@ -92,6 +91,8 @@ bool read_double(double *input, FILE *file) {
 
     bool read_success = true;
 
+    bool first_dot = false;
+
     char temp_string[STRING_LENGTH] = {};
 
     if (fgets(temp_string, STRING_LENGTH, file) == NULL) {
@@ -104,6 +105,20 @@ bool read_double(double *input, FILE *file) {
 
     for (int i = 0; i < strlen(temp_string); i++) {
         if (strchr(STRING_DOUBLES, temp_string[i]) == NULL) {
+            read_success = false;
+            break;
+        }
+
+        if (temp_string[i] == '.') {
+            if (first_dot == false) {
+                first_dot = true;
+            } else {
+                read_success = false;
+                break;
+            }
+        }
+
+        if (temp_string[i] == '-' && i != 0) {
             read_success = false;
             break;
         }

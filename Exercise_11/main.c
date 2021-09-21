@@ -7,7 +7,7 @@
 #define TO_READ 3
 #define STRING_LENGTH 102
 
-#define STRING_INTEGERS "1234567890"
+#define STRING_INTEGERS "-1234567890"
 
 bool read_int(int *input, FILE *file);
 
@@ -86,6 +86,11 @@ bool read_int(int *input, FILE *file) {
 
     for (int i = 0; i < strlen(temp_string); i++) {
         if (strchr(STRING_INTEGERS, temp_string[i]) == NULL) {
+            read_success = false;
+            break;
+        }
+
+        if (temp_string[i] == '-' && i != 0) {
             read_success = false;
             break;
         }

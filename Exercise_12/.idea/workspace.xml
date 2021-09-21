@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="Exercise_12" targetName="Exercise_12" />
@@ -12,8 +15,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f2c01ce-a1eb-45b4-a1df-fd7f325f1b11" name="Changes" comment="Started EX12">
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/items.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_09/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Exercise_9.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Exercise_9.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/Exercise_10.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/Exercise_10.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Exercise_10" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Exercise_10" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/numbers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/numbers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_10/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_11/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/Exercise_11.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/Exercise_11.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/Exercise_11" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/Exercise_11" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/numbers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/numbers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_12.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_12.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_12.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_12.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_12.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_12.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_12" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_12" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,15 +78,18 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Exercise_12" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Exercise_12" TARGET_NAME="Exercise_12" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Exercise_12" RUN_TARGET_NAME="Exercise_12">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Exercise_12" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Exercise_12" TARGET_NAME="Exercise_12" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Exercise_12" RUN_TARGET_NAME="Exercise_12">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -73,6 +109,7 @@
       <option name="presentableId" value="Default" />
       <updated>1631780184778</updated>
       <workItem from="1631780188651" duration="681000" />
+      <workItem from="1632217046607" duration="8140000" />
     </task>
     <task id="LOCAL-00001" summary="Started EX12">
       <created>1631780856799</created>
@@ -97,6 +134,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

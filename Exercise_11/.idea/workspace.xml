@@ -14,20 +14,39 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecaf314b-e944-43db-b2f7-faecb06f9ef0" name="Changes" comment="">
+    <list default="true" id="ecaf314b-e944-43db-b2f7-faecb06f9ef0" name="Changes" comment="EX11 finished. Only improvement would be DMA.">
+      <change afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/items.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Exercise_9.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Exercise_9.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/Exercise_10.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/Exercise_10.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Exercise_10" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Exercise_10" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/numbers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/numbers.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_10/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_11.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_11.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_11.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_11.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_11.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_11.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_11" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_11" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/numbers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/numbers.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/Exercise_12.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/Exercise_12.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/Exercise_12.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/Exercise_12.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/Exercise_12.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/Exercise_12.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/Exercise_12" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/Exercise_12" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_12/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,11 +83,6 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Exercise_11" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Exercise_11" TARGET_NAME="Exercise_11" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Exercise_11" RUN_TARGET_NAME="Exercise_11">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -90,8 +104,18 @@
       <updated>1631691642599</updated>
       <workItem from="1631691647098" duration="3238000" />
       <workItem from="1631773138529" duration="1761000" />
-      <workItem from="1632159079804" duration="1070000" />
+      <workItem from="1632159079804" duration="1107000" />
+      <workItem from="1632210387828" duration="1128000" />
+      <workItem from="1632219210737" duration="2000000" />
     </task>
+    <task id="LOCAL-00001" summary="EX11 finished. Only improvement would be DMA.">
+      <created>1632160887258</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1632160887258</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,5 +135,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="EX11 finished. Only improvement would be DMA." />
+    <option name="LAST_COMMIT_MESSAGE" value="EX11 finished. Only improvement would be DMA." />
   </component>
 </project>
