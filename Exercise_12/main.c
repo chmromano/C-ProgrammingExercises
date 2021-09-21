@@ -21,6 +21,7 @@ void validate_string(char string[]);
 
 int main() {
     int item_count = 0;
+    int discarded_items = 0;
     struct item items[ARRAY_SIZE] = {};
     char item_name[STRING_LENGTH] = {};
     double item_price = 0;
@@ -57,13 +58,31 @@ int main() {
                 }
 
                 item_count++;
+
+                if (item_count == ARRAY_SIZE) {
+                    printf("\nArray limit reached. Reading stopped.\n");
+                    break;
+                }
+            } else {
+                discarded_items++;
             }
         }
 
         if (item_count == 0) {
             printf("\nNo items found.\n");
         } else {
-            printf("\nFound %d items.\n\n", item_count);
+            if (item_count == 1) {
+                printf("\nFound %d item. ", item_count);
+            } else {
+                printf("\nFound %d items. ", item_count);
+            }
+
+            if (discarded_items == 1) {
+                printf("Discarded %d item.\n\n", discarded_items);
+            } else {
+                printf("Discarded %d items.\n\n", discarded_items);
+            }
+
             printf("%-*s\t%*s\n", longest_string, "Name", longest_price, "Price");
             for (int i = 0; i < item_count; i++) {
                 printf("%-*s\t%*.2f\n", longest_string, items[i].name, longest_price, items[i].price);
@@ -86,9 +105,7 @@ bool read_item(char string[], double *number, FILE *file) {
     if (fgets(temp_string, STRING_LENGTH, file) == NULL) {
         read_success = false;
     } else {
-        if (temp_string[strlen(temp_string) - 1] == '\n') {
-            temp_string[strlen(temp_string) - 1] = '\0';
-        }
+        temp_string[strlen(temp_string) - 1] = '\0';
     }
 
     if (strchr(temp_string, ';') == NULL) {
@@ -110,7 +127,7 @@ bool read_item(char string[], double *number, FILE *file) {
         }
     }
 
-    if(read_double(number, double_string) == false) {
+    if (read_double(number, double_string) == false) {
         read_success = false;
     }
 
