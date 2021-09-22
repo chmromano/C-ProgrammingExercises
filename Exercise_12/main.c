@@ -116,6 +116,8 @@ bool read_item(char string[], double *number, FILE *file) {
     char temp_string[STRING_LENGTH] = {};
     char double_string[STRING_LENGTH] = {};
 
+    string[0] = '\0';
+
     if (fgets(temp_string, STRING_LENGTH, file) == NULL) {
         read_success = false;
     } else if (temp_string[strlen(temp_string) - 1] == '\n') {
@@ -143,6 +145,10 @@ bool read_item(char string[], double *number, FILE *file) {
     }
 
     if (read_double(number, double_string) == false) {
+        read_success = false;
+    }
+
+    if(string[0] == '\0') {
         read_success = false;
     }
 
@@ -176,6 +182,10 @@ bool read_double(double *number, char string[]) {
 
     //Use atof() to convert string to double after validation.
     *number = atof(string);
+
+    if(*number == 0) {
+        read_success = false;
+    }
 
     return read_success;
 }
