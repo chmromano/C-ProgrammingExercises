@@ -14,13 +14,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c35575c-58a3-427d-9566-493f9a4d8da1" name="Changes" comment="Nothing">
+    <list default="true" id="6c35575c-58a3-427d-9566-493f9a4d8da1" name="Changes" comment="Names and comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_12.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_12.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_12" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_12" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/items.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/items.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,11 +58,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -79,7 +73,8 @@
       <option name="presentableId" value="Default" />
       <updated>1632294688471</updated>
       <workItem from="1632294702687" duration="1762000" />
-      <workItem from="1632296502875" duration="1000" />
+      <workItem from="1632296502875" duration="52000" />
+      <workItem from="1632297846223" duration="787000" />
     </task>
     <task id="LOCAL-00001" summary="Nothing">
       <created>1632294810126</created>
@@ -88,7 +83,21 @@
       <option name="project" value="LOCAL" />
       <updated>1632294810126</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Nothing">
+      <created>1632296519561</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1632296519561</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Names and comments">
+      <created>1632296543610</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1632296543610</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +117,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Nothing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nothing" />
+    <MESSAGE value="Names and comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Names and comments" />
   </component>
 </project>
