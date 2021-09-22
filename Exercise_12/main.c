@@ -20,20 +20,24 @@ bool read_double(double *input, char string[]);
 void validate_string(char string[]);
 
 int main() {
+
+    struct item items[ARRAY_SIZE] = {};
+
     int item_count = 0;
     int discarded_items = 0;
-    struct item items[ARRAY_SIZE] = {};
+
     char item_name[STRING_LENGTH] = {};
     double item_price = 0;
-    int longest_string = 0;
+
+    int longest_name = 0;
     int longest_price = 0;
 
-    FILE *my_file;
     char file_name[STRING_LENGTH] = {};
 
     printf("Enter the name of the file you want to open: ");
     validate_string(file_name);
 
+    FILE *my_file;
     my_file = fopen(file_name, "r");
 
     if (my_file == NULL) {
@@ -42,17 +46,20 @@ int main() {
         while (!feof(my_file)) {
             if (read_item(item_name, &item_price, my_file) == true) {
                 strcpy(items[item_count].name, item_name);
-                if (strlen(items[item_count].name) > longest_string) {
-                    longest_string = (int) strlen(items[item_count].name);
+
+                //Keep track of the longest string.
+                if (strlen(items[item_count].name) > longest_name) {
+                    longest_name = (int) strlen(items[item_count].name);
                 }
 
                 items[item_count].price = item_price;
-                int digits = 0;
+
+                //Keep track of the "longest" price. digits variable accounts for 3 extra characters ".00".
+                int digits = 3;
                 while (item_price >= 1) {
                     item_price = item_price / 10;
                     digits++;
                 }
-                digits += 3;
                 if (digits > longest_price) {
                     longest_price = digits;
                 }
@@ -64,6 +71,7 @@ int main() {
                     break;
                 }
             } else {
+                //Keep track of any items not read due to errors in formatting.
                 discarded_items++;
             }
         }
@@ -83,9 +91,9 @@ int main() {
                 printf("Discarded %d items.\n\n", discarded_items);
             }
 
-            printf("%-*s\t%*s\n", longest_string, "Name", longest_price, "Price");
+            printf("%-*s    %*s\n", longest_name, "Name", longest_price, "Price");
             for (int i = 0; i < item_count; i++) {
-                printf("%-*s\t%*.2f\n", longest_string, items[i].name, longest_price, items[i].price);
+                printf("%-*s    %*.2f\n", longest_name, items[i].name, longest_price, items[i].price);
             }
         }
     }
@@ -93,27 +101,29 @@ int main() {
     return 0;
 }
 
+//Reads item. Returns true or false depending on read success.
 bool read_item(char string[], double *number, FILE *file) {
 
     bool read_success = true;
 
-    int index = 0;
+    int item_name_index_start = 0;
 
     char temp_string[STRING_LENGTH] = {};
     char double_string[STRING_LENGTH] = {};
 
     if (fgets(temp_string, STRING_LENGTH, file) == NULL) {
         read_success = false;
-    } else {
+    } else if (temp_string[strlen(temp_string) - 1] == '\n') {
         temp_string[strlen(temp_string) - 1] = '\0';
     }
 
+    //Parsing temp_string until delimiter ';'. Saving before and after ';' in two separate strings.
     if (strchr(temp_string, ';') == NULL) {
         read_success = false;
     } else {
         for (int i = 0; i < strlen(temp_string); i++) {
             if (temp_string[i] == ';') {
-                index = i;
+                item_name_index_start = i + 1;
                 break;
             } else {
                 double_string[i] = temp_string[i];
@@ -121,8 +131,8 @@ bool read_item(char string[], double *number, FILE *file) {
             }
         }
 
-        for (int i = 0; i < strlen(temp_string) - index; i++) {
-            string[i] = temp_string[index + i + 1];
+        for (int i = 0; i < strlen(temp_string) - item_name_index_start; i++) {
+            string[i] = temp_string[item_name_index_start + i];
             string[i + 1] = '\0';
         }
     }
@@ -134,6 +144,7 @@ bool read_item(char string[], double *number, FILE *file) {
     return read_success;
 }
 
+//Validate double. Return true or false depending on validation success.
 bool read_double(double *number, char string[]) {
 
     bool read_success = true;
@@ -141,11 +152,13 @@ bool read_double(double *number, char string[]) {
     bool first_dot = false;
 
     for (int i = 0; i < strlen(string); i++) {
+        //Check for forbidden characters.
         if (strchr(STRING_DOUBLES, string[i]) == NULL) {
             read_success = false;
             break;
         }
 
+        //Keep track of multiple dots in the string. Only 1 dot allowed.
         if (string[i] == '.') {
             if (first_dot == false) {
                 first_dot = true;
@@ -156,6 +169,7 @@ bool read_double(double *number, char string[]) {
         }
     }
 
+    //Use atof() to convert string to double after validation.
     *number = atof(string);
 
     return read_success;
