@@ -3,9 +3,14 @@
 #include <string.h>
 #include <stdlib.h>
 
+/* One problem with the program is that if a line in the file is longer than 51 characters, the next line the program
+ * reads will be the rest on the SAME line. It doesn't cause problems. What happens is the string after the 51st
+ * character is read, and goes through the item validation process. If it's just extra characters from the previous
+ * string they will be discarded, but if it is a properly formatted item it will be read and added to the array. */
 #define STRING_LENGTH 52
 #define ARRAY_SIZE 30
 #define STRING_DOUBLES "1234567890."
+#define EXTRA_DIGITS 3
 
 struct item {
     char name[STRING_LENGTH];
@@ -55,7 +60,7 @@ int main() {
                 items[item_count].price = item_price;
 
                 //Keep track of the "longest" price. digits variable accounts for 3 extra characters ".00".
-                int digits = 3;
+                int digits = EXTRA_DIGITS;
                 while (item_price >= 1) {
                     item_price = item_price / 10;
                     digits++;
@@ -93,7 +98,7 @@ int main() {
 
             printf("%-*s    %*s\n", longest_name, "Name", longest_price, "Price");
             for (int i = 0; i < item_count; i++) {
-                printf("%-*s    %*.2f\n", longest_name, items[i].name, longest_price, items[i].price);
+                printf("%-*s    %*.*f\n", longest_name, items[i].name, longest_price, (EXTRA_DIGITS - 1), items[i].price);
             }
         }
     }
