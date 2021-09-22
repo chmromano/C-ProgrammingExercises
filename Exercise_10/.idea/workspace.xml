@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Exercise_11" targetName="Exercise_11" />
+      <config projectName="Exercise_10" targetName="Exercise_10" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -11,38 +11,38 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68f7f961-be04-414d-9f5b-5db03861f644" name="Changes" comment="">
+    <list default="true" id="ef760570-4f50-494d-b5a5-f537e54d855b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Exercise_09/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_09/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/3.20.2/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/3.20.2/CMakeCCompiler.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/3.20.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/3.20.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/CMakeCCompilerId.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/CMakeCCompilerId.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/Exercise_10.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/Exercise_10.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Exercise_10" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Exercise_10" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Exercise_10.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Exercise_10.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/cmake-build-debug/numbers.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_10/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_10/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.20.2/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.20.2/CMakeCCompiler.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.20.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.20.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/CMakeCCompilerId.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/CMakeCCompilerId.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_11.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_11.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_10.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_10.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_11" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_11" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_11.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_11.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_10" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_10" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_10.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_10.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/numbers.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/3.20.2/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/3.20.2/CMakeCCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/3.20.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/3.20.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/CMakeCCompilerId.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/3.20.2/CompilerIdC/CMakeCCompilerId.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/Exercise_11.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/Exercise_11.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/Exercise_11" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/Exercise_11" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/Exercise_11.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/Exercise_11.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/cmake-build-debug/numbers.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_11/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_11/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_12/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_12/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_12/main.c" afterDir="false" />
@@ -59,7 +59,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1yUhmKblkoCd8dqXaBpF2PKa28M" />
+  <component name="ProjectId" id="1yUhdxwHy0330SAP8SPrG3s3Dzg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -84,7 +84,7 @@
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Exercise_11" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Exercise_11" TARGET_NAME="Exercise_11" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Exercise_11" RUN_TARGET_NAME="Exercise_11">
+    <configuration name="Exercise_10" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Exercise_10" TARGET_NAME="Exercise_10" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Exercise_10" RUN_TARGET_NAME="Exercise_10">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -98,12 +98,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="68f7f961-be04-414d-9f5b-5db03861f644" name="Changes" comment="" />
-      <created>1632312232029</created>
+      <changelist id="ef760570-4f50-494d-b5a5-f537e54d855b" name="Changes" comment="" />
+      <created>1632312164813</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1632312232029</updated>
-      <workItem from="1632312235749" duration="1005000" />
+      <updated>1632312164813</updated>
+      <workItem from="1632312167840" duration="1073000" />
     </task>
     <servers />
   </component>

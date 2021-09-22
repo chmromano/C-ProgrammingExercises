@@ -20,12 +20,12 @@ int main() {
     double temp_double = 0;
 
     FILE *my_file;
-    my_file = fopen("numbers.txt", "r");
+    my_file = fopen("numbers", "r");
 
     if (my_file == NULL) {
         printf("\nThere was an error opening the file.\n");
     } else {
-        if (read_int(&n_expected, my_file) == true) {
+        if (read_int(&n_expected, my_file) == true && n_expected != 0) {
 
             for (int i = 0; i < n_expected; i++) {
                 if (read_double(&temp_double, my_file) == true) {
@@ -37,6 +37,7 @@ int main() {
                 }
             }
 
+            //If execution fails at any point.
             if (successful_execution == false) {
                 if (n_actual == 1) {
                     printf("Error! Tried to read %d numbers, %d number was read.\n", n_expected, n_actual);
@@ -52,6 +53,8 @@ int main() {
             } else {
                 printf("Average of %d numbers is: %.2f", n_actual, sum / (double) n_actual);
             }
+        } else if (n_expected == 0) {
+            printf("Expected 0 numbers. Nothing was read!");
         } else {
             printf("Error! No numbers could be read!");
         }
@@ -61,6 +64,7 @@ int main() {
     return 0;
 }
 
+//Reading integer. Only positive numbers.
 bool read_int(int *input, FILE *file) {
 
     bool read_success = true;
@@ -87,6 +91,7 @@ bool read_int(int *input, FILE *file) {
     return read_success;
 }
 
+//Function to read doubles
 bool read_double(double *input, FILE *file) {
 
     bool read_success = true;
@@ -109,6 +114,7 @@ bool read_double(double *input, FILE *file) {
             break;
         }
 
+        //Checking for invalid second dot.
         if (temp_string[i] == '.') {
             if (first_dot == false) {
                 first_dot = true;
@@ -118,6 +124,7 @@ bool read_double(double *input, FILE *file) {
             }
         }
 
+        //Check for invalid second '-'.
         if (temp_string[i] == '-' && i != 0) {
             read_success = false;
             break;

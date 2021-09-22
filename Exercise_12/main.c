@@ -103,6 +103,7 @@ int main() {
         }
     }
 
+    fclose(my_file);
     return 0;
 }
 
