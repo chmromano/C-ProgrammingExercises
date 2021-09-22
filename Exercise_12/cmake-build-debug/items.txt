@@ -12,23 +12,4 @@
 275;WD BLACK SN850 NVMe SSD
 449;Oculus Quest 2 256GB
 29.90;Logitech G MX518
-589.90;MSI GeForce RTX 2070 SUPER VENTUS OCiiiiiiii249.90;AMD Ryzen123 5 3600
-249.90;AMD Ryzen456 5 3600
-309;Samsung Galaxy Tab S6 Lite
-2900;Asus Zenbook Pro Duo OLED
-275;WD BLACK SN850 NVMe SSD
-2900;Asus Zenbook Pro Duo OLED
-29f00;Asus Zenbook Pro Duo OLED
-290f0;Asus Zenbook Pro Duo OLED
-2900f;Asus Zenbook Pro Duo OLED
-449f;Oculus Quest 2 256GB
-29.90;Logitech G MX518
-589.90;MSI GeForce RTX 2070 SUPER VENTUS OC
-249.90;AMD Ryzen 5 3600
-309;Samsung Galaxy Tab S6 Lite
-2900;Asus Zenbook Pro Duo OLED
-275;WD BLACK SN850 NVMe SSD
-449;Oculus Quest 2 256GB
-29.90;Logitech G MX518
-589.90;iiiiiiiiiiiiiiiiiiii
-249.90;AMD Ryzen 5 3600
+1589.90;MSI GeForce RTX 2070 SUPER VENTUS OCiiiiiii249.90;AMD Ryzen 5 3600
