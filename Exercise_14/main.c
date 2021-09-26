@@ -3,19 +3,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define CHUNK_SIZE 64
+
 bool read_file_name(char string[]);
 
-typedef struct chunk {
-    uint8_t data[64];
+struct chunk {
+    uint8_t data[CHUNK_SIZE];
     uint16_t size;
     uint16_t crc;
-} CHUNK;
+};
 
 int main() {
 
     FILE *my_file;
 
-    CHUNK *chunks = NULL;
+    struct chunk *chunks = NULL;
 
     char *file_name = NULL;
     file_name = (char *) malloc(sizeof(char));
@@ -27,9 +29,8 @@ int main() {
 
     printf("Enter file name:\n");
     while (read_file_name(file_name) == false);
-    printf("%s", file_name);
 
-    printf("%s:%d", file_name, (int) strlen(file_name));
+    printf("%s:%d\n", file_name, (int) strlen(file_name));
 
     my_file = fopen(file_name, "rb");
 
@@ -40,14 +41,31 @@ int main() {
         long file_size = ftell(my_file);
         rewind(my_file);
 
-        printf("%ld", file_size / 64);
+        int allocate = ((int) file_size / CHUNK_SIZE) + 1;
 
-        for (long i = file_size; i > 64; i - 64) {
+        chunks = (struct chunk *) malloc(sizeof(struct chunk) * allocate);
 
+        if (chunks == NULL) {
+            printf("Error allocating memory. Ending program.");
+            exit(1);
         }
+
+        for (int i = 0; i < allocate; i++) {
+            fread((chunks + i)->data, 1, CHUNK_SIZE, my_file);
+        }
+
+        for (int i = 0; i < allocate; i++) {
+            for(int j = 0; j < CHUNK_SIZE; j++) {
+                printf("%hhu", (chunks + i)->data[j]);
+            }
+            printf("\n");
+        }
+
+        printf("%d", allocate);
     }
 
     free(file_name);
+    free(chunks);
     fclose(my_file);
     return 0;
 }
