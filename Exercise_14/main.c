@@ -5,6 +5,8 @@
 
 #define CHUNK_SIZE 64
 
+uint16_t crc16(const uint8_t *data_p, unsigned int length);
+
 bool read_file_name(char string[]);
 
 struct chunk {
@@ -15,9 +17,9 @@ struct chunk {
 
 int main() {
 
-    FILE *my_file;
-
     struct chunk *chunks = NULL;
+
+    chunks = (struct chunk *) malloc(sizeof(struct chunk));
 
     char *file_name = NULL;
     file_name = (char *) malloc(sizeof(char));
@@ -27,47 +29,75 @@ int main() {
         exit(1);
     }
 
-    printf("Enter file name:\n");
+    printf("Enter file name: ");
     while (read_file_name(file_name) == false);
 
-    printf("%s:%d\n", file_name, (int) strlen(file_name));
-
+    FILE *my_file;
     my_file = fopen(file_name, "rb");
 
     if (my_file == NULL) {
         printf("Error opening the file.");
     } else {
-        fseek(my_file, 0, SEEK_END);
-        long file_size = ftell(my_file);
-        rewind(my_file);
 
-        int allocate = ((int) file_size / CHUNK_SIZE) + 1;
+        int allocated = 0;
 
-        chunks = (struct chunk *) malloc(sizeof(struct chunk) * allocate);
+        uint8_t buffer[CHUNK_SIZE] = {};
 
-        if (chunks == NULL) {
-            printf("Error allocating memory. Ending program.");
-            exit(1);
-        }
+        size_t chunk_size = 0;
 
-        for (int i = 0; i < allocate; i++) {
-            fread((chunks + i)->data, 1, CHUNK_SIZE, my_file);
-        }
+        for (int i = 0; (chunk_size = fread(buffer, 1, CHUNK_SIZE, my_file)) != 0; i++) {
 
-        for (int i = 0; i < allocate; i++) {
-            for(int j = 0; j < CHUNK_SIZE; j++) {
-                printf("%hhu", (chunks + i)->data[j]);
+            allocated++;
+
+            chunks = (struct chunk *) realloc(chunks, sizeof(struct chunk) * allocated);
+
+            if (chunks == NULL) {
+                printf("Error allocating memory. Ending program.");
+                exit(1);
             }
-            printf("\n");
+
+            for (int j = 0; j < CHUNK_SIZE; j++) {
+                (chunks + i)->data[j] = buffer[j];
+                buffer[j] = '\0';
+            }
+
+            (chunks + i)->size = chunk_size;
+            (chunks + i)->crc = crc16((chunks + i)->data, (chunks + i)->size);
         }
 
-        printf("%d", allocate);
+
+        if (allocated == 1) {
+            printf("\nAllocated %d chunk.\n\n", allocated);
+        } else {
+            printf("\nAllocated %d chunks.\n\n", allocated);
+        }
+
+        for (int i = 0; i < allocated; i++) {
+            printf("Chunk %d:\n", i + 1);
+            if ((chunks + i)->size == 1) {
+                printf("\tSize: %hu byte\n", (chunks + i)->size);
+            } else {
+                printf("\tSize: %hu bytes\n", (chunks + i)->size);
+            }
+            printf("\tCRC: %X\n", (chunks + i)->crc);
+        }
     }
 
     free(file_name);
     free(chunks);
     fclose(my_file);
     return 0;
+}
+
+uint16_t crc16(const uint8_t *data_p, unsigned int length) {
+    uint8_t x;
+    uint16_t crc = 0xFFFF;
+    while (length--) {
+        x = crc >> 8 ^ *data_p++;
+        x ^= x >> 4;
+        crc = (crc << 8) ^ ((uint16_t) (x << 12)) ^ ((uint16_t) (x << 5)) ^ ((uint16_t) x);
+    }
+    return crc;
 }
 
 bool read_file_name(char string[]) {
@@ -102,9 +132,8 @@ bool read_file_name(char string[]) {
     }
 
     if (strlen(string) == 0) {
-        printf("Enter valid file name:\n");
+        printf("Enter valid file name: ");
         success = false;
-        free(string);
     }
 
     return success;
