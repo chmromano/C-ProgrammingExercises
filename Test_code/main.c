@@ -25,6 +25,7 @@ int main() {
             if (character != '.' && character != '\n') {
                 char_count++;
                 fprintf(my_file, "%d:%c\n", char_count, character);
+                printf("Enter another string:\n");
             } else if (character == '.') {
                 run_program = false;
             }
