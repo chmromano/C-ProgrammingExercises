@@ -65,6 +65,11 @@ int main() {
 
                 (chunks + i)->data = (uint8_t *) malloc(sizeof(uint8_t) * cur_chunk_size);
 
+                if ((chunks + i)->data == NULL) {
+                    printf("Error allocating memory. Ending program.");
+                    exit(1);
+                }
+
                 for (int j = 0; j < max_chunk_size; j++) {
                     (chunks + i)->data[j] = buffer[j];
                     buffer[j] = '\0';
@@ -159,13 +164,13 @@ bool validate_filename(char string[]) {
 
 uint16_t validate_size() {
     int ch;
-    uint16_t input = 0;
+    int input = 0;
     bool valid_input = false;
 
     printf("Enter chunk size: ");
 
     while (valid_input == false) {
-        if (scanf("%hu", &input) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
+        if (scanf("%d", &input) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
 
             while ((ch = getchar()) != '\n' && ch != EOF);
 
@@ -177,7 +182,7 @@ uint16_t validate_size() {
         }
     }
 
-    return input;
+    return(uint16_t) input;
 }
 
 bool validate_character() {
