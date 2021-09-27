@@ -3,15 +3,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define CHUNK_SIZE 64
-
 uint16_t crc16(const uint8_t *data_p, unsigned int length);
 
-bool read_file_name(char string[]);
+bool validate_filename(char string[]);
+
+uint16_t validate_size();
 
 struct chunk {
-    uint8_t data[CHUNK_SIZE];
+    uint8_t *data;
     uint16_t size;
+    uint16_t capacity;
     uint16_t crc;
 };
 
@@ -30,7 +31,7 @@ int main() {
     }
 
     printf("Enter file name: ");
-    while (read_file_name(file_name) == false);
+    while (validate_filename(file_name) == false);
 
     FILE *my_file;
     my_file = fopen(file_name, "rb");
@@ -39,13 +40,16 @@ int main() {
         printf("Error opening the file.");
     } else {
 
+
+        uint16_t max_chunk_size = validate_size();
+
         int allocated = 0;
 
-        uint8_t buffer[CHUNK_SIZE] = {};
+        uint8_t buffer[max_chunk_size];
 
-        size_t chunk_size = 0;
+        size_t cur_chunk_size = 0;
 
-        for (int i = 0; (chunk_size = fread(buffer, 1, CHUNK_SIZE, my_file)) != 0; i++) {
+        for (int i = 0; (cur_chunk_size = fread(buffer, 1, max_chunk_size, my_file)) != 0; i++) {
 
             allocated++;
 
@@ -56,12 +60,15 @@ int main() {
                 exit(1);
             }
 
-            for (int j = 0; j < CHUNK_SIZE; j++) {
+            (chunks + i)->data = (char *) malloc(sizeof(uint8_t) * cur_chunk_size);
+
+            for (int j = 0; j < max_chunk_size; j++) {
                 (chunks + i)->data[j] = buffer[j];
                 buffer[j] = '\0';
             }
 
-            (chunks + i)->size = (uint16_t) chunk_size;
+            (chunks + i)->size = (uint16_t) cur_chunk_size;
+            (chunks + i)->capacity = max_chunk_size;
             (chunks + i)->crc = crc16((chunks + i)->data, (chunks + i)->size);
         }
 
@@ -75,11 +82,16 @@ int main() {
         for (int i = 0; i < allocated; i++) {
             printf("Chunk %d:\n", i + 1);
             if ((chunks + i)->size == 1) {
-                printf("\tSize: %hu byte\n", (chunks + i)->size);
+                printf("\tSize:     %hu byte\n", (chunks + i)->size);
             } else {
-                printf("\tSize: %hu bytes\n", (chunks + i)->size);
+                printf("\tSize:     %hu bytes\n", (chunks + i)->size);
             }
-            printf("\tCRC: %04X\n", (chunks + i)->crc);
+            if ((chunks + i)->capacity == 1) {
+                printf("\tCapacity: %hu byte\n", (chunks + i)->capacity);
+            } else {
+                printf("\tCapacity: %hu bytes\n", (chunks + i)->capacity);
+            };
+            printf("\tCRC:      %04X\n", (chunks + i)->crc);
         }
     }
 
@@ -100,7 +112,7 @@ uint16_t crc16(const uint8_t *data_p, unsigned int length) {
     return crc;
 }
 
-bool read_file_name(char string[]) {
+bool validate_filename(char string[]) {
 
     bool success = true;
 
@@ -137,4 +149,27 @@ bool read_file_name(char string[]) {
     }
 
     return success;
+}
+
+uint16_t validate_size() {
+    int ch;
+    uint16_t input = 0;
+    bool valid_input = false;
+
+    printf("Enter chunk size: ");
+
+    while (valid_input == false) {
+        if (scanf("%hu", &input) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
+
+            while ((ch = getchar()) != '\n' && ch != EOF);
+
+            printf("Invalid characters. Enter chunk size: ");
+        } else if (input <= 0) {
+            printf("Invalid chunk size. Enter chunk size: ");
+        } else {
+            valid_input = true;
+        }
+    }
+
+    return input;
 }
