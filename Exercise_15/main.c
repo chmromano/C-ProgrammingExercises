@@ -2,12 +2,15 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 uint16_t crc16(const uint8_t *data_p, unsigned int length);
 
 bool validate_filename(char string[]);
 
 uint16_t validate_size();
+
+bool validate_character();
 
 struct chunk {
     uint8_t *data;
@@ -18,86 +21,89 @@ struct chunk {
 
 int main() {
 
-    struct chunk *chunks = NULL;
-
-    chunks = (struct chunk *) malloc(sizeof(struct chunk));
-
-    char *file_name = NULL;
-    file_name = (char *) malloc(sizeof(char));
-
-    if (file_name == NULL) {
-        printf("Error allocating memory. Ending program.");
-        exit(1);
-    }
-
-    printf("Enter file name: ");
-    while (validate_filename(file_name) == false);
-
-    FILE *my_file;
-    my_file = fopen(file_name, "rb");
-
-    if (my_file == NULL) {
-        printf("Error opening the file.");
-    } else {
-
-
-        uint16_t max_chunk_size = validate_size();
+    do {
 
         int allocated = 0;
 
-        uint8_t buffer[max_chunk_size];
+        struct chunk *chunks = NULL;
 
-        size_t cur_chunk_size = 0;
+        chunks = (struct chunk *) malloc(sizeof(struct chunk));
 
-        for (int i = 0; (cur_chunk_size = fread(buffer, 1, max_chunk_size, my_file)) != 0; i++) {
+        char *file_name = NULL;
+        file_name = (char *) malloc(sizeof(char));
 
-            allocated++;
-
-            chunks = (struct chunk *) realloc(chunks, sizeof(struct chunk) * allocated);
-
-            if (chunks == NULL) {
-                printf("Error allocating memory. Ending program.");
-                exit(1);
-            }
-
-            (chunks + i)->data = (char *) malloc(sizeof(uint8_t) * cur_chunk_size);
-
-            for (int j = 0; j < max_chunk_size; j++) {
-                (chunks + i)->data[j] = buffer[j];
-                buffer[j] = '\0';
-            }
-
-            (chunks + i)->size = (uint16_t) cur_chunk_size;
-            (chunks + i)->capacity = max_chunk_size;
-            (chunks + i)->crc = crc16((chunks + i)->data, (chunks + i)->size);
+        if (file_name == NULL) {
+            printf("Error allocating memory. Ending program.");
+            exit(1);
         }
 
+        printf("Enter file name: ");
+        while (validate_filename(file_name) == false);
 
-        if (allocated == 1) {
-            printf("\nAllocated %d chunk.\n\n", allocated);
+        FILE *my_file;
+        my_file = fopen(file_name, "rb");
+
+        if (my_file == NULL) {
+            printf("Error opening the file. ");
         } else {
-            printf("\nAllocated %d chunks.\n\n", allocated);
-        }
 
-        for (int i = 0; i < allocated; i++) {
-            printf("Chunk %d:\n", i + 1);
-            if ((chunks + i)->size == 1) {
-                printf("\tSize:     %hu byte\n", (chunks + i)->size);
-            } else {
-                printf("\tSize:     %hu bytes\n", (chunks + i)->size);
+            uint16_t max_chunk_size = validate_size();
+            uint8_t buffer[max_chunk_size];
+
+            size_t cur_chunk_size;
+
+            for (int i = 0; (cur_chunk_size = fread(buffer, 1, max_chunk_size, my_file)) != 0; i++) {
+
+                allocated++;
+
+                chunks = (struct chunk *) realloc(chunks, sizeof(struct chunk) * allocated);
+
+                if (chunks == NULL) {
+                    printf("Error allocating memory. Ending program.");
+                    exit(1);
+                }
+
+                (chunks + i)->data = (uint8_t *) malloc(sizeof(uint8_t) * cur_chunk_size);
+
+                for (int j = 0; j < max_chunk_size; j++) {
+                    (chunks + i)->data[j] = buffer[j];
+                    buffer[j] = '\0';
+                }
+
+                (chunks + i)->size = (uint16_t) cur_chunk_size;
+                (chunks + i)->capacity = max_chunk_size;
+                (chunks + i)->crc = crc16((chunks + i)->data, (chunks + i)->size);
             }
-            if ((chunks + i)->capacity == 1) {
-                printf("\tCapacity: %hu byte\n", (chunks + i)->capacity);
-            } else {
-                printf("\tCapacity: %hu bytes\n", (chunks + i)->capacity);
-            };
-            printf("\tCRC:      %04X\n", (chunks + i)->crc);
-        }
-    }
 
-    free(file_name);
-    free(chunks);
-    fclose(my_file);
+
+            if (allocated == 1) {
+                printf("\nAllocated %d chunk.\n\n", allocated);
+            } else {
+                printf("\nAllocated %d chunks.\n\n", allocated);
+            }
+
+            for (int i = 0; i < allocated; i++) {
+                printf("Chunk %d:\n", i + 1);
+                if ((chunks + i)->size == 1) {
+                    printf("\tSize:     %hu byte\n", (chunks + i)->size);
+                } else {
+                    printf("\tSize:     %hu bytes\n", (chunks + i)->size);
+                }
+                if ((chunks + i)->capacity == 1) {
+                    printf("\tCapacity: %hu byte\n", (chunks + i)->capacity);
+                } else {
+                    printf("\tCapacity: %hu bytes\n", (chunks + i)->capacity);
+                }
+                printf("\tCRC:      %04X\n", (chunks + i)->crc);
+                free((chunks + i)->data);
+            }
+        }
+
+        free(file_name);
+        free(chunks);
+        fclose(my_file);
+    } while (validate_character());
+
     return 0;
 }
 
@@ -172,4 +178,32 @@ uint16_t validate_size() {
     }
 
     return input;
+}
+
+bool validate_character() {
+    int ch;
+    char character = 0;
+
+    bool run_again = true;
+
+    printf("Do you want to read another file (y/n)? ");
+
+    bool valid_input = false;
+    while (valid_input == false) {
+        if (scanf("%c", &character) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
+
+            while ((ch = getchar()) != '\n' && ch != EOF);
+
+            printf("Invalid input. Try again (y/n): ");
+        } else if (toupper(character) == 'Y') {
+            valid_input = true;
+        } else if (toupper(character) == 'N') {
+            run_again = false;
+            valid_input = true;
+        } else {
+            printf("Invalid character. Try again (y/n): ");
+        }
+    }
+
+    return run_again;
 }
