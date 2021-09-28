@@ -43,9 +43,9 @@ int main() {
 
         uint8_t buffer[CHUNK_SIZE] = {};
 
-        size_t chunk_size = 0;
+        uint16_t chunk_size = 0;
 
-        for (int i = 0; (chunk_size = fread(buffer, 1, CHUNK_SIZE, my_file)) != 0; i++) {
+        for (int i = 0; (chunk_size = (uint16_t) fread(buffer, 1, CHUNK_SIZE, my_file)) != 0; i++) {
 
             allocated++;
 
@@ -56,15 +56,14 @@ int main() {
                 exit(1);
             }
 
-            for (int j = 0; j < CHUNK_SIZE; j++) {
+            for (int j = 0; j < (int) chunk_size; j++) {
                 (chunks + i)->data[j] = buffer[j];
                 buffer[j] = '\0';
             }
 
-            (chunks + i)->size = (uint16_t) chunk_size;
+            (chunks + i)->size = chunk_size;
             (chunks + i)->crc = crc16((chunks + i)->data, (chunks + i)->size);
         }
-
 
         if (allocated == 1) {
             printf("\nAllocated %d chunk.\n\n", allocated);

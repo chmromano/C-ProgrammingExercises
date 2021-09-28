@@ -14,11 +14,21 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d249a804-6d3c-4ef6-bce3-7025d769a10e" name="Changes" comment="Big progress EX15">
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_15.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_15.dir/main.c.o" afterDir="false" />
+    <list default="true" id="d249a804-6d3c-4ef6-bce3-7025d769a10e" name="Changes" comment="Small correction EX15">
+      <change afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Exercise_13.dSYM/Contents/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Exercise_13.dSYM/Contents/Resources/DWARF/Exercise_13" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14.dSYM/Contents/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14.dSYM/Contents/Resources/DWARF/Exercise_14" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/strings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/strings.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/CMakeFiles/Exercise_14.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/CMakeFiles/Exercise_14.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/file" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/file" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_14/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_15" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_15" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,16 +70,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -80,7 +80,11 @@
       <option name="presentableId" value="Default" />
       <updated>1632730851842</updated>
       <workItem from="1632730854692" duration="1007000" />
-      <workItem from="1632731995472" duration="4411000" />
+      <workItem from="1632731995472" duration="4823000" />
+      <workItem from="1632828790374" duration="810000" />
+      <workItem from="1632859892851" duration="416000" />
+      <workItem from="1632860529738" duration="15000" />
+      <workItem from="1632863560912" duration="2000" />
     </task>
     <task id="LOCAL-00001" summary="Big progress EX15">
       <created>1632733498176</created>
@@ -96,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632737430966</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Small correction EX15">
+      <created>1632737898684</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1632737898684</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +128,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Big progress EX15" />
-    <option name="LAST_COMMIT_MESSAGE" value="Big progress EX15" />
+    <MESSAGE value="Small correction EX15" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small correction EX15" />
   </component>
 </project>
