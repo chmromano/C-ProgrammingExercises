@@ -15,31 +15,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d249a804-6d3c-4ef6-bce3-7025d769a10e" name="Changes" comment="Small correction EX15">
-      <change afterPath="$PROJECT_DIR$/../Test_code/cmake-build-debug/Test_code.dSYM/Contents/Info.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test_code/cmake-build-debug/Test_code.dSYM/Contents/Resources/DWARF/Test_code" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/CMakeFiles/Exercise_13.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/CMakeFiles/Exercise_13.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Exercise_13" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Exercise_13" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Exercise_13.dSYM/Contents/Resources/DWARF/Exercise_13" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Exercise_13.dSYM/Contents/Resources/DWARF/Exercise_13" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/strings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/strings.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_13/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/CMakeFiles/Exercise_14.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/CMakeFiles/Exercise_14.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14.dSYM/Contents/Resources/DWARF/Exercise_14" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14.dSYM/Contents/Resources/DWARF/Exercise_14" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_14/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_15.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_15.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_15" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_15" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_15.dSYM/Contents/Resources/DWARF/Exercise_15" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_15.dSYM/Contents/Resources/DWARF/Exercise_15" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test_code/cmake-build-debug/CMakeFiles/Test_code.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../Test_code/cmake-build-debug/CMakeFiles/Test_code.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test_code/cmake-build-debug/CMakeFiles/Test_code.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Test_code/cmake-build-debug/CMakeFiles/Test_code.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test_code/cmake-build-debug/Test_code" beforeDir="false" afterPath="$PROJECT_DIR$/../Test_code/cmake-build-debug/Test_code" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test_code/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Test_code/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test_code/cmake-build-debug/file" beforeDir="false" afterPath="$PROJECT_DIR$/../Test_code/cmake-build-debug/file" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Test_code/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Test_code/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +88,7 @@
       <workItem from="1632860529738" duration="15000" />
       <workItem from="1632863560912" duration="97000" />
       <workItem from="1632864151021" duration="8000" />
-      <workItem from="1632896095387" duration="7747000" />
+      <workItem from="1632896095387" duration="8490000" />
     </task>
     <task id="LOCAL-00001" summary="Big progress EX15">
       <created>1632733498176</created>

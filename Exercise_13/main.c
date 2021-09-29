@@ -6,7 +6,6 @@
 #define FILE_NAME "strings.txt"
 
 int main() {
-
     bool run_program = true;
 
     FILE *my_file;
@@ -16,9 +15,7 @@ int main() {
         printf("There was an error opening the file.");
     } else {
         printf("Enter a string ('.' to stop):\n");
-
         while (run_program == true) {
-
             bool read_string = true;
 
             int allocated = 0;
@@ -29,12 +26,12 @@ int main() {
                 printf("Error reallocating memory. Ending program.");
                 exit(1);
             }
+            string[0] = '\0';
 
             while (read_string == true) {
+                int character = getchar();
 
-                int character;
-                character = getchar();
-
+                //If character is newline skip, otherwise reallocate memory, add character and move end of string value
                 if (character == '\n' || character == '\r' || character == '\f') {
                     read_string = false;
                 } else {
@@ -50,6 +47,7 @@ int main() {
                 }
             }
 
+            //Check what the string is
             if (strlen(string) == 1 && string[0] == '.') {
                 run_program = false;
             } else if (strlen(string) == 0) {

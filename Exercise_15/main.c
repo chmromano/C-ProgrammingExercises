@@ -20,9 +20,7 @@ struct chunk {
 };
 
 int main() {
-
     do {
-
         int allocated = 0;
 
         struct chunk *chunks = NULL;
@@ -120,6 +118,7 @@ bool validate_filename(char string[]) {
     bool success = true;
     bool read_string = true;
     int allocated = 0;
+    string[0] = '\0';
 
     while (read_string == true) {
 

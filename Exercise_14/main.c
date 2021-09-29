@@ -27,6 +27,7 @@ int main() {
         printf("Error allocating memory. Ending program.");
         exit(1);
     }
+    file_name[0] = '\0';
 
     printf("Enter file name: ");
     while (read_file_name(file_name) == false);
@@ -39,8 +40,8 @@ int main() {
     } else {
         uint8_t buffer[CHUNK_SIZE] = {};
 
-        uint16_t chunk_size;
-        for (int i = 0; (chunk_size = (uint16_t) fread(buffer, 1, CHUNK_SIZE, my_file)) != 0; i++) {
+        uint16_t actual_chunk_size;
+        for (int i = 0; (actual_chunk_size = (uint16_t) fread(buffer, 1, CHUNK_SIZE, my_file)) != 0; i++) {
             allocated++;
 
             chunks = (struct chunk *) realloc(chunks, sizeof(struct chunk) * allocated);
@@ -49,12 +50,12 @@ int main() {
                 exit(1);
             }
 
-            for (int j = 0; j < (int) chunk_size; j++) {
+            for (int j = 0; j < (int) actual_chunk_size; j++) {
                 (chunks + i)->data[j] = buffer[j];
                 buffer[j] = '\0';
             }
 
-            (chunks + i)->size = chunk_size;
+            (chunks + i)->size = actual_chunk_size;
             (chunks + i)->crc = crc16((chunks + i)->data, (chunks + i)->size);
         }
 
