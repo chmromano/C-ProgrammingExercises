@@ -1,5 +1,0 @@
-11:strings.txt
-5:hello
-12:how are you?
-34:I am very good thank you very much
-8:and you?

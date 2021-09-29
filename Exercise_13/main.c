@@ -21,33 +21,30 @@ int main() {
 
             bool read_string = true;
 
-            char *string = NULL;
             int allocated = 0;
-            string = (char *) malloc(sizeof(char));
 
+            char *string = NULL;
+            string = (char *) malloc(sizeof(char));
             if (string == NULL) {
-                printf("Error allocating memory. Ending program.");
+                printf("Error reallocating memory. Ending program.");
                 exit(1);
             }
-
-            string[0] = '\0';
 
             while (read_string == true) {
 
                 int character;
                 character = getchar();
 
-                if (character == '\n' || character == '\r') {
+                if (character == '\n' || character == '\r' || character == '\f') {
                     read_string = false;
                 } else {
                     allocated++;
-                    string = (char *) realloc(string, (allocated + 1) * sizeof(char));
 
+                    string = (char *) realloc(string, (allocated + 1) * sizeof(char));
                     if (string == NULL) {
                         printf("Error reallocating memory. Ending program.");
                         exit(1);
                     }
-
                     string[allocated - 1] = (char) character;
                     string[allocated] = '\0';
                 }
