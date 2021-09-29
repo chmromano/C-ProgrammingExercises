@@ -6,7 +6,6 @@
 #define CHUNK_SIZE 64
 
 uint16_t crc16(const uint8_t *data_p, unsigned int length);
-
 bool read_file_name(char string[]);
 
 struct chunk {
@@ -30,6 +29,7 @@ int main() {
     file_name[0] = '\0';
 
     printf("Enter file name: ");
+    //Keep prompting user until a valid filename is entered.
     while (read_file_name(file_name) == false);
 
     FILE *my_file;
@@ -38,29 +38,37 @@ int main() {
     if (my_file == NULL) {
         printf("Error opening the file.");
     } else {
+        //Buffer using predefined maximum chunk size.
         uint8_t buffer[CHUNK_SIZE] = {};
 
+        //Storing actual chunk size of chunk.
         uint16_t actual_chunk_size;
+        //For-loop runs as long as fread() doesn't return 0, which would mean there is nothing more to read.
         for (int i = 0; (actual_chunk_size = (uint16_t) fread(buffer, 1, CHUNK_SIZE, my_file)) != 0; i++) {
+
             allocated++;
 
+            //Since a chunk was found, reallocate as much memory as is needed for the array (+1).
             chunks = (struct chunk *) realloc(chunks, sizeof(struct chunk) * allocated);
             if (chunks == NULL) {
                 printf("Error allocating memory. Ending program.");
                 exit(1);
             }
 
+            //Copy data from the buffer to data of the chunk struct. "Zero" the buffer.
             for (int j = 0; j < (int) actual_chunk_size; j++) {
                 (chunks + i)->data[j] = buffer[j];
                 buffer[j] = '\0';
             }
 
+            //Copy the actual size and the CRC to the chunk struct.
             (chunks + i)->size = actual_chunk_size;
             (chunks + i)->crc = crc16((chunks + i)->data, (chunks + i)->size);
         }
 
         printf("\n");
 
+        //Print and format output.
         for (int i = 0; i < allocated; i++) {
             printf("Chunk %d:\n", i + 1);
             if ((chunks + i)->size == 1) {
@@ -78,12 +86,14 @@ int main() {
         }
     }
 
+    //Free everything and close file.
     free(file_name);
     free(chunks);
     fclose(my_file);
     return 0;
 }
 
+//Copied CRC function.
 uint16_t crc16(const uint8_t *data_p, unsigned int length) {
     uint8_t x;
     uint16_t crc = 0xFFFF;
@@ -95,14 +105,14 @@ uint16_t crc16(const uint8_t *data_p, unsigned int length) {
     return crc;
 }
 
+//Function to read the file name (basically reused from EX13).
 bool read_file_name(char string[]) {
     bool success = true;
     bool read_string = true;
     int allocated = 0;
 
     while (read_string == true) {
-        int character;
-        character = getchar();
+        int character = getchar();
 
         if (character == '\n' || character == '\r' || character == '\f') {
             read_string = false;

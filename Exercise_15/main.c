@@ -8,9 +8,9 @@ uint16_t crc16(const uint8_t *data_p, unsigned int length);
 
 bool validate_filename(char string[]);
 
-int validate_size();
-
 bool validate_character();
+
+int validate_size();
 
 struct chunk {
     uint8_t *data;
@@ -21,22 +21,25 @@ struct chunk {
 
 int main() {
     do {
+        //Create pointer to array and variable to keep track of the amount of allocated memory.
+        struct chunk *chunks = NULL;
         int allocated = 0;
 
-        struct chunk *chunks = NULL;
-
+        //Getting the name of the file.
         char *file_name = NULL;
         file_name = (char *) malloc(sizeof(char));
         if (file_name == NULL) {
             printf("Error allocating memory. Ending program.");
             exit(1);
         }
+        file_name[0] = '\0';
         printf("Enter file name: ");
         while (validate_filename(file_name) == false);
 
         FILE *my_file;
         my_file = fopen(file_name, "rb");
 
+        //Get chunk size and create buffer of that size to temporarily store input from file.
         int max_chunk_size = validate_size();
         uint8_t buffer[max_chunk_size];
 
@@ -118,7 +121,6 @@ bool validate_filename(char string[]) {
     bool success = true;
     bool read_string = true;
     int allocated = 0;
-    string[0] = '\0';
 
     while (read_string == true) {
 
@@ -149,29 +151,6 @@ bool validate_filename(char string[]) {
     return success;
 }
 
-int validate_size() {
-    int ch;
-    int input = 0;
-    bool valid_input = false;
-
-    printf("Enter chunk size: ");
-
-    while (valid_input == false) {
-        if (scanf("%d", &input) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
-
-            while ((ch = getchar()) != '\n' && ch != EOF);
-
-            printf("Invalid characters. Enter chunk size: ");
-        } else if (input <= 0) {
-            printf("Invalid chunk size. Enter chunk size: ");
-        } else {
-            valid_input = true;
-        }
-    }
-
-    return input;
-}
-
 bool validate_character() {
     int ch;
     char character = 0;
@@ -198,4 +177,27 @@ bool validate_character() {
     }
 
     return run_again;
+}
+
+int validate_size() {
+    int ch;
+    int input = 0;
+    bool valid_input = false;
+
+    printf("Enter chunk size: ");
+
+    while (valid_input == false) {
+        if (scanf("%d", &input) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
+
+            while ((ch = getchar()) != '\n' && ch != EOF);
+
+            printf("Invalid characters. Enter chunk size: ");
+        } else if (input <= 0) {
+            printf("Invalid chunk size. Enter chunk size: ");
+        } else {
+            valid_input = true;
+        }
+    }
+
+    return input;
 }
