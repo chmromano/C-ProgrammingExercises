@@ -87,7 +87,7 @@ int main() {
                 } else {
                     printf("\tCapacity: %hu bytes\n", (chunks + i)->capacity);
                 }
-                printf("\tCRC:      %04X\n", (chunks + i)->crc);
+                printf("\tCRC:      0x%04X\n", (chunks + i)->crc);
                 free((chunks + i)->data);
             }
 

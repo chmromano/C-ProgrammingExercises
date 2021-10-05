@@ -76,7 +76,7 @@ int main() {
             } else {
                 printf("\tSize: %hu bytes\n", (chunks + i)->size);
             }
-            printf("\tCRC: %04X\n", (chunks + i)->crc);
+            printf("\tCRC:  0x%04X\n", (chunks + i)->crc);
         }
 
         if (allocated == 1) {

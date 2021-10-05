@@ -15,22 +15,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d249a804-6d3c-4ef6-bce3-7025d769a10e" name="Changes" comment="Small correction EX15">
-      <change afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/file" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/CMakeFiles/Exercise_13.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/CMakeFiles/Exercise_13.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Exercise_13" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Exercise_13" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Exercise_13.dSYM/Contents/Resources/DWARF/Exercise_13" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Exercise_13.dSYM/Contents/Resources/DWARF/Exercise_13" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_13/cmake-build-debug/strings.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_13/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_13/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/CMakeFiles/Exercise_14.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/CMakeFiles/Exercise_14.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14.dSYM/Contents/Resources/DWARF/Exercise_14" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Exercise_14.dSYM/Contents/Resources/DWARF/Exercise_14" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/file" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/cmake-build-debug/file" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_14/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_14/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_15.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_15.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_15" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_15" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_15.dSYM/Contents/Resources/DWARF/Exercise_15" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_15.dSYM/Contents/Resources/DWARF/Exercise_15" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
@@ -74,9 +66,9 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -97,7 +89,10 @@
       <workItem from="1632864151021" duration="8000" />
       <workItem from="1632896095387" duration="8518000" />
       <workItem from="1632911431757" duration="5000" />
-      <workItem from="1632915906549" duration="2563000" />
+      <workItem from="1632915906549" duration="2640000" />
+      <workItem from="1632928703240" duration="335000" />
+      <workItem from="1632929227015" duration="179000" />
+      <workItem from="1633437541152" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="Big progress EX15">
       <created>1632733498176</created>
@@ -120,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632737898684</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Small correction EX15">
+      <created>1632928401874</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1632928401874</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
