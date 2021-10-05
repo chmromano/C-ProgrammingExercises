@@ -33,7 +33,7 @@ int main() {
     } else {
 
         uint8_t buffer = 0;
-        for (int i = 0; fread(&buffer, (size_t) 1, (size_t) 1, my_file) != 0; i++) {
+        for (int i = 0; fread(&buffer, sizeof(uint8_t), (size_t) 1, my_file) != 0; i++) {
 
             data_items++;
 
@@ -61,6 +61,29 @@ int main() {
                 valid_offset_and_bytes = true;
             }
         } while(valid_offset_and_bytes == false);
+
+        if (bytes_to_remove == 0) {
+            exit(0);
+        }
+
+        for(int i = 0; i < data_items - bytes_to_remove; i++) {
+            data[offset + i] = data[offset + bytes_to_remove + i];
+        }
+
+        data = (uint8_t *) realloc(data, sizeof(uint8_t) * (data_items - bytes_to_remove));
+        if (data == NULL) {
+            printf("Error allocating memory. Ending program.");
+            exit(1);
+        }
+
+        fclose(my_file);
+        my_file = fopen(file_name, "wb");
+
+        if (my_file == NULL) {
+            printf("Error opening the file. ");
+        } else {
+            fwrite(data, sizeof(uint8_t), (data_items - bytes_to_remove), my_file);
+        }
     }
 
     free(file_name);
