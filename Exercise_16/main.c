@@ -55,34 +55,36 @@ int main() {
             offset = validate_int(true);
             bytes_to_remove = validate_int(false);
 
-            if(offset + bytes_to_remove > data_items) {
+            if (offset + bytes_to_remove > data_items) {
                 printf("Invalid offset and bytes to remove combination, please try again.\n");
             } else {
                 valid_offset_and_bytes = true;
             }
-        } while(valid_offset_and_bytes == false);
+        } while (valid_offset_and_bytes == false);
 
         if (bytes_to_remove == 0) {
-            exit(0);
-        }
-
-        for(int i = 0; i < data_items - bytes_to_remove; i++) {
-            data[offset + i] = data[offset + bytes_to_remove + i];
-        }
-
-        data = (uint8_t *) realloc(data, sizeof(uint8_t) * (data_items - bytes_to_remove));
-        if (data == NULL) {
-            printf("Error allocating memory. Ending program.");
-            exit(1);
-        }
-
-        fclose(my_file);
-        my_file = fopen(file_name, "wb");
-
-        if (my_file == NULL) {
-            printf("Error opening the file. ");
+            printf("No bytes were removed.");
         } else {
-            fwrite(data, sizeof(uint8_t), (data_items - bytes_to_remove), my_file);
+            for (int i = 0; i < data_items - bytes_to_remove; i++) {
+                data[offset + i] = data[offset + bytes_to_remove + i];
+            }
+
+            data = (uint8_t *) realloc(data, sizeof(uint8_t) * (data_items - bytes_to_remove));
+            if (data == NULL) {
+                printf("Error allocating memory. Ending program.");
+                exit(1);
+            }
+
+            fclose(my_file);
+            my_file = fopen(file_name, "wb");
+
+            if (my_file == NULL) {
+                printf("Error opening the file. ");
+            } else {
+                fwrite(data, sizeof(uint8_t), (data_items - bytes_to_remove), my_file);
+            }
+
+            printf("Removed %d bytes.", bytes_to_remove);
         }
     }
 
@@ -131,7 +133,7 @@ int validate_int(bool offset) {
     int input = 0;
     bool valid_input = false;
 
-    if(offset == true) {
+    if (offset == true) {
         printf("Enter offset from start of file: ");
     } else {
         printf("Enter number of bytes to remove: ");
@@ -142,14 +144,14 @@ int validate_int(bool offset) {
 
             while ((ch = getchar()) != '\n' && ch != EOF);
 
-            if(offset == true) {
+            if (offset == true) {
                 printf("Invalid characters. Enter offset size: ");
             } else {
                 printf("Invalid characters. Enter bytes to remove: ");
             }
 
         } else if (input < 0) {
-            if(offset == true) {
+            if (offset == true) {
                 printf("Invalid offset. Enter offset size: ");
             } else {
                 printf("Invalid number. Enter bytes to remove: ");

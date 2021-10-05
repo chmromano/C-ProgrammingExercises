@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 #define STRING_LENGTH 30
 #define FILE_NAME "file"
 #define READ_B "rb"
 #define APPEND_B "ab"
+
+void write_car(char file_name[]);
 
 void print_cars(char file_name[]);
 
@@ -30,12 +33,10 @@ int main() {
 
         switch (input) {
             case 1:
-
-                getchar();
+                print_cars(FILE_NAME);
                 break;
             case 2:
-                print_cars(FILE_NAME);
-                getchar();
+                write_car(FILE_NAME);
                 break;
             case 3:
                 run = false;
@@ -53,12 +54,12 @@ void print_cars(char file_name[]) {
     FILE *my_file;
     my_file = fopen(file_name, READ_B);
 
-    if(my_file == NULL) {
+    if (my_file == NULL) {
         print_cars("There was an error opening the file.");
     } else {
         struct car car;
         for (int i = 1; fread(&car, sizeof(struct car), 1, my_file) != 0; ++i) {
-            printf("\nItem %d:\n\tMake: %s\n\tModel: %s\n\tPrice: %d€\n\tEmissions: %f g(co2)/km\n",
+            printf("\nCar no. %d:\n\tMake: %s\n\tModel: %s\n\tPrice: %d€\n\tEmissions: %.3f g(co2)/km\n",
                    i, car.make, car.model, car.price, car.emissions);
         }
     }
@@ -70,14 +71,30 @@ void write_car(char file_name[]) {
     FILE *my_file;
     my_file = fopen(file_name, APPEND_B);
 
-    if(my_file == NULL) {
+    if (my_file == NULL) {
         print_cars("There was an error opening the file.");
     } else {
+        char make[STRING_LENGTH] = {};
+        char model[STRING_LENGTH] = {};
+        int price = 0;
+        float emissions = 0;
+
+        printf("\nEnter make: ");
+        scanf("%s", make);
+        printf("Enter model: ");
+        scanf("%s", model);
+        printf("Enter price: ");
+        scanf("%d", &price);
+        printf("Enter emissions: ");
+        scanf("%f", &emissions);
+
         struct car car;
-        for (int i = 1; fread(&car, sizeof(struct car), 1, my_file) != 0; ++i) {
-            printf("\nItem %d:\n\tMake: %s\n\tModel: %s\n\tPrice: %d€\n\tEmissions: %f g(co2)/km\n",
-                   i, car.make, car.model, car.price, car.emissions);
-        }
+        strcpy(car.make, make);
+        strcpy(car.model, model);
+        car.price = price;
+        car.emissions = emissions;
+
+        fwrite(&car, sizeof(struct car), 1, my_file);
     }
 
     fclose(my_file);
@@ -92,7 +109,7 @@ void validate_number(int *input) {
 
             while ((ch = getchar()) != '\n' && ch != EOF);
 
-            printf("\nInvalid characters. Please enter a number from 1 to 4: ");
+            printf("\nInvalid characters. Please enter a number from 1 to 3: ");
         } else {
             valid_input = true;
         }
