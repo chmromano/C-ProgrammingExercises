@@ -12,6 +12,8 @@
 #define MODEL "model"
 #define PRICE "price"
 #define EMISSIONS "emissions"
+#define STRING_INTEGERS "1234567890"
+#define STRING_FLOATS "1234567890."
 
 bool car_read(char list_file[], char car_file[], char json[]);
 
@@ -27,6 +29,10 @@ void validate_float(float *input);
 
 bool validate_filename(char string[]);
 
+bool read_int(int *input, char string[]);
+
+bool read_float(float *input, char string[]);
+
 struct car {
     char make[STRING_LENGTH];
     char model[STRING_LENGTH];
@@ -35,7 +41,6 @@ struct car {
 };
 
 int main() {
-
     bool run = true;
     int input = 0;
 
@@ -62,6 +67,7 @@ int main() {
                     exit(1);
                 }
                 car_file[0] = '\0';
+
                 while (validate_filename(car_file) == false);
 
                 char *json = NULL;
@@ -73,9 +79,9 @@ int main() {
                 json[0] = '\0';
 
                 if (car_read(FILE_NAME, car_file, json)) {
-                    printf("Car successfully read.");
+                    printf("\nCar successfully read.\n");
                 } else {
-                    printf("There was an error reading the car.");
+                    printf("\nThere was an error reading the car.\n");
                 }
 
                 free(car_file);
@@ -119,29 +125,83 @@ bool car_read(char list_file[], char car_file[], char json[]) {
         fclose(my_file);
 
         struct car car;
-
         char *ptr;
 
         if ((ptr = strstr(json, MAKE)) != NULL) {
-
+            char temp_string[STRING_LENGTH] = {};
+            int position = ptr - json;
+            int count = 0;
+            int index_start = 0;
+            for (int i = position; count != 3; ++i) {
+                if (json[i] == 34) {
+                    index_start = i + 1;
+                    count++;
+                }
+                if (count == 2) {
+                    temp_string[i - index_start] = json[i];
+                }
+            }
+            strcpy(car.make, temp_string);
         } else {
             success = false;
         }
 
         if ((ptr = strstr(json, MODEL)) != NULL) {
-
+            char temp_string[STRING_LENGTH] = {};
+            int position = ptr - json;
+            int count = 0;
+            int index_start = 0;
+            position = ptr - json;
+            for (int i = position; count != 3; ++i) {
+                if (json[i] == 34) {
+                    index_start = i + 1;
+                    count++;
+                }
+                if (count == 2) {
+                    temp_string[i - index_start] = json[i];
+                }
+            }
+            strcpy(car.model, temp_string);
         } else {
             success = false;
         }
 
+        /* I am not proud of these two parsers, but I have a very busy week with very little time
+        and couldn't come up with anything better, sorry :( */
         if ((ptr = strstr(json, PRICE)) != NULL) {
-
+            char temp_string[STRING_LENGTH] = {};
+            int position = ptr - json;
+            int count = 0;
+            int index_start = 0;
+            for (int i = position; count != 8; ++i) {
+                if (json[i] < 48 || json[i] > 57) {
+                    index_start = i + 1;
+                    count++;
+                }
+                if (count == 7) {
+                    temp_string[i - index_start] = json[i];
+                }
+            }
+            if (!read_int(&car.price, temp_string)) success = false;
         } else {
             success = false;
         }
 
         if ((ptr = strstr(json, EMISSIONS)) != NULL) {
-
+            char temp_string[STRING_LENGTH] = {};
+            int position = ptr - json;
+            int count = 0;
+            int index_start = 0;
+            for (int i = position; count != 12; ++i) {
+                if ((json[i] < 48 || json[i] > 57) && json [i] != 46) {
+                    index_start = i + 1;
+                    count++;
+                }
+                if (count == 11) {
+                    temp_string[i - index_start] = json[i];
+                }
+            }
+            if (!read_float(&car.emissions, temp_string)) success = false;
         } else {
             success = false;
         }
@@ -169,10 +229,12 @@ void car_print(char file_name[]) {
         printf("There was an error opening the file.");
     } else {
         struct car car;
-        for (int i = 1; fread(&car, sizeof(struct car), 1, my_file) != 0; ++i) {
-            printf("\nCar no. %d:\n\tMake:      %s\n\tModel:     %s\n\tPrice:     %d€\n\tEmissions: %.1f g(co2)/km\n",
+        int i;
+        for (i = 1; fread(&car, sizeof(struct car), 1, my_file) != 0; ++i) {
+            printf("\nCar no. %d:\n\tMake:      %s\n\tModel:     %s\n\tPrice:     %d euro\n\tEmissions: %.1f g(co2)/km\n",
                    i, car.make, car.model, car.price, car.emissions);
         }
+        if (i == 1) printf("\nNo cars in the file.\n");
     }
 
     fclose(my_file);
@@ -274,21 +336,16 @@ bool validate_filename(char string[]) {
     int allocated = 0;
 
     while (read_string == true) {
-
-        int character;
-        character = getchar();
-
+        int character = getchar();
         if (character == '\n' || character == '\r' || character == '\f') {
             read_string = false;
         } else {
             allocated++;
             string = (char *) realloc(string, (allocated + 1) * sizeof(char));
-
             if (string == NULL) {
                 printf("Error reallocating memory. Ending program.");
                 exit(1);
             }
-
             string[allocated - 1] = (char) character;
             string[allocated] = '\0';
         }
@@ -300,4 +357,40 @@ bool validate_filename(char string[]) {
     }
 
     return success;
+}
+
+//Reading integer
+bool read_int(int *input, char string[]) {
+    bool read_success = true;
+    for (int i = 0; i < strlen(string); i++) {
+        if (strchr(STRING_INTEGERS, string[i]) == NULL) {
+            read_success = false;
+            break;
+        }
+    }
+    *input = atoi(string);
+    return read_success;
+}
+
+//Function to read doubles
+bool read_float(float *input, char string[]) {
+    bool read_success = true;
+    bool first_dot = false;
+    for (int i = 0; i < strlen(string); i++) {
+        if (strchr(STRING_FLOATS, string[i]) == NULL) {
+            read_success = false;
+            break;
+        }
+        //Checking for invalid second dot.
+        if (string[i] == '.') {
+            if (first_dot == false) {
+                first_dot = true;
+            } else {
+                read_success = false;
+                break;
+            }
+        }
+    }
+    *input = atof(string);
+    return read_success;
 }
