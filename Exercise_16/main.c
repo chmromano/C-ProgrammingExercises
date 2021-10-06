@@ -2,19 +2,17 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
 bool validate_filename(char string[]);
 
 int validate_int(bool offset);
 
 int main() {
-
-    //Create pointer to array and variable to keep track of the amount of allocated memory.
+    //Create pointer to array of data from file, and variable to keep track of the amount of allocated memory.
     uint8_t *data = NULL;
     int data_items = 0;
 
-    //Getting the name of the file.
+    //Get the name of the file.
     char *file_name = NULL;
     file_name = (char *) malloc(sizeof(char));
     if (file_name == NULL) {
@@ -31,60 +29,64 @@ int main() {
     if (my_file == NULL) {
         printf("Error opening the file. ");
     } else {
-
+        //Read bytes from the file 1 by 1 until end of the file. Copy bytes to array and reallocate memory as needed.
         uint8_t buffer = 0;
         for (int i = 0; fread(&buffer, sizeof(uint8_t), (size_t) 1, my_file) != 0; i++) {
-
             data_items++;
-
             data = (uint8_t *) realloc(data, sizeof(uint8_t) * data_items);
             if (data == NULL) {
                 printf("Error allocating memory. Ending program.");
                 exit(1);
             }
-
             data[i] = buffer;
         }
 
         printf("File size: %d bytes\n", data_items);
 
-        bool valid_offset_and_bytes = false;
         int offset;
         int bytes_to_remove;
-        do {
+        //Check that offset from start and bytes to remove don't go out of bounds.
+        bool valid_offset_and_bytes = false;
+        while (valid_offset_and_bytes == false) {
             offset = validate_int(true);
             bytes_to_remove = validate_int(false);
-
             if (offset + bytes_to_remove > data_items) {
                 printf("Invalid offset and bytes to remove combination, please try again.\n");
             } else {
                 valid_offset_and_bytes = true;
             }
-        } while (valid_offset_and_bytes == false);
+        }
 
         if (bytes_to_remove == 0) {
             printf("No bytes were removed.");
         } else {
-            for (int i = 0; i < data_items - bytes_to_remove; i++) {
-                data[offset + i] = data[offset + bytes_to_remove + i];
+            //Overwrite bytes_to_remove array elements, starting from offset, then move rest of the array forward.
+            for (int i = offset; i < data_items - bytes_to_remove; i++) {
+                data[i] = data[i + bytes_to_remove];
             }
-
+            //Reallocate memory to new array size (without bytes_to_remove).
             data = (uint8_t *) realloc(data, sizeof(uint8_t) * (data_items - bytes_to_remove));
             if (data == NULL) {
                 printf("Error allocating memory. Ending program.");
                 exit(1);
             }
 
+            //Close file and open for writing.
             fclose(my_file);
             my_file = fopen(file_name, "wb");
 
+            //Write array (in bytes) to file.
             if (my_file == NULL) {
                 printf("Error opening the file. ");
             } else {
                 fwrite(data, sizeof(uint8_t), (data_items - bytes_to_remove), my_file);
             }
 
-            printf("Removed %d bytes.", bytes_to_remove);
+            if (bytes_to_remove == 1) {
+                printf("Removed %d byte.", bytes_to_remove);
+            } else {
+                printf("Removed %d bytes.", bytes_to_remove);
+            }
         }
     }
 
@@ -94,6 +96,7 @@ int main() {
     return 0;
 }
 
+//Function to get filename.
 bool validate_filename(char string[]) {
     bool success = true;
     bool read_string = true;
@@ -128,6 +131,7 @@ bool validate_filename(char string[]) {
     return success;
 }
 
+//Function to validate the integer inputs.
 int validate_int(bool offset) {
     int ch;
     int input = 0;

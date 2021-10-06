@@ -25,14 +25,12 @@ struct car {
 };
 
 int main() {
-
     bool run = true;
-    int input = 0;
-
     while (run == true) {
         printf("\nAvailable commands:\n\n1. Print all cars in the file\n2. Add new car to end of file\n"
                "3. Quit the program\n\nChoose a command: ");
 
+        int input = 0;
         validate_number(&input, true);
 
         switch (input) {
@@ -51,7 +49,6 @@ int main() {
                 break;
         }
     }
-
     return 0;
 }
 
