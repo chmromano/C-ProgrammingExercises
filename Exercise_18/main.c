@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define STRING_LENGTH 32
 #define FILE_NAME "file"
 #define READ_B "rb"
 #define APPEND_B "ab"
+#define READ "r"
+
+bool read_car(char list_file[], char car_file[], char json[]);
 
 void write_car(char file_name[]);
 
@@ -16,6 +20,8 @@ void validate_number(int *input, bool choice);
 void validate_string(char string[], bool make);
 
 void validate_float(float *input);
+
+bool validate_filename(char string[]);
 
 struct car {
     char make[STRING_LENGTH];
@@ -43,7 +49,31 @@ int main() {
                 write_car(FILE_NAME);
                 break;
             case 3:
+                printf("Enter file to read from: ");
 
+                char *car_file = NULL;
+                car_file = (char *) malloc(sizeof(char));
+                if (car_file == NULL) {
+                    printf("Error allocating memory. Ending program.");
+                    exit(1);
+                }
+                car_file[0] = '\0';
+                while(validate_filename(car_file) == false);
+
+                char *json = NULL;
+                json = (char *) malloc(sizeof(char));
+                if (json == NULL) {
+                    printf("Error allocating memory. Ending program.");
+                    exit(1);
+                }
+                json[0] = '\0';
+                if(read_car(FILE_NAME, car_file, json)){
+
+                }
+
+
+                free(car_file);
+                free(json);
                 break;
             case 4:
                 run = false;
@@ -58,12 +88,43 @@ int main() {
     return 0;
 }
 
+bool read_car(char list_file[], char car_file[], char json[]) {
+    int allocated = 0;
+    int character = 0;
+
+    FILE *my_file;
+    my_file = fopen(car_file, READ);
+    if (my_file == NULL) {
+        printf("There was an error opening the file.");
+    } else {
+        while((character = fgetc(my_file)) != EOF) {
+            allocated++;
+            json = (char *) realloc(json, (allocated + 1) * sizeof(char));
+
+            if (json == NULL) {
+                printf("Error reallocating memory. Ending program.");
+                exit(1);
+            }
+
+            json[allocated - 1] = (char) character;
+            json[allocated] = '\0';
+        }
+        struct car car;
+        for (int i = 1; fread(&car, sizeof(struct car), 1, my_file) != 0; ++i) {
+            printf("\nCar no. %d:\n\tMake:      %s\n\tModel:     %s\n\tPrice:     %d€\n\tEmissions: %.1f g(co2)/km\n",
+                   i, car.make, car.model, car.price, car.emissions);
+        }
+    }
+
+    fclose(my_file);
+}
+
 void print_cars(char file_name[]) {
     FILE *my_file;
     my_file = fopen(file_name, READ_B);
 
     if (my_file == NULL) {
-        print_cars("There was an error opening the file.");
+        printf("There was an error opening the file.");
     } else {
         struct car car;
         for (int i = 1; fread(&car, sizeof(struct car), 1, my_file) != 0; ++i) {
@@ -80,7 +141,7 @@ void write_car(char file_name[]) {
     my_file = fopen(file_name, APPEND_B);
 
     if (my_file == NULL) {
-        print_cars("There was an error opening the file.");
+        printf("There was an error opening the file.");
     } else {
         char make[STRING_LENGTH] = {};
         char model[STRING_LENGTH] = {};
@@ -163,4 +224,38 @@ void validate_float(float *input) {
             valid_input = true;
         }
     }
+}
+
+bool validate_filename(char string[]) {
+    bool success = true;
+    bool read_string = true;
+    int allocated = 0;
+
+    while (read_string == true) {
+
+        int character;
+        character = getchar();
+
+        if (character == '\n' || character == '\r' || character == '\f') {
+            read_string = false;
+        } else {
+            allocated++;
+            string = (char *) realloc(string, (allocated + 1) * sizeof(char));
+
+            if (string == NULL) {
+                printf("Error reallocating memory. Ending program.");
+                exit(1);
+            }
+
+            string[allocated - 1] = (char) character;
+            string[allocated] = '\0';
+        }
+    }
+
+    if (strlen(string) == 0) {
+        printf("Enter valid file name: ");
+        success = false;
+    }
+
+    return success;
 }
