@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/chris/CLionProjects/CProgrammingExercises/Exercise_18/main.c
+/cygdrive/c/Users/chris/CLionProjects/Exercise_18/main.c
 stdio.h
 -
 stdbool.h

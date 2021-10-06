@@ -5,9 +5,11 @@
 
 #define STRING_LENGTH 32
 #define FILE_NAME "file"
+//Reading modes.
+#define READ "r"
 #define READ_B "rb"
 #define APPEND_B "ab"
-#define READ "r"
+//Defined strings.
 #define MAKE "make"
 #define MODEL "model"
 #define PRICE "price"
@@ -42,14 +44,11 @@ struct car {
 
 int main() {
     bool run = true;
-    int input = 0;
-
     while (run == true) {
         printf("\nAvailable commands:\n\n1. Print all cars in the file\n2. Add car manually\n"
                "3. Add car from text file\n4. Quit the program\n\nChoose a command: ");
-
+        int input = 0;
         validate_number(&input, true);
-
         switch (input) {
             case 1:
                 car_print(FILE_NAME);
@@ -59,7 +58,7 @@ int main() {
                 break;
             case 3:
                 printf("Enter file to read from: ");
-
+                //String to hold filename of json.
                 char *car_file = NULL;
                 car_file = (char *) malloc(sizeof(char));
                 if (car_file == NULL) {
@@ -70,6 +69,7 @@ int main() {
 
                 while (validate_filename(car_file) == false);
 
+                //String to hold the actual json (in string form).
                 char *json = NULL;
                 json = (char *) malloc(sizeof(char));
                 if (json == NULL) {
@@ -96,15 +96,13 @@ int main() {
                 break;
         }
     }
-
     return 0;
 }
 
+// Function to read car json from file A and append it to file B. It got very complicated. The parsing and validating is
+// done in "blocks" to make it as readable as possible. If any block fails success is set to false for the whole function.
 bool car_read(char list_file[], char car_file[], char json[]) {
     bool success = true;
-
-    int allocated = 0;
-    int character = 0;
 
     FILE *my_file;
     my_file = fopen(car_file, READ);
@@ -112,6 +110,9 @@ bool car_read(char list_file[], char car_file[], char json[]) {
         printf("There was an error opening the file.");
         success = false;
     } else {
+        int allocated = 0;
+        int character;
+        //Get all characters from the file into a string.
         while ((character = fgetc(my_file)) != EOF) {
             allocated++;
             json = (char *) realloc(json, (allocated + 1) * sizeof(char));
@@ -124,9 +125,13 @@ bool car_read(char list_file[], char car_file[], char json[]) {
         }
         fclose(my_file);
 
+        //Parsing of string starts from here.
         struct car car;
         char *ptr;
 
+        // BLOCK-1: parsing for make. Pointer arithmetic and strstr() to get the index of where it was found. Use of
+        // count to keep track of double-quotes delimiters and start reading after the second one that is encountered.
+        // Save index_start of the actual value to make it easier to parse. Copy value to struct at the end.
         if ((ptr = strstr(json, MAKE)) != NULL) {
             char temp_string[STRING_LENGTH] = {};
             int position = ptr - json;
@@ -146,12 +151,12 @@ bool car_read(char list_file[], char car_file[], char json[]) {
             success = false;
         }
 
+        // BLOCK-2: parsing for model. Same logic as BLOCK-1.
         if ((ptr = strstr(json, MODEL)) != NULL) {
             char temp_string[STRING_LENGTH] = {};
             int position = ptr - json;
             int count = 0;
             int index_start = 0;
-            position = ptr - json;
             for (int i = position; count != 3; ++i) {
                 if (json[i] == 34) {
                     index_start = i + 1;
@@ -166,20 +171,28 @@ bool car_read(char list_file[], char car_file[], char json[]) {
             success = false;
         }
 
-        /* I am not proud of these two parsers, but I have a very busy week with very little time
-        and couldn't come up with anything better, sorry :( */
+        // I am not proud of these two blocks, but I couldn't come up with anything better.
+        // BLOCK-3: parsing for price. Same logic to find start of value as blocks 1 and 2, but use of many booleans to
+        // parse and keep track of start or end of numbers (not a perfect implementation), and extra integer validation
+        // at the end.
         if ((ptr = strstr(json, PRICE)) != NULL) {
             char temp_string[STRING_LENGTH] = {};
             int position = ptr - json;
             int count = 0;
             int index_start = 0;
-            for (int i = position; count != 8; ++i) {
-                if (json[i] < 48 || json[i] > 57) {
+            bool numbers_over = false;
+            for (int i = position; count != 2; ++i) {
+                if (json[i] == 58 || ((json[i] < 48 || json[i] > 57) && numbers_over == true)) {
                     index_start = i + 1;
                     count++;
                 }
-                if (count == 7) {
-                    temp_string[i - index_start] = json[i];
+                if (count == 1) {
+                    if (json[i] > 47 && json[i] < 58) {
+                        temp_string[i - index_start] = json[i];
+                        numbers_over = true;
+                    } else if (numbers_over == false && (json[i] < 48 || json[i] > 57)) {
+                        temp_string[i - index_start] = json[i];
+                    }
                 }
             }
             if (!read_int(&car.price, temp_string)) success = false;
@@ -187,18 +200,30 @@ bool car_read(char list_file[], char car_file[], char json[]) {
             success = false;
         }
 
+        // BLOCK-4: parsing for emissions. Same logic as BLOCK-3, with lots of booleans (not a perfect implementation),
+        // and extra float validation at the end.
         if ((ptr = strstr(json, EMISSIONS)) != NULL) {
             char temp_string[STRING_LENGTH] = {};
             int position = ptr - json;
             int count = 0;
             int index_start = 0;
-            for (int i = position; count != 12; ++i) {
-                if ((json[i] < 48 || json[i] > 57) && json [i] != 46) {
-                    index_start = i + 1;
-                    count++;
+            bool numbers_over = false;
+            for (int i = position; count != 2; ++i) {
+                if (json[i] == 58 || ((json[i] < 48 || json[i] > 57) && numbers_over == true)) {
+                    if (json[i] == 46) {
+                        numbers_over = false;
+                    } else {
+                        index_start = i + 1;
+                        count++;
+                    }
                 }
-                if (count == 11) {
-                    temp_string[i - index_start] = json[i];
+                if (count == 1) {
+                    if (json[i] > 47 && json[i] < 58) {
+                        temp_string[i - index_start] = json[i];
+                        numbers_over = true;
+                    } else if ((numbers_over == false && (json[i] < 48 || json[i] > 57))) {
+                        temp_string[i - index_start] = json[i];
+                    }
                 }
             }
             if (!read_float(&car.emissions, temp_string)) success = false;
@@ -206,6 +231,7 @@ bool car_read(char list_file[], char car_file[], char json[]) {
             success = false;
         }
 
+        //If reading was successful append the new car to the other file.
         if (success == true) {
             my_file = fopen(list_file, APPEND_B);
             if (my_file == NULL) {
@@ -221,6 +247,7 @@ bool car_read(char list_file[], char car_file[], char json[]) {
     return success;
 }
 
+// Function to print all cars in the file (same as EX17).
 void car_print(char file_name[]) {
     FILE *my_file;
     my_file = fopen(file_name, READ_B);
@@ -240,6 +267,7 @@ void car_print(char file_name[]) {
     fclose(my_file);
 }
 
+// Manually write car to file (same as EX17).
 void car_write(char file_name[]) {
     FILE *my_file;
     my_file = fopen(file_name, APPEND_B);
@@ -273,6 +301,7 @@ void car_write(char file_name[]) {
     fclose(my_file);
 }
 
+// Function to validate integers.
 void validate_number(int *input, bool choice) {
     int ch;
     bool valid_input = false;
@@ -291,6 +320,7 @@ void validate_number(int *input, bool choice) {
     }
 }
 
+// Function to validate strings.
 void validate_string(char string[], bool make) {
     bool valid_input = false;
     int ch;
@@ -312,6 +342,7 @@ void validate_string(char string[], bool make) {
     }
 }
 
+// Function to validate floats.
 void validate_float(float *input) {
     int ch;
     bool valid_input = false;
@@ -330,6 +361,7 @@ void validate_float(float *input) {
     }
 }
 
+//Function to validate the filename.
 bool validate_filename(char string[]) {
     bool success = true;
     bool read_string = true;
@@ -359,7 +391,7 @@ bool validate_filename(char string[]) {
     return success;
 }
 
-//Reading integer
+// Function to read integer from string.
 bool read_int(int *input, char string[]) {
     bool read_success = true;
     for (int i = 0; i < strlen(string); i++) {
@@ -372,7 +404,7 @@ bool read_int(int *input, char string[]) {
     return read_success;
 }
 
-//Function to read doubles
+// Function to read float from string.
 bool read_float(float *input, char string[]) {
     bool read_success = true;
     bool first_dot = false;
@@ -391,6 +423,6 @@ bool read_float(float *input, char string[]) {
             }
         }
     }
-    *input = atof(string);
+    *input = (float) atof(string);
     return read_success;
 }
