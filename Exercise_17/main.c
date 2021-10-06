@@ -32,7 +32,6 @@ int main() {
 
         int input = 0;
         validate_number(&input, true);
-
         switch (input) {
             case 1:
                 print_cars(FILE_NAME);
@@ -52,35 +51,37 @@ int main() {
     return 0;
 }
 
+//Function to print all cars in the file.
 void print_cars(char file_name[]) {
     FILE *my_file;
     my_file = fopen(file_name, READ_B);
-
     if (my_file == NULL) {
-        print_cars("There was an error opening the file.");
+        printf("\nThere was an error opening the file.\n");
     } else {
         struct car car;
-        for (int i = 1; fread(&car, sizeof(struct car), 1, my_file) != 0; ++i) {
+        int i;
+        for (i = 1; fread(&car, sizeof(struct car), 1, my_file) != 0; ++i) {
             printf("\nCar no. %d:\n\tMake:      %s\n\tModel:     %s\n\tPrice:     %d€\n\tEmissions: %.1f g(co2)/km\n",
                    i, car.make, car.model, car.price, car.emissions);
         }
+        if (i == 1) printf("\nNo cars in the file.\n");
     }
-
     fclose(my_file);
 }
 
+//Manually write car to file.
 void write_car(char file_name[]) {
     FILE *my_file;
     my_file = fopen(file_name, APPEND_B);
-
     if (my_file == NULL) {
-        print_cars("There was an error opening the file.");
+        printf("\nThere was an error opening the file.\n");
     } else {
         char make[STRING_LENGTH] = {};
         char model[STRING_LENGTH] = {};
         int price = 0;
         float emissions = 0;
 
+        //Get values from user and validate them.
         printf("\nEnter make: ");
         validate_string(make, true);
         printf("Enter model: ");
@@ -90,27 +91,24 @@ void write_car(char file_name[]) {
         printf("Enter emissions: ");
         validate_float(&emissions);
 
+        //Copy values to struct and write struct to file.
         struct car car;
         strcpy(car.make, make);
         strcpy(car.model, model);
         car.price = price;
         car.emissions = emissions;
-
         fwrite(&car, sizeof(struct car), 1, my_file);
     }
-
     fclose(my_file);
 }
 
+//Function to validate integers.
 void validate_number(int *input, bool choice) {
     int ch;
     bool valid_input = false;
-
     while (valid_input == false) {
         if (scanf("%d", input) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
-
             while ((ch = getchar()) != '\n' && ch != EOF);
-
             printf("Invalid characters. Please try again: ");
         } else if (choice == false && *input < 0) {
             printf("Invalid price value. Please try again: ");
@@ -120,10 +118,10 @@ void validate_number(int *input, bool choice) {
     }
 }
 
+//Function to validate strings.
 void validate_string(char string[], bool make) {
     bool valid_input = false;
     int ch;
-
     while (valid_input == false) {
         fgets(string, STRING_LENGTH, stdin);
         if (string[strlen(string) - 1] == '\n') {
@@ -131,7 +129,6 @@ void validate_string(char string[], bool make) {
             valid_input = true;
         } else {
             while ((ch = getchar()) != '\n' && ch != EOF);
-
             if (make == true) {
                 printf("Make too long. Please try again (maximum 30 characters):");
             } else {
@@ -141,15 +138,13 @@ void validate_string(char string[], bool make) {
     }
 }
 
+//Function to validate float values.
 void validate_float(float *input) {
     int ch;
     bool valid_input = false;
-
     while (valid_input == false) {
         if (scanf("%f", input) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
-
             while ((ch = getchar()) != '\n' && ch != EOF);
-
             printf("Invalid characters. Please try again: ");
         } else if (*input < (float) 0.0) {
             printf("Invalid emissions value. Please try again: ");
