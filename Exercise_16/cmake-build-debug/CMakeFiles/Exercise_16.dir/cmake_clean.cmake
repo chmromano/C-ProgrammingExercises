@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Exercise_16.dir/main.c.o"
-  "Exercise_16"
+  "Exercise_16.exe"
   "Exercise_16.pdb"
+  "libExercise_16.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

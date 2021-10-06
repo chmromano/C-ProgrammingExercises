@@ -8,12 +8,16 @@
 #define READ_B "rb"
 #define APPEND_B "ab"
 #define READ "r"
+#define MAKE "make"
+#define MODEL "model"
+#define PRICE "price"
+#define EMISSIONS "emissions"
 
-bool read_car(char list_file[], char car_file[], char json[]);
+bool car_read(char list_file[], char car_file[], char json[]);
 
-void write_car(char file_name[]);
+void car_write(char file_name[]);
 
-void print_cars(char file_name[]);
+void car_print(char file_name[]);
 
 void validate_number(int *input, bool choice);
 
@@ -43,10 +47,10 @@ int main() {
 
         switch (input) {
             case 1:
-                print_cars(FILE_NAME);
+                car_print(FILE_NAME);
                 break;
             case 2:
-                write_car(FILE_NAME);
+                car_write(FILE_NAME);
                 break;
             case 3:
                 printf("Enter file to read from: ");
@@ -58,7 +62,7 @@ int main() {
                     exit(1);
                 }
                 car_file[0] = '\0';
-                while(validate_filename(car_file) == false);
+                while (validate_filename(car_file) == false);
 
                 char *json = NULL;
                 json = (char *) malloc(sizeof(char));
@@ -67,10 +71,12 @@ int main() {
                     exit(1);
                 }
                 json[0] = '\0';
-                if(read_car(FILE_NAME, car_file, json)){
 
+                if (car_read(FILE_NAME, car_file, json)) {
+                    printf("Car successfully read.");
+                } else {
+                    printf("There was an error reading the car.");
                 }
-
 
                 free(car_file);
                 free(json);
@@ -88,7 +94,9 @@ int main() {
     return 0;
 }
 
-bool read_car(char list_file[], char car_file[], char json[]) {
+bool car_read(char list_file[], char car_file[], char json[]) {
+    bool success = true;
+
     int allocated = 0;
     int character = 0;
 
@@ -96,30 +104,64 @@ bool read_car(char list_file[], char car_file[], char json[]) {
     my_file = fopen(car_file, READ);
     if (my_file == NULL) {
         printf("There was an error opening the file.");
+        success = false;
     } else {
-        while((character = fgetc(my_file)) != EOF) {
+        while ((character = fgetc(my_file)) != EOF) {
             allocated++;
             json = (char *) realloc(json, (allocated + 1) * sizeof(char));
-
             if (json == NULL) {
                 printf("Error reallocating memory. Ending program.");
                 exit(1);
             }
-
             json[allocated - 1] = (char) character;
             json[allocated] = '\0';
         }
+        fclose(my_file);
+
         struct car car;
-        for (int i = 1; fread(&car, sizeof(struct car), 1, my_file) != 0; ++i) {
-            printf("\nCar no. %d:\n\tMake:      %s\n\tModel:     %s\n\tPrice:     %d€\n\tEmissions: %.1f g(co2)/km\n",
-                   i, car.make, car.model, car.price, car.emissions);
+
+        char *ptr;
+
+        if ((ptr = strstr(json, MAKE)) != NULL) {
+
+        } else {
+            success = false;
+        }
+
+        if ((ptr = strstr(json, MODEL)) != NULL) {
+
+        } else {
+            success = false;
+        }
+
+        if ((ptr = strstr(json, PRICE)) != NULL) {
+
+        } else {
+            success = false;
+        }
+
+        if ((ptr = strstr(json, EMISSIONS)) != NULL) {
+
+        } else {
+            success = false;
+        }
+
+        if (success == true) {
+            my_file = fopen(list_file, APPEND_B);
+            if (my_file == NULL) {
+                printf("There was an error opening the file.");
+                success = false;
+            } else {
+                fwrite(&car, sizeof(struct car), 1, my_file);
+            }
+            fclose(my_file);
         }
     }
 
-    fclose(my_file);
+    return success;
 }
 
-void print_cars(char file_name[]) {
+void car_print(char file_name[]) {
     FILE *my_file;
     my_file = fopen(file_name, READ_B);
 
@@ -136,7 +178,7 @@ void print_cars(char file_name[]) {
     fclose(my_file);
 }
 
-void write_car(char file_name[]) {
+void car_write(char file_name[]) {
     FILE *my_file;
     my_file = fopen(file_name, APPEND_B);
 
