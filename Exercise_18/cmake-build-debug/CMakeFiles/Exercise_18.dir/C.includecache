@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/chris/CLionProjects/CProgrammingExercises/Exercise_18/main.c
+stdio.h
+-
+stdbool.h
+-
+string.h
+-
+stdlib.h
+-
+
