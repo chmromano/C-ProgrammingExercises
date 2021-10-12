@@ -9,12 +9,12 @@
 /cygdrive/c/Users/chris/CLionProjects/CProgrammingExercises/Test_code/main.c
 stdio.h
 -
-stdint.h
--
 stdlib.h
 -
 string.h
 -
-stdbool.h
+stdint.h
+-
+ctype.h
 -
 

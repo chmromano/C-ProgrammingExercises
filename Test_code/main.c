@@ -1,211 +1,153 @@
+#pragma warning(disable:4996) //disabling warning
+
 #include <stdio.h>
-#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
-#define SIGNATURE printf("%s\n", name);
-#define FILE_N "bin.bin"
-char name[32] = {84, 97, 115, 107,
-                 32, 83, 111, 108,
-                 117, 116, 105, 111,
-                 110, 32, 98, 121, 32,
-                 86, 97, 115, 105, 108,
-                 121, 32, 68, 97, 118,
-                 121, 100, 111, 118};
-typedef struct AUTO {
-    char *maker;
-    char *model;
-    int price;
-    float emissions;
-}AUTO;
-void rm_n_r(char *str);
-void main_menu();
-bool writeCar(FILE *f, AUTO *c_add);
-size_t getfl(FILE *fp);
-int readInt();
-int printAll(const char *fn);
-int addCar(const char *fn);
-float readFloat();
+#include <stdint.h>
+#include <ctype.h>
 
-int main () {
-    SIGNATURE
-    //Initializing variables
-    FILE *fp;
-    int userChoice = 0;
-    while (userChoice != 3) {
-        main_menu();
-        userChoice = readInt();
-        switch (userChoice) {
-            case 1:
-                printf("You chose printing all cars!\n");
-                if (!printAll(FILE_N)){
-                    printf("File is empty\n Add something first! \n\n");
-                }
-                break;
-            case 2:
-                printf("You chose adding a car!\n");
-                if (addCar(FILE_N)) {
-                    printf("Car added successfully!\n");
-                } else {
-                    printf("Program was not able to add a car.\n");
-                }
-                break;
-            case 3:
-                printf("EXITING THE PROGRAM!\n");
-                break;
-            default:
-                printf("That is out of your choice scope...\n");
-                break;
-        }
-    }
-    return 0;
+#define MAX_FILENAME 255
+#define EXISTING_CHARS 256 // 0 - 255
+#define FREQUENT_N 10 //How much most frequent chars to find.
+
+/*
+* Gets the file from the user. (Accepts names with whitespaces)
+*/
+void get_filename(char **filename);
+/*
+* Clears out all '\n' from the string.
+*/
+void clear_newlines(char **string);
+/*
+* Checks if character is met in the char_array of 'size' size.
+* Returns 1 if it is, 0 if it is not.
+*/
+int is_in_char_array(const uint8_t character, const uint8_t *char_array, const size_t size);
+
+int main(void)
+{
+	unsigned int count[EXISTING_CHARS] = { 0 }; //Holds number of times 'n' character is met ('n' is met 'count[n]' times)
+	uint8_t most_frequent[FREQUENT_N]; //Holds most frequently met characters from max to min.
+	int n_freq = -1; //Counts number of most_frequent characters.
+	unsigned int max = 0; //Used to find maximum value in the count[] array.
+	uint8_t byte = 0; //Holds input byte.
+	char *filename = NULL;
+	FILE *file = NULL;
+	uint8_t flag_found = 0; //Flag. Used to check if loop found a char.
+
+	get_filename(&filename);
+	file = fopen(filename, "rb");
+
+	if (file != NULL) {
+		//Read file byte by byte and increase count of corresponding to the byte place in the count array.
+		while (!feof(file) && !ferror(file)) {
+			fread(&byte, 1, 1, file);
+			count[byte]++;
+		}
+		fclose(file); //Closing file before horrible loop.
+
+		//Looping until there are no characters met or most_frequent array is filled.
+		do {
+			n_freq++; //Loop will break if haven't found character met at least once.
+			max = 0; //reset max
+			flag_found = 0; //reset flag
+
+			//Looping through all characters.
+			for (unsigned int i = 0; i < EXISTING_CHARS; i++) {
+				//If it was met more than the previous saved one and it wasn't already taken -> take it as a most frequent.
+				if (count[i] > max && !is_in_char_array(i, most_frequent, n_freq)) {
+					max = count[i];
+					most_frequent[n_freq] = i; //'i' is a character and a place in the count[] array.
+					flag_found = 1; //Set flag.
+				}
+			}
+		} while (max != 0 && n_freq != FREQUENT_N - 1);
+		if(flag_found) n_freq++; //if found last character -> we have FREQUENT_N characters, so increase by one.
+
+		//Printing the result.
+		if (n_freq == FREQUENT_N) {
+			printf("%d most frequent characters are:\n", FREQUENT_N);
+		}
+		else {
+			printf("The only %d characters are:\n", n_freq);
+		}
+		for (unsigned int i = 0; i < n_freq; i++) {
+			if (isprint(most_frequent[i])) {
+				printf("%d (%c): %d times\n", most_frequent[i], most_frequent[i], count[most_frequent[i]]);
+			}
+			else {
+				printf("%d: %d times\n", most_frequent[i], count[most_frequent[i]]);
+			}
+
+		}
+
+		//Cleaning.
+		free(filename);
+		filename = NULL;
+	}
+	else {
+		printf("File not found.\n");
+	}
+
+	return 0;
 }
 
+/*
+* Gets the file from the user. (Accepts names with whitespaces)
+*/
+void get_filename(char **filename) {
+	*filename = (char *)malloc(MAX_FILENAME * sizeof(char));
+	FILE *file = NULL;
+	int length = 0;
 
-void main_menu(){
-    printf("   __  ______   _____  __  __  ________  ____  __\n");
-    printf("  /  |/  / _ | /  _/ |/ / /  |/  / __/ |/ / / / /\n");
-    printf(" / /|_/ / __ |_/ //    / / /|_/ / _//    / /_/ / \n");
-    printf("/_/  /_/_/ |_/___/_/|_/ /_/  /_/___/_/|_/|____/\n");
-    printf("              CHOOSE YOUR OPTION                 \n");
-    printf("1. Print all cars in a file\n");
-    printf("2. Add new car to a file\n");
-    printf("3. Quit the program\n");
-    printf("Enter your choice <<< ");
+	printf("Please, enter the name of the file: ");
+	fgets(*filename, MAX_FILENAME, stdin);
+	clear_newlines(filename);
+
+	if (strlen(*filename) == 0) { //Mistake with newline is possible. Just throwing in another fgets not to be confused by random error. (If everything is in order, size won't be 0)
+		fgets(*filename, MAX_FILENAME, stdin);
+		clear_newlines(filename);
+	}
+
+	file = fopen(*filename, "rb");
+	while (file == NULL) { //Requesting user to give correct filename.
+		printf("\nNo such file found. Enter the name again\nPlease, enter the name of the file: ");
+		fgets(*filename, MAX_FILENAME, stdin);
+		clear_newlines(filename);
+		file = fopen(*filename, "rb");
+	}
+	rewind(file); //Returning to the start.
+	fclose(file); //Closing the file.
 }
 
-//Reading an integer
-int readInt(){
-    char s[15];
-    int o;
-    do{
-        fgets(s, 15, stdin);
-    }while(sscanf(s, "%d", &o) != 1);
-    return o;
+/*
+* Clears out all '\n' from the string.
+*/
+void clear_newlines(char **string) {
+	if (*string == NULL) return; //String doesn't exist -> escape.
+
+	int i = 0;
+	int w = strlen(*string);
+	for (i = 0; i < w; i++) {
+		if (string[0][i] == '\n' || string[0][i] == '\r') {
+			for (int q = i + 1; q <= w; q++) {
+				string[0][q - 1] = string[0][q];
+			}
+			w--;
+			i--;
+		}
+	}
 }
 
-//Reading a float
-float readFloat(){
-    char s[15];
-    float o;
-    do{
-        fgets(s, 15, stdin);
-    }while(sscanf(s, "%f", &o) != 1);
-    return o;
-}
-
-int addCar(const char *fn){
-    FILE *fp;
-    AUTO *new_car = malloc(sizeof(AUTO));
-    char *maker = NULL, *model = NULL;
-    size_t maker_s = 0, model_s = 0;
-    //GETTING INPUT FOR CAR DATA
-    //Asking for maker
-    printf("Enter car maker <<< ");
-    new_car->maker = calloc(getline(&maker, &maker_s, stdin)-1, sizeof(char));
-    rm_n_r(maker);
-    new_car->maker = maker;
-    //Asking for model
-    printf("Enter %s's model <<< ", new_car->maker);
-    new_car->model = calloc(getline(&model, &model_s, stdin)-1, sizeof(char));
-    rm_n_r(model);
-    new_car->model = model;
-    //Asking for price
-    printf("Enter %s's price <<< ", new_car->model);
-    new_car->price = readInt();
-    //Asking for emission
-    printf("Enter %s's co2 emissions g/km (float) <<< ", new_car->model);
-    new_car->emissions = readFloat();
-    //WORKING WITH A FILE
-    fp = fopen(fn, "ab");
-    if (fp == NULL){
-        printf("%s\n", strerror(2));
-    } else{
-        if (!writeCar(fp, new_car)){
-            printf("Car input is incorrect or empty");
-            return 0;
-        }
-    }
-    fclose(fp);
-    //Check this for memory leaks
-#if 1
-    free(maker);
-    free(model);
-#endif
-
-#if 1
-    free(new_car);
-#endif
-    return 1;
-}
-//Printing all cars from a file
-int printAll(const char *fn){
-    FILE *fp;
-    char *carline = NULL;
-    size_t file_s;
-    const char *cara = "@";
-    char *tok_car;
-    int el_counter = 0;
-    //WORKING WITH A FILE
-    fp = fopen(fn, "rb");
-    if (fp == NULL){
-        printf("%s\n", strerror(2));
-    } else{
-        file_s = getfl(fp);
-        if (file_s == 0){ //Checking if the file is empty
-            return 0;
-        }else{
-            carline = (char*)calloc(file_s, sizeof(char));
-            fread(carline, sizeof(char), file_s, fp);
-            tok_car = strtok(carline, cara);
-            while (tok_car != NULL){
-                el_counter++;
-                printf("%-10s", tok_car);
-                tok_car = strtok(NULL, cara);
-                if (el_counter == 4){
-                    printf("\n");
-                    el_counter = 0;
-                }
-            }
-        }
-    }
-    fclose(fp);
-    free(carline);
-    carline = NULL;
-    return 1;
-}
-
-//Getting the length of a file
-size_t getfl(FILE *fp){
-    long file_s;
-    fseek(fp, 0, SEEK_END);
-    file_s = ftell(fp);
-    rewind(fp);
-    return file_s;
-}
-
-//removing the unnecessary characters from a input string
-void rm_n_r(char *str){
-    for (int i = 0; i < strlen(str); ++i) {
-        if(str[i] == '\r' || str[i] == '\n'){
-            str[i] = '\0';
-        }
-    }
-}
-/* Writing a car data to a file using delimiter.
- * Using  @ to separate cars from each other*/
-bool writeCar(FILE *f, AUTO *c_add){
-    char *carput = NULL;
-    size_t str = ((strlen(c_add->model) + strlen(c_add->maker) + 10)*sizeof(char)) + (sizeof(c_add->price)+sizeof(c_add->emissions));
-    if (c_add == NULL){
-        return false;
-    }else {
-#if 1
-        carput = malloc(str);
-        snprintf(carput, str, "@%s@t%s@%d@%.2f", c_add->maker, c_add->model, c_add->price, c_add->emissions);
-        fwrite(carput, sizeof(char), strlen(carput), f);
-        carput = NULL;
-#endif
-    }
-    return true;
+/*
+* Checks if character is met in the char_array of 'size' size.
+* Returns 1 if it is, 0 if it is not.
+*/
+int is_in_char_array(const uint8_t character, const uint8_t *char_array, const size_t size) {
+	for (unsigned int i = 0; i < size; i++) {
+		if (character == char_array[i]) {
+			return 1;
+		}
+	}
+	return 0;
 }

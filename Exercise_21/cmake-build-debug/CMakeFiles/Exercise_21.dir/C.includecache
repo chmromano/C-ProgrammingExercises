@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/chris/CLionProjects/Exercise_18/main.c
+/cygdrive/c/Users/chris/CLionProjects/CProgrammingExercises/Exercise_21/main.c
 stdio.h
 -
 stdbool.h
 -
-string.h
--
 stdlib.h
+-
+string.h
 -
 
