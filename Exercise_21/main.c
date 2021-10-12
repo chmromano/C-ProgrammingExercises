@@ -9,11 +9,6 @@
 
 char *validate_filename();
 
-typedef struct occurrences_ {
-    uint8_t character;
-    int occurrences;
-} OCCUR;
-
 int main() {
     //Get file name and open file.
     printf("Enter file to read from: ");
@@ -24,18 +19,12 @@ int main() {
     if (my_file == NULL) {
         printf("There was an error opening the file.");
     } else {
-        //Initialise array.
-        OCCUR occurrences_array[N_CHAR_256] = {};
-        for (int i = 0; i < N_CHAR_256; i++) {
-            occurrences_array[i].character = (uint8_t) i;
-            occurrences_array[i].occurrences = 0;
-        }
-
+        int occurrences_array[N_CHAR_256] = {};
         //Count the characters in the file.
         uint8_t character;
         while (fread(&character, 1, 1, my_file) != 0) {
             for (int i = 0; i < N_CHAR_256; i++) {
-                if (character == occurrences_array[i].character) occurrences_array[i].occurrences++;
+                if ((int) character == i) occurrences_array[i]++;
             }
         }
 
@@ -47,18 +36,18 @@ int main() {
             int most_frequent = 0;
             int index = 0;
             for (int j = 0; j < N_CHAR_256; j++) {
-                if (occurrences_array[j].occurrences > most_frequent) {
-                    most_frequent = occurrences_array[j].occurrences;
+                if (occurrences_array[j] > most_frequent) {
+                    most_frequent = occurrences_array[j];
                     index = j;
                 }
             }
 
             //Print the most frequent characters.
-            printf("\tChar n. %3u [%c]: appears %d times\n", occurrences_array[index].character,
-                   occurrences_array[index].character, occurrences_array[index].occurrences);
+            printf("\tChar n. %3u [%c]: appears %d times\n", (uint8_t) index,
+                   index, occurrences_array[index]);
 
             //Indicates that characters has been found and printed.
-            occurrences_array[index].occurrences = 0;
+            occurrences_array[index] = 0;
         }
     }
 
