@@ -1,0 +1,3 @@
+/cygdrive/c/Users/chris/CLionProjects/CProgrammingExercises/Exercise_19/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/Users/chris/CLionProjects/CProgrammingExercises/Exercise_19/cmake-build-debug/CMakeFiles/edit_cache.dir
+/cygdrive/c/Users/chris/CLionProjects/CProgrammingExercises/Exercise_19/cmake-build-debug/CMakeFiles/Exercise_19.dir

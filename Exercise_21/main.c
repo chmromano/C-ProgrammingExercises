@@ -43,7 +43,7 @@ int main() {
             }
 
             //Print the most frequent characters.
-            printf("\tChar n. %3u [%c]: appears %d times\n", (uint8_t) index,
+            printf("\tChar n. %3u ['%c']: appears %d times\n", (uint8_t) index,
                    index, occurrences_array[index]);
 
             //Indicates that characters has been found and printed.

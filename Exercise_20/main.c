@@ -20,6 +20,7 @@ void generate_password(char *password, int size, const char *word_array[]);
 int rnd_int_gen(int range, int start);
 
 int main() {
+    //Seeding rand() with current time (helps with randomness)
     srand(time(NULL));
 
     //Populating the dictionary.
@@ -71,8 +72,8 @@ void generate_password(char *password, int size, const char *word_array[]) {
     // strlen(...) + 1 copies end of string character '\0' as well.
     memcpy((void *) &password[n_random_characters], word_array[word_index], strlen(word_array[word_index]) + 1);
 
-
-    //printf("%d - %d - %d - %s\n", n_random_characters, word_index, tot_password_len, password); //Debug help.
+    //Debug help.
+    //printf("%d - %d - %d - %s\n", n_random_characters, word_index, tot_password_len, password);
 }
 
 //Function to generate random int.

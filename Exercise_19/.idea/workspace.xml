@@ -5,7 +5,7 @@
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Exercise_20" targetName="Exercise_20" />
+      <config projectName="Exercise_19" targetName="Exercise_19" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -14,20 +14,24 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a44bab34-b880-42ab-bbeb-7d3ddc3079e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Exercise_19/.idea/Exercise_19.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_19/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_19/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_19/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_19/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_19/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Exercise_19/main.c" afterDir="false" />
+    <list default="true" id="b0ee6820-f84c-4e52-8f34-4c2e1b5c14e5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Exercise_19.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_19.dir/C.includecache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_19.dir/depend.internal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_19.dir/main.c.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_19.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_18/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_18/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_20.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Exercise_20.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Exercise_20.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Exercise_20.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_20/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_20/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_20/cmake-build-debug/CMakeFiles/Exercise_20.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_20/cmake-build-debug/CMakeFiles/Exercise_20.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_20/cmake-build-debug/Exercise_20.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_20/cmake-build-debug/Exercise_20.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_20/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_20/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Exercise_20/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_20/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_21/cmake-build-debug/CMakeFiles/Exercise_21.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_21/cmake-build-debug/CMakeFiles/Exercise_21.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_21/cmake-build-debug/Exercise_21.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_21/cmake-build-debug/Exercise_21.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Exercise_21/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Exercise_21/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
@@ -50,7 +54,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1zPBhcYmKyA3zGoWUTgjxn3g7jB" />
+  <component name="ProjectId" id="1zRnl88i1x6XUOjQLOrfMJsL4XK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -63,24 +67,23 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Exercise_18" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunManager">
-    <configuration name="Exercise_20" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Exercise_20" TARGET_NAME="Exercise_20" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Exercise_20" RUN_TARGET_NAME="Exercise_20">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Exercise_19" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Exercise_19" TARGET_NAME="Exercise_19" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Exercise_19" RUN_TARGET_NAME="Exercise_19">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -94,22 +97,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a44bab34-b880-42ab-bbeb-7d3ddc3079e4" name="Changes" comment="" />
-      <created>1634039963094</created>
+      <changelist id="b0ee6820-f84c-4e52-8f34-4c2e1b5c14e5" name="Changes" comment="" />
+      <created>1634119916013</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1634039963094</updated>
-      <workItem from="1634039964488" duration="9762000" />
-      <workItem from="1634119897928" duration="171000" />
+      <updated>1634119916013</updated>
+      <workItem from="1634119917743" duration="3068000" />
     </task>
-    <task id="LOCAL-00001" summary="EX20 finished">
-      <created>1634052466046</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1634052466046</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,7 +111,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="EX20 finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="EX20 finished" />
   </component>
 </project>
