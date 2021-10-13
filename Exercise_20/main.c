@@ -8,6 +8,7 @@
 #define N_CHAR_START 2
 #define N_CHAR_RANGE 6
 
+//Using no whitespace.
 #define ASCII_START 33
 #define ASCII_RANGE 94
 
@@ -20,11 +21,11 @@ void generate_password(char *password, int size, const char *word_array[]);
 int rnd_int_gen(int range, int start);
 
 int main() {
-    //Seeding rand() with current time (helps with randomness)
+    //Seeding rand() with current time (helps with randomness).
     srand(time(NULL));
 
-    //Populating the dictionary.
     const char *dictionary[N_WORDS];
+    //Populating the dictionary.
     dictionary[0] = "Trifling";
     dictionary[1] = "Boycotts";
     dictionary[2] = "Photocopy";
@@ -53,27 +54,33 @@ int main() {
     return 0;
 }
 
-//Function to generate the password.
+//Function to generate a password.
 void generate_password(char *password, int size, const char *word_array[]) {
-    int word_index = rnd_int_gen(size, ZERO); //Dictionary index from 0 to (size - 1)
-    int n_random_characters = rnd_int_gen(N_CHAR_RANGE, N_CHAR_START); //2 to 7 random characters in the password
+    int word_index = rnd_int_gen(size, ZERO); //Dictionary index from 0 to (size - 1).
+    int n_random_characters = rnd_int_gen(N_CHAR_RANGE, N_CHAR_START); //2 to 7 random characters in the password.
     int tot_password_len = (int) strlen(word_array[word_index]) + n_random_characters + 1;
 
-    password = (char *) realloc(password, (tot_password_len) * sizeof(char));
+    //After password parameters are set allocate memory.
+    password = (char *) realloc(password, tot_password_len * sizeof(char));
     if (password == NULL) {
         printf("There was an error allocating memory.");
         exit(1);
     }
 
-    for (int i = 0; i < n_random_characters; i++) {
+    //Populate whole password with random ASCII characters.
+    for (int i = 0; i < tot_password_len - 1; i++) {
         password[i] = (char) rnd_int_gen(ASCII_RANGE, ASCII_START);
     }
+    password[tot_password_len - 1] = '\0';
 
-    // strlen(...) + 1 copies end of string character '\0' as well.
-    memcpy((void *) &password[n_random_characters], word_array[word_index], strlen(word_array[word_index]) + 1);
+    //Calculate valid insertion position.
+    int insertion_range = tot_password_len - (int) strlen(word_array[word_index]);
+    int insertion_index = rnd_int_gen(insertion_range, ZERO);
+    // Copy the chosen word to complete the password.
+    memcpy((void *) &password[insertion_index], word_array[word_index], strlen(word_array[word_index]));
 
     //Debug help.
-    //printf("%d - %d - %d - %s\n", n_random_characters, word_index, tot_password_len, password);
+    //printf("\nN. random char: %d\nWord index: %d\nPwd. length: %lu\nPassword: %s\n", n_random_characters, word_index, strlen(password), password);
 }
 
 //Function to generate random int.

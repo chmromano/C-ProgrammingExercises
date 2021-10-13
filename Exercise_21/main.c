@@ -7,13 +7,13 @@
 #define N_CHAR_256 256
 #define N_CHAR_10 10
 
-char *validate_filename();
+char *input_string();
 
 int main() {
     //Get file name and open file.
     printf("Enter file to read from: ");
     char *file_name = NULL;
-    file_name = validate_filename();
+    file_name = input_string();
     FILE *my_file;
     my_file = fopen(file_name, READ_B);
     if (my_file == NULL) {
@@ -42,12 +42,19 @@ int main() {
                 }
             }
 
-            //Print the most frequent characters.
-            printf("\tChar n. %3u ['%c']: appears %d times\n", (uint8_t) index,
-                   index, occurrences_array[index]);
-
-            //Indicates that characters has been found and printed.
-            occurrences_array[index] = 0;
+            // If there are less than 10 different characters in the file this prevents entries with no occurrences from
+            // being printed.
+            if (occurrences_array[index] != 0) {
+                //Ensure that only printable characters are printed. Otherwise, only the character number is printed.
+                if (index >= 32 && index <= 126) {
+                    printf("\tChar n. %3u ['%c']: appears %d times\n", (uint8_t) index,
+                           index, occurrences_array[index]);
+                } else {
+                    printf("\tChar n. %3u: appears %d times\n", (uint8_t) index, occurrences_array[index]);
+                }
+                //Ensures that already printed characters won't get printed again.
+                occurrences_array[index] = 0;
+            }
         }
     }
 
@@ -56,8 +63,8 @@ int main() {
     return 0;
 }
 
-//Function to validate the filename (improved).
-char *validate_filename() {
+//Function to validate the filename (improved, more self-contained).
+char *input_string() {
     char *string;
     bool success = false;
     while (success == false) {
