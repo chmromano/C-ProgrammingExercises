@@ -5,7 +5,7 @@
 
 #define OPTIONS_PROMPT "Choose an option:\n1. Open existing file\n2. Create new file\n3. Quit\n"
 #define FILE_ERROR_MSG printf("There was an error opening the file.\n")
-#define MEM_ERROR_MSG printf("There was an error allocating memory. Quitting program...")
+#define MEM_CHECK(x) if(x == NULL){printf("There was an error allocating memory. Quitting program...");exit(1);}
 
 typedef struct entry_ {
     unsigned int addr_len;
@@ -18,9 +18,11 @@ typedef enum {
     NO_OPTION, OPEN_EXISTING, CREATE_NEW
 } OPTION;
 
+void new_entry(ENTRY *entry_array);
+
 ENTRY *read_entries(FILE *file);
 
-bool write_entries(ENTRY *entry_array, FILE *file);
+void write_entries(ENTRY *entry_array, FILE *file);
 
 bool input_integer(int *input);
 
@@ -28,18 +30,17 @@ char *input_string();
 
 int main() {
 
+    OPTION chosen_option = NO_OPTION;
+
     bool run_main = true;
+    ENTRY *entry_array;
+    char *file_name;
+    FILE *working_file;
+    printf("Welcome. %s", OPTIONS_PROMPT);
+    int choice_main;
+    while (input_integer(&choice_main) == false) printf("Invalid characters.\n");
+
     while (run_main == true) {
-        char *file_name;
-        FILE *working_file;
-
-        OPTION chosen_option = NO_OPTION;
-
-
-        printf("Welcome. %s", OPTIONS_PROMPT);
-
-        int choice_main;
-        while (input_integer(&choice_main) == false) printf("Invalid characters.\n");
         switch (choice_main) {
             case 1:
                 printf("Enter file to open: ");
@@ -54,7 +55,7 @@ int main() {
             case 2:
                 printf("Enter file name: ");
                 file_name = input_string();
-                working_file = fopen(file_name, "ab");
+                working_file = fopen(file_name, "wb");
                 if (working_file == NULL) {
                     FILE_ERROR_MSG;
                 } else {
@@ -74,6 +75,23 @@ int main() {
             case OPEN_EXISTING:
                 break;
             case CREATE_NEW:
+                entry_array = malloc(sizeof(ENTRY));
+                MEM_CHECK(entry_array)
+                entry_array->addr_len = 0;
+                entry_array->addr = NULL;
+                entry_array->pwd_len = 0;
+                entry_array->pwd = NULL;
+                new_entry(entry_array);
+
+
+                printf("\n");
+                for (int i = 0; i < entry_array->pwd_len; i++) {
+                    printf("%c", entry_array->pwd[i]);
+                }
+                printf("\n");
+
+
+
                 break;
             default:
                 break;
@@ -114,6 +132,50 @@ int main() {
     return 0;
 }
 
+bool delete_entry(ENTRY *entry_array) {
+
+}
+
+char *encrypt(char *pwd, unsigned int pwd_len) {
+    char *master_buffer;
+    int master_index = 0;
+    int pwd_index = 0;
+
+    printf("Enter master password: ");
+    master_buffer = input_string();
+
+    while (pwd_index < pwd_len) {
+
+        pwd[pwd_index] = (char) (pwd[pwd_index] ^ master_buffer[master_index]);
+
+        pwd_index++;
+        master_index++;
+        if (master_index > pwd_index) master_index = 0;
+    }
+
+    free(master_buffer);
+    return pwd;
+}
+
+void new_entry(ENTRY *entry_array) {
+    char *pwd_buffer;
+
+    int i;
+    for (i = 0; (entry_array + i)->addr != NULL; i++);
+    entry_array = realloc(entry_array, sizeof(ENTRY) * (i + 2));
+    entry_array[i + 1] = entry_array[i];
+
+    printf("Enter website address: ");
+    (entry_array + i)->addr = input_string();
+    (entry_array + i)->addr_len = (unsigned int) strlen((entry_array + i)->addr + 1);
+
+    printf("Enter password: ");
+    pwd_buffer = input_string();
+    (entry_array + i)->pwd_len = (unsigned int) strlen(pwd_buffer) + 1;
+    (entry_array + i)->pwd = encrypt(pwd_buffer, (unsigned int) (entry_array + i)->pwd_len - 1);
+    free(pwd_buffer);
+}
+
 ENTRY *read_entries(FILE *file) {
     ENTRY entry_buffer;
     ENTRY *entry_array;
@@ -121,37 +183,32 @@ ENTRY *read_entries(FILE *file) {
 
     for (int i = 0; fread(&entry_buffer, sizeof(ENTRY), 1, file) != 0; i++) {
         entry_array = (ENTRY *) realloc(entry_array, sizeof(ENTRY) * (i + 1));
-        if (entry_array == NULL) {
-            MEM_ERROR_MSG;
-            exit(1);
-        }
+        MEM_CHECK(entry_array)
 
         (entry_array + i)->addr_len = entry_buffer.addr_len;
         (entry_array + i)->pwd_len = entry_buffer.pwd_len;
 
         (entry_array + i)->addr = malloc(sizeof(char) * (entry_array + i)->addr_len);
-        if ((entry_array + i)->addr == NULL) {
-            MEM_ERROR_MSG;
-            exit(1);
-        }
+        MEM_CHECK((entry_array + i)->addr)
         fread((entry_array + i)->addr, sizeof(char), (entry_array + i)->addr_len, file);
 
         (entry_array + i)->pwd = malloc(sizeof(char) * (entry_array + i)->pwd_len);
-        if ((entry_array + i)->pwd == NULL) {
-            MEM_ERROR_MSG;
-            exit(1);
-        }
+        MEM_CHECK((entry_array + i)->pwd)
         fread((entry_array + i)->pwd, sizeof(char), (entry_array + i)->pwd_len, file);
     }
 
     return entry_array;
 }
 
-bool write_entries(ENTRY *entry_array, FILE *file) {
-    bool success = true;
-
-
-    return success;
+void write_entries(ENTRY *entry_array, FILE *file) {
+    for (int i = 0; (entry_array + i)->addr != NULL; i++) {
+        fwrite((entry_array + i), sizeof(ENTRY), 1, file);
+        fwrite((entry_array + i)->addr, sizeof(char), (entry_array + i)->addr_len, file);
+        free((entry_array + i)->addr);
+        fwrite((entry_array + i)->pwd, sizeof(char), (entry_array + i)->pwd_len, file);
+        free((entry_array + i)->pwd);
+    }
+    free(entry_array);
 }
 
 
@@ -172,10 +229,7 @@ char *input_string() {
         int allocated = 0;
 
         string = (char *) malloc(sizeof(char));
-        if (string == NULL) {
-            MEM_ERROR_MSG;
-            exit(1);
-        }
+        MEM_CHECK(string)
         string[0] = '\0';
 
         bool read_string = true;
@@ -186,10 +240,7 @@ char *input_string() {
             } else {
                 allocated++;
                 string = (char *) realloc(string, (allocated + 1) * sizeof(char));
-                if (string == NULL) {
-                    MEM_ERROR_MSG;
-                    exit(1);
-                }
+                MEM_CHECK(string)
                 string[allocated - 1] = (char) character;
                 string[allocated] = '\0';
             }
