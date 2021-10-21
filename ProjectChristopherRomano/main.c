@@ -15,8 +15,12 @@ typedef struct entry_ {
 } ENTRY;
 
 typedef enum {
-    NO_OPTION, OPEN_EXISTING, CREATE_NEW
+    NO_OPTION, OPEN_EXISTING, CREATE_NEW, QUIT
 } OPTION;
+
+ENTRY *init_entries();
+
+OPTION option_select(FILE *file);
 
 void new_entry(ENTRY *entry_array);
 
@@ -30,71 +34,47 @@ char *input_string();
 
 int main() {
 
-    OPTION chosen_option = NO_OPTION;
-
-    bool run_main = true;
     ENTRY *entry_array;
-    char *file_name;
-    FILE *working_file;
-    printf("Welcome. %s", OPTIONS_PROMPT);
-    int choice_main;
-    while (input_integer(&choice_main) == false) printf("Invalid characters.\n");
+    FILE *working_file = NULL;
 
-    while (run_main == true) {
-        switch (choice_main) {
-            case 1:
-                printf("Enter file to open: ");
-                file_name = input_string();
-                working_file = fopen(file_name, "ab");
-                if (working_file == NULL) {
-                    FILE_ERROR_MSG;
-                } else {
-                    chosen_option = OPEN_EXISTING;
-                }
-                break;
-            case 2:
-                printf("Enter file name: ");
-                file_name = input_string();
-                working_file = fopen(file_name, "wb");
-                if (working_file == NULL) {
-                    FILE_ERROR_MSG;
-                } else {
-                    chosen_option = CREATE_NEW;
-                }
-                break;
-            case 3:
-                run_main = false;
-                printf("Quitting program...");
-                break;
-            default:
-                printf("Invalid choice.\n");
-                break;
+    printf("Welcome. %s", OPTIONS_PROMPT);
+
+    OPTION chosen_option = NO_OPTION;
+    while (chosen_option != QUIT) {
+
+        chosen_option = option_select(working_file);
+
+        if (chosen_option == CREATE_NEW) {
+            entry_array = init_entries();
+        } else if(chosen_option == OPEN_EXISTING) {
+            entry_array = read_entries(working_file);
         }
 
-        switch (chosen_option) {
-            case OPEN_EXISTING:
-                break;
-            case CREATE_NEW:
-                entry_array = malloc(sizeof(ENTRY));
-                MEM_CHECK(entry_array)
-                entry_array->addr_len = 0;
-                entry_array->addr = NULL;
-                entry_array->pwd_len = 0;
-                entry_array->pwd = NULL;
-                new_entry(entry_array);
+        while (chosen_option == CREATE_NEW || chosen_option == OPEN_EXISTING) {
 
-
-                printf("\n");
-                for (int i = 0; i < entry_array->pwd_len; i++) {
-                    printf("%c", entry_array->pwd[i]);
-                }
-                printf("\n");
-
-
-
-                break;
-            default:
-                break;
+            int chosen_operation;
+            while (input_integer(&chosen_operation) == false) printf("Invalid characters.\n");
+            switch (chosen_operation) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    chosen_option = QUIT;
+                    break;
+                case 6:
+                    chosen_option = QUIT;
+                    break;
+                case 7:
+                    chosen_option = NO_OPTION;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -132,6 +112,58 @@ int main() {
     return 0;
 }
 
+ENTRY *init_entries() {
+    ENTRY *entry_array;
+    entry_array = malloc(sizeof(ENTRY));
+    MEM_CHECK(entry_array)
+    entry_array->addr_len = 0;
+    entry_array->addr = NULL;
+    entry_array->pwd_len = 0;
+    entry_array->pwd = NULL;
+}
+
+OPTION option_select(FILE *file) {
+
+    char *file_name;
+
+    OPTION option = NO_OPTION;
+
+    int choice_main;
+    while (input_integer(&choice_main) == false) printf("Invalid characters.\n");
+
+    switch (choice_main) {
+        case 1:
+            printf("Enter file to open: ");
+            file_name = input_string();
+            file = fopen(file_name, "rb");
+            if (file == NULL) {
+                FILE_ERROR_MSG;
+            } else {
+                option = OPEN_EXISTING;
+            }
+            break;
+        case 2:
+            printf("Enter file name: ");
+            file_name = input_string();
+            file = fopen(file_name, "wb");
+            if (file == NULL) {
+                FILE_ERROR_MSG;
+            } else {
+                option = CREATE_NEW;
+            }
+            break;
+        case 3:
+            option = QUIT;
+            printf("Quitting program...");
+            break;
+        default:
+            printf("Invalid choice.\n");
+            break;
+    }
+
+    return option;
+}
+
 bool delete_entry(ENTRY *entry_array) {
 
 }
@@ -167,12 +199,13 @@ void new_entry(ENTRY *entry_array) {
 
     printf("Enter website address: ");
     (entry_array + i)->addr = input_string();
-    (entry_array + i)->addr_len = (unsigned int) strlen((entry_array + i)->addr + 1);
+    (entry_array + i)->addr_len = (unsigned int) strlen((entry_array + i)->addr) + 1;
 
     printf("Enter password: ");
     pwd_buffer = input_string();
-    (entry_array + i)->pwd_len = (unsigned int) strlen(pwd_buffer) + 1;
-    (entry_array + i)->pwd = encrypt(pwd_buffer, (unsigned int) (entry_array + i)->pwd_len - 1);
+    (entry_array + i)->pwd_len = (unsigned int) strlen(pwd_buffer);
+    (entry_array + i)->pwd = encrypt(pwd_buffer, (unsigned int) (entry_array + i)->pwd_len);
+
     free(pwd_buffer);
 }
 
