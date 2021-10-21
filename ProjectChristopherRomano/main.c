@@ -26,7 +26,7 @@ ENTRY *init_entries();
 
 OPTION option_select(FILE **file);
 
-void new_entry(ENTRY *entry_array);
+ENTRY *new_entry(ENTRY *entry_array);
 
 void print_entries(char *addr, ENTRY *entry_array);
 
@@ -63,7 +63,7 @@ int main() {
             while (input_integer(&chosen_operation) == false) printf("Invalid characters.\n");
             switch (chosen_operation) {
                 case 1:
-                    new_entry(entry_array);
+                    entry_array = new_entry(entry_array);
                     break;
                 case 2:
                     print_entries("*", entry_array);
@@ -127,9 +127,7 @@ ENTRY *init_entries() {
     entry_array = malloc(sizeof(ENTRY));
     MEM_CHECK(entry_array)
     entry_array->addr_len = 0;
-    entry_array->addr = NULL;
     entry_array->pwd_len = 0;
-    entry_array->pwd = NULL;
     return entry_array;
 }
 
@@ -205,18 +203,15 @@ char *encrypt(char *pwd, int pwd_len) {
     return pwd;
 }
 
-void new_entry(ENTRY *entry_array) {
-    char *pwd_buffer;
-
+ENTRY *new_entry(ENTRY *entry_array) {
     int i;
-    for (i = 0; (entry_array + i)->addr != NULL; i++);
+    for (i = 0; (entry_array + i)->addr_len != 0; i++);
+    printf("\n\n%d\n\n", i);
     entry_array = realloc(entry_array, sizeof(ENTRY) * (i + 2));
     MEM_CHECK(entry_array)
 
-    (entry_array + (i + 1))->addr_len = (entry_array + i)->addr_len;
-    (entry_array + (i + 1))->addr = (entry_array + i)->addr;
-    (entry_array + (i + 1))->pwd_len = (entry_array + i)->pwd_len;
-    (entry_array + (i + 1))->pwd = (entry_array + i)->pwd;
+    (entry_array + (i + 1))->addr_len = 0;
+    (entry_array + (i + 1))->pwd_len = 0;
 
     //entry_array[i + 1] = entry_array[i];
 
@@ -225,11 +220,14 @@ void new_entry(ENTRY *entry_array) {
     (entry_array + i)->addr_len = (int) strlen((entry_array + i)->addr) + 1;
 
     printf("Enter password: ");
+    char *pwd_buffer;
     pwd_buffer = input_string();
     (entry_array + i)->pwd_len = (int) strlen(pwd_buffer);
     (entry_array + i)->pwd = encrypt(pwd_buffer, (entry_array + i)->pwd_len);
 
     free(pwd_buffer);
+
+    return entry_array;
 }
 
 ENTRY *read_entries(FILE *file) {
@@ -258,7 +256,7 @@ ENTRY *read_entries(FILE *file) {
 
 void print_entries(char *addr, ENTRY *entry_array) {
     int array_len;
-    for (array_len = 0; (entry_array + array_len)->addr != NULL; array_len++);
+    for (array_len = 0; (entry_array + array_len)->addr_len != 0; array_len++);
     printf("Array lengths: %d\n", array_len);
 
     if (array_len == 0) {
