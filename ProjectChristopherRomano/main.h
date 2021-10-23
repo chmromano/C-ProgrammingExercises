@@ -1,6 +1,3 @@
-#ifndef PROJECTCHRISTOPHERROMANO_MAIN_H
-#define PROJECTCHRISTOPHERROMANO_MAIN_H
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -11,6 +8,9 @@
 #define READ_BIN "rb"
 #define WRITE_BIN "wb"
 #define NO_CHAR 'N'
+
+#ifndef PROJECTCHRISTOPHERROMANO_MAIN_H
+#define PROJECTCHRISTOPHERROMANO_MAIN_H
 
 typedef struct entry_ {
     int addr_len;
@@ -23,12 +23,12 @@ typedef enum {
     NO_OPTION, OPEN_EXISTING, CREATE_NEW, QUIT
 } OPTION;
 
+#endif
+
 #define DEBUG
 
 #ifdef DEBUG
 #define DEBUG_STRING(x) printf("%s\n", x)
 #else
 #define DEBUG_STRING(x)
-#endif
-
 #endif

@@ -1,8 +1,10 @@
 #include "main.h"
 #include "strings.h"
 
+//Used in strchr().
 #define YES_OR_NO "YN"
 
+//Function to verify memory allocation success.
 void mem_check(void *memory) {
     if (memory == NULL) {
         MEM_ERROR_MSG;
@@ -10,13 +12,14 @@ void mem_check(void *memory) {
     }
 }
 
+//Function to validate a 'Y', 'y', 'N', or 'n' character.
 bool input_y_n(char *character) {
     bool success = true;
     int ch;
     if (scanf("%c", character) != 1 || ((ch = getchar()) != '\n' && ch != EOF)) {
         while ((ch = getchar()) != '\n' && ch != EOF);
         success = false;
-    } else if (strchr(YES_OR_NO, (char) toupper(*character)) == NULL){
+    } else if (strchr(YES_OR_NO, (char) toupper(*character)) == NULL) {
         success = false;
     } else {
         *character = (char) toupper(*character);
@@ -24,6 +27,7 @@ bool input_y_n(char *character) {
     return success;
 }
 
+//Function to validate an integer input.
 bool input_integer(int *input) {
     bool success = true;
     int ch;
@@ -34,9 +38,11 @@ bool input_integer(int *input) {
     return success;
 }
 
+//Function to validate a string.
 char *input_string() {
     char *string;
     string = NULL;
+
     bool success = false;
     while (success == false) {
         int allocated = 0;

@@ -1,9 +1,14 @@
+//Header file for helper functions.
 #include "main.h"
 
-bool input_integer(int *input);
+//Function to verify memory allocation success.
+void mem_check(void *memory);
 
+//Function to validate a 'Y', 'y', 'N', or 'n' character.
 bool input_y_n(char *character);
 
-char *input_string();
+//Function to validate an integer input.
+bool input_integer(int *input);
 
-void mem_check(void *memory);
+//Function to validate a string.
+char *input_string();

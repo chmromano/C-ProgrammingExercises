@@ -88,11 +88,13 @@ int main() {
                     addr_search = input_string();
                     print_entries(addr_search, entry_array, array_len);
                     free(addr_search);
+                    PRESS_ENTER;
                     getchar();
                     ENTRY_OPERATIONS_PROMPT;
                     break;
                 case 3:
                     print_entries(PRINT_ALL, entry_array, array_len);
+                    PRESS_ENTER;
                     getchar();
                     ENTRY_OPERATIONS_PROMPT;
                     break;
