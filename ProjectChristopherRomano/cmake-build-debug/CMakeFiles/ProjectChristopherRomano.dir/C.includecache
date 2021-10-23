@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/christopher/CLionProjects/ProjectChristopherRomano/helper_functions.c
-main.h
-/Users/christopher/CLionProjects/ProjectChristopherRomano/main.h
-strings.h
-/Users/christopher/CLionProjects/ProjectChristopherRomano/strings.h
-
 /Users/christopher/CLionProjects/ProjectChristopherRomano/helper_functions.h
 main.h
 /Users/christopher/CLionProjects/ProjectChristopherRomano/main.h
@@ -31,10 +25,10 @@ ctype.h
 /Users/christopher/CLionProjects/ProjectChristopherRomano/password_functions.c
 main.h
 /Users/christopher/CLionProjects/ProjectChristopherRomano/main.h
-helper_functions.h
-/Users/christopher/CLionProjects/ProjectChristopherRomano/helper_functions.h
 strings.h
 /Users/christopher/CLionProjects/ProjectChristopherRomano/strings.h
+helper_functions.h
+/Users/christopher/CLionProjects/ProjectChristopherRomano/helper_functions.h
 
 /Users/christopher/CLionProjects/ProjectChristopherRomano/strings.h
 

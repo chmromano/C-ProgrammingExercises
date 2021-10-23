@@ -4,14 +4,17 @@
 #include <string.h>
 #include <ctype.h>
 
+//Some needed constants.
 #define PRINT_ALL (char *) "*\0"
 #define READ_BIN "rb"
 #define WRITE_BIN "wb"
 #define NO_CHAR 'N'
 
+//Avoiding conflicts.
 #ifndef PROJECTCHRISTOPHERROMANO_MAIN_H
 #define PROJECTCHRISTOPHERROMANO_MAIN_H
 
+//Struct to store entries.
 typedef struct entry_ {
     int addr_len;
     char *addr;
@@ -19,16 +22,9 @@ typedef struct entry_ {
     char *pwd;
 } ENTRY;
 
+//Typedef makes choices in main easier to track.
 typedef enum {
     NO_OPTION, OPEN_EXISTING, CREATE_NEW, QUIT
 } OPTION;
 
-#endif
-
-#define DEBUG
-
-#ifdef DEBUG
-#define DEBUG_STRING(x) printf("%s\n", x)
-#else
-#define DEBUG_STRING(x)
 #endif

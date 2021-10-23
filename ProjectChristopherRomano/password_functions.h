@@ -1,5 +1,8 @@
 #include "main.h"
 
+//Function to encrypt/decrypt a password. Returns a char* to the encrypted/decrypted password.
+char *crypt(const char *pwd, int pwd_len, char *master);
+
 //Function to create a new entry. Returns an ENTRY* array with the new entry appended to all previous entries.
 ENTRY *new_entry(ENTRY *entry_array, int *array_len);
 

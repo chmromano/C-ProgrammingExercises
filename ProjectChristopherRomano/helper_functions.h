@@ -1,4 +1,3 @@
-//Header file for helper functions.
 #include "main.h"
 
 //Function to verify memory allocation success.
