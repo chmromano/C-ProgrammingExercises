@@ -79,17 +79,47 @@ CMakeFiles/ProjectChristopherRomano.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ProjectChristopherRomano.dir/main.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/christopher/CLionProjects/ProjectChristopherRomano/main.c -o CMakeFiles/ProjectChristopherRomano.dir/main.c.s
 
+CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.o: CMakeFiles/ProjectChristopherRomano.dir/flags.make
+CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.o: ../helper_functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/christopher/CLionProjects/ProjectChristopherRomano/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.o -c /Users/christopher/CLionProjects/ProjectChristopherRomano/helper_functions.c
+
+CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/christopher/CLionProjects/ProjectChristopherRomano/helper_functions.c > CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.i
+
+CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/christopher/CLionProjects/ProjectChristopherRomano/helper_functions.c -o CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.s
+
+CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.o: CMakeFiles/ProjectChristopherRomano.dir/flags.make
+CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.o: ../password_functions.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/christopher/CLionProjects/ProjectChristopherRomano/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.o -c /Users/christopher/CLionProjects/ProjectChristopherRomano/password_functions.c
+
+CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/christopher/CLionProjects/ProjectChristopherRomano/password_functions.c > CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.i
+
+CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/christopher/CLionProjects/ProjectChristopherRomano/password_functions.c -o CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.s
+
 # Object files for target ProjectChristopherRomano
 ProjectChristopherRomano_OBJECTS = \
-"CMakeFiles/ProjectChristopherRomano.dir/main.c.o"
+"CMakeFiles/ProjectChristopherRomano.dir/main.c.o" \
+"CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.o" \
+"CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.o"
 
 # External object files for target ProjectChristopherRomano
 ProjectChristopherRomano_EXTERNAL_OBJECTS =
 
 ProjectChristopherRomano: CMakeFiles/ProjectChristopherRomano.dir/main.c.o
+ProjectChristopherRomano: CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.o
+ProjectChristopherRomano: CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.o
 ProjectChristopherRomano: CMakeFiles/ProjectChristopherRomano.dir/build.make
 ProjectChristopherRomano: CMakeFiles/ProjectChristopherRomano.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/christopher/CLionProjects/ProjectChristopherRomano/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ProjectChristopherRomano"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/christopher/CLionProjects/ProjectChristopherRomano/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable ProjectChristopherRomano"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ProjectChristopherRomano.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

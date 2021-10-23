@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.o"
   "CMakeFiles/ProjectChristopherRomano.dir/main.c.o"
+  "CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.o"
   "ProjectChristopherRomano"
   "ProjectChristopherRomano.pdb"
 )

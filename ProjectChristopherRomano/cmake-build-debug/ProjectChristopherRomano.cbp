@@ -78,7 +78,25 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/christopher/CLionProjects/ProjectChristopherRomano/helper_functions.c">
+			<Option target="ProjectChristopherRomano"/>
+		</Unit>
+		<Unit filename="/Users/christopher/CLionProjects/ProjectChristopherRomano/helper_functions.h">
+			<Option target="ProjectChristopherRomano"/>
+		</Unit>
 		<Unit filename="/Users/christopher/CLionProjects/ProjectChristopherRomano/main.c">
+			<Option target="ProjectChristopherRomano"/>
+		</Unit>
+		<Unit filename="/Users/christopher/CLionProjects/ProjectChristopherRomano/main.h">
+			<Option target="ProjectChristopherRomano"/>
+		</Unit>
+		<Unit filename="/Users/christopher/CLionProjects/ProjectChristopherRomano/password_functions.c">
+			<Option target="ProjectChristopherRomano"/>
+		</Unit>
+		<Unit filename="/Users/christopher/CLionProjects/ProjectChristopherRomano/password_functions.h">
+			<Option target="ProjectChristopherRomano"/>
+		</Unit>
+		<Unit filename="/Users/christopher/CLionProjects/ProjectChristopherRomano/strings.h">
 			<Option target="ProjectChristopherRomano"/>
 		</Unit>
 		<Unit filename="/Users/christopher/CLionProjects/ProjectChristopherRomano/CMakeLists.txt">

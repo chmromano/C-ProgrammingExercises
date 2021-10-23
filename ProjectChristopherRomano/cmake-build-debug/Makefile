@@ -129,6 +129,30 @@ ProjectChristopherRomano/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjectChristopherRomano.dir/build.make CMakeFiles/ProjectChristopherRomano.dir/build
 .PHONY : ProjectChristopherRomano/fast
 
+helper_functions.o: helper_functions.c.o
+.PHONY : helper_functions.o
+
+# target to build an object file
+helper_functions.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjectChristopherRomano.dir/build.make CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.o
+.PHONY : helper_functions.c.o
+
+helper_functions.i: helper_functions.c.i
+.PHONY : helper_functions.i
+
+# target to preprocess a source file
+helper_functions.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjectChristopherRomano.dir/build.make CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.i
+.PHONY : helper_functions.c.i
+
+helper_functions.s: helper_functions.c.s
+.PHONY : helper_functions.s
+
+# target to generate assembly for a file
+helper_functions.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjectChristopherRomano.dir/build.make CMakeFiles/ProjectChristopherRomano.dir/helper_functions.c.s
+.PHONY : helper_functions.c.s
+
 main.o: main.c.o
 .PHONY : main.o
 
@@ -153,6 +177,30 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjectChristopherRomano.dir/build.make CMakeFiles/ProjectChristopherRomano.dir/main.c.s
 .PHONY : main.c.s
 
+password_functions.o: password_functions.c.o
+.PHONY : password_functions.o
+
+# target to build an object file
+password_functions.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjectChristopherRomano.dir/build.make CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.o
+.PHONY : password_functions.c.o
+
+password_functions.i: password_functions.c.i
+.PHONY : password_functions.i
+
+# target to preprocess a source file
+password_functions.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjectChristopherRomano.dir/build.make CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.i
+.PHONY : password_functions.c.i
+
+password_functions.s: password_functions.c.s
+.PHONY : password_functions.s
+
+# target to generate assembly for a file
+password_functions.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ProjectChristopherRomano.dir/build.make CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.s
+.PHONY : password_functions.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,9 +210,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ProjectChristopherRomano"
+	@echo "... helper_functions.o"
+	@echo "... helper_functions.i"
+	@echo "... helper_functions.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... password_functions.o"
+	@echo "... password_functions.i"
+	@echo "... password_functions.s"
 .PHONY : help
 
 
