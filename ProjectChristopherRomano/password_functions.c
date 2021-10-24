@@ -1,6 +1,7 @@
 #include "main.h"
 #include "strings.h"
 #include "helper_functions.h"
+#include "password_functions.h"
 
 //Function to encrypt/decrypt a password. Returns a char* to the encrypted/decrypted password.
 char *crypt(const char *pwd, int pwd_len, char *master) {
@@ -23,64 +24,69 @@ char *crypt(const char *pwd, int pwd_len, char *master) {
     return decrypted_pwd;
 }
 
-bool delete_entry(char *addr, ENTRY *entry_array, int *array_len) {
-    bool success = true;
+//Function to delete an entry.
+ENTRY *delete_entry(ENTRY *entry_array, int *array_len) {
+    char *addr;
 
-    if (array_len == 0) {
+    if (*array_len == 0) {
         NO_PWD_MSG;
-        success = false;
     } else {
-        int index = 0;
+        PWD_DELETE_SEARCH_MSG;
+        addr = input_string();
 
-        //Find how much space is needed to print.
-        int longest_index = strlen(NMR);
-        int longest_addr = strlen(ADDR);
-        int longest_pwd = strlen(PWD);
-        for (int i = 0; i < array_len; i++) {
-            if (strcmp(PRINT_ALL, addr) == 0 || strcmp((entry_array + i)->addr, addr) == 0) index++;
-            if ((entry_array + i)->addr_len > longest_addr) longest_addr = (entry_array + i)->addr_len;
-            if ((entry_array + i)->pwd_len > longest_pwd) longest_pwd = (entry_array + i)->pwd_len;
+        int indexes_len = 0;
+        int *indexes;
+        indexes = malloc(sizeof(int));
+        mem_check(indexes);
+
+        //Get indexes matching the website.
+        for (int i = 0; i < *array_len; i++) {
+            if (strcmp(entry_array[i].addr, addr) == 0) {
+                indexes = realloc(indexes, sizeof(int) * (indexes_len + 1));
+                mem_check(indexes);
+                indexes[indexes_len] = i;
+                indexes_len++;
+            }
         }
 
-        if (index == 0) {
-            //If no matching address is found.
+        if (indexes_len == 0) {
             NO_WEBSITE_MSG;
+        } else if (indexes_len == 1) {
+            //Delete a single entry.
+            for (int i = indexes[indexes_len - 1]; i < *array_len; i++) {
+                entry_array[i] = entry_array[i + 1];
+            }
+            (*array_len)--;
+            entry_array = realloc(entry_array, sizeof(ENTRY) * (*array_len));
+            mem_check(entry_array);
+            PWD_DELETE_SUCCESS_MSG;
         } else {
-            //Find space for decimals (only matters when >99 passwords are stored but still nice to have).
-            int digits = 0;
-            int temp_index = index;
-            while (temp_index != 0) {
-                temp_index = temp_index / 10;
-                digits++;
+            //Ask user which entry to delete.
+            MULTIPLE_PWD_MSG;
+            print_entries(addr, entry_array, *array_len);
+            PWD_DELETE_CHOICE(indexes_len);
+            int index_to_del = 0;
+            while (input_integer(&index_to_del) == false || index_to_del > indexes_len || index_to_del < 0) {
+                INVALID_DELETE_MSG(indexes_len);
             }
-            if (digits > longest_index) longest_index = digits;
-            index = 0;
-
-            MASTER_PWD_MSG;
-            char *master_buffer;
-            master_buffer = input_string();
-
-            //Printings. Plaintext passwords are freed from memory ASAP.
-            printf("\n| %-*s | %-*s | %-*s |\n", longest_index, NMR, longest_addr, ADDR, longest_pwd, PWD);
-            for (int i = 0; i < array_len; i++) {
-                if (strcmp(PRINT_ALL, addr) == 0 || strcmp((entry_array + i)->addr, addr) == 0) {
-                    index++;
-                    char *decrypted_pwd;
-                    decrypted_pwd = NULL;
-                    decrypted_pwd = crypt((entry_array + i)->pwd, (entry_array + i)->pwd_len, master_buffer);
-                    printf("| %*d | %-*s | %-*s |\n", longest_index, index, longest_addr, (entry_array + i)->addr,
-                           longest_pwd, decrypted_pwd);
-                    free(decrypted_pwd);
+            if (index_to_del == 0) {
+                PWD_DELETE_ABORT_MSG;
+            } else {
+                for (int i = indexes[index_to_del - 1]; i < *array_len; i++) {
+                    entry_array[i] = entry_array[i + 1];
                 }
+                (*array_len)--;
+                entry_array = realloc(entry_array, sizeof(ENTRY) * (*array_len));
+                mem_check(entry_array);
+                PWD_DELETE_SUCCESS_MSG;
             }
-            free(master_buffer);
-
-            //Spacing.
-            PRINT_NEWLINE;
         }
+
+        free(addr);
+        free(indexes);
     }
 
-    return success;
+    return entry_array;
 }
 
 //Function to create a new entry. Returns an ENTRY* array with the new entry appended to all previous entries.
@@ -90,8 +96,8 @@ ENTRY *new_entry(ENTRY *entry_array, int *array_len) {
 
     //Store address and address length.
     ADDRESS_MSG;
-    (entry_array + *array_len)->addr = input_string();
-    (entry_array + *array_len)->addr_len = (int) strlen((entry_array + *array_len)->addr) + 1;
+    entry_array[*array_len].addr = input_string();
+    entry_array[*array_len].addr_len = (int) strlen(entry_array[*array_len].addr) + 1;
 
     PWD_MSG;
     char *pwd_buffer;
@@ -102,8 +108,8 @@ ENTRY *new_entry(ENTRY *entry_array, int *array_len) {
     master_buffer = input_string();
 
     //Store encrypted password and password length.
-    (entry_array + *array_len)->pwd_len = (int) strlen(pwd_buffer) + 1;
-    (entry_array + *array_len)->pwd = crypt(pwd_buffer, (entry_array + *array_len)->pwd_len, master_buffer);
+    entry_array[*array_len].pwd_len = (int) strlen(pwd_buffer) + 1;
+    entry_array[*array_len].pwd = crypt(pwd_buffer, entry_array[*array_len].pwd_len, master_buffer);
 
     //Free buffers and update array length.
     free(master_buffer);
@@ -125,9 +131,9 @@ void print_entries(char *addr, ENTRY *entry_array, int array_len) {
         int longest_addr = strlen(ADDR);
         int longest_pwd = strlen(PWD);
         for (int i = 0; i < array_len; i++) {
-            if (strcmp(PRINT_ALL, addr) == 0 || strcmp((entry_array + i)->addr, addr) == 0) index++;
-            if ((entry_array + i)->addr_len > longest_addr) longest_addr = (entry_array + i)->addr_len;
-            if ((entry_array + i)->pwd_len > longest_pwd) longest_pwd = (entry_array + i)->pwd_len;
+            if (strcmp(PRINT_ALL, addr) == 0 || strcmp(entry_array[i].addr, addr) == 0) index++;
+            if (entry_array[i].addr_len > longest_addr) longest_addr = entry_array[i].addr_len;
+            if (entry_array[i].pwd_len > longest_pwd) longest_pwd = entry_array[i].pwd_len;
         }
 
         if (index == 0) {
@@ -151,12 +157,12 @@ void print_entries(char *addr, ENTRY *entry_array, int array_len) {
             //Printings. Plaintext passwords are freed from memory ASAP.
             printf("\n| %-*s | %-*s | %-*s |\n", longest_index, NMR, longest_addr, ADDR, longest_pwd, PWD);
             for (int i = 0; i < array_len; i++) {
-                if (strcmp(PRINT_ALL, addr) == 0 || strcmp((entry_array + i)->addr, addr) == 0) {
+                if (strcmp(PRINT_ALL, addr) == 0 || strcmp(entry_array[i].addr, addr) == 0) {
                     index++;
                     char *decrypted_pwd;
                     decrypted_pwd = NULL;
-                    decrypted_pwd = crypt((entry_array + i)->pwd, (entry_array + i)->pwd_len, master_buffer);
-                    printf("| %*d | %-*s | %-*s |\n", longest_index, index, longest_addr, (entry_array + i)->addr,
+                    decrypted_pwd = crypt(entry_array[i].pwd, entry_array[i].pwd_len, master_buffer);
+                    printf("| %*d | %-*s | %-*s |\n", longest_index, index, longest_addr, entry_array[i].addr,
                            longest_pwd, decrypted_pwd);
                     free(decrypted_pwd);
                 }
@@ -185,16 +191,15 @@ ENTRY *read_entries(int *array_len, FILE *file) {
         entry_array = realloc(entry_array, sizeof(ENTRY) * (i + 1));
         mem_check(entry_array);
 
-        (entry_array + i)->addr_len = entry_buffer.addr_len;
-        (entry_array + i)->pwd_len = entry_buffer.pwd_len;
+        entry_array[i] = entry_buffer;
 
-        (entry_array + i)->addr = malloc(sizeof(char) * (entry_array + i)->addr_len);
-        mem_check((entry_array + i)->addr);
-        fread((entry_array + i)->addr, sizeof(char), (entry_array + i)->addr_len, file);
+        entry_array[i].addr = malloc(sizeof(char) * entry_array[i].addr_len);
+        mem_check(entry_array[i].addr);
+        fread(entry_array[i].addr, sizeof(char), entry_array[i].addr_len, file);
 
-        (entry_array + i)->pwd = malloc(sizeof(char) * (entry_array + i)->pwd_len);
-        mem_check((entry_array + i)->pwd);
-        fread((entry_array + i)->pwd, sizeof(char), (entry_array + i)->pwd_len, file);
+        entry_array[i].pwd = malloc(sizeof(char) * entry_array[i].pwd_len);
+        mem_check(entry_array[i].pwd);
+        fread(entry_array[i].pwd, sizeof(char), entry_array[i].pwd_len, file);
     }
 
     return entry_array;
@@ -208,11 +213,11 @@ void write_entries(ENTRY *entry_array, int array_len, FILE *file) {
 
     //Write ENTRY struct. Then write addres and write password, and free their memory.
     for (int i = 0; i < array_len; i++) {
-        fwrite((entry_array + i), sizeof(ENTRY), 1, file);
-        fwrite((entry_array + i)->addr, sizeof(char), (entry_array + i)->addr_len, file);
-        free((entry_array + i)->addr);
-        fwrite((entry_array + i)->pwd, sizeof(char), (entry_array + i)->pwd_len, file);
-        free((entry_array + i)->pwd);
+        fwrite(&entry_array[i], sizeof(ENTRY), 1, file);
+        fwrite(entry_array[i].addr, sizeof(char), entry_array[i].addr_len, file);
+        free(entry_array[i].addr);
+        fwrite(entry_array[i].pwd, sizeof(char), entry_array[i].pwd_len, file);
+        free(entry_array[i].pwd);
     }
 
     //Free array memory.

@@ -111,6 +111,9 @@ int main() {
                     ENTRY_OPERATIONS_PROMPT;
                     break;
                 case 4:
+                    entry_array = delete_entry(entry_array, &array_len);
+                    PRESS_ENTER_MSG;
+                    getchar();
                     ENTRY_OPERATIONS_PROMPT;
                     break;
                 case 5:
@@ -126,6 +129,7 @@ int main() {
                         PRESS_ENTER_MSG;
                     }
                     free(file_name);
+                    array_len = 0;
                     getchar();
                     break;
                 case 6:
@@ -133,6 +137,7 @@ int main() {
                     chosen_option = NO_OPTION;
                     free(entry_array);
                     free(file_name);
+                    array_len = 0;
                     break;
                 default:
                     INVALID_CHOICE_COMMAND_MSG;

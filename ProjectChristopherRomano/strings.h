@@ -28,6 +28,12 @@
 #define PWD_MSG printf("Enter address password: ")
 #define PWD_SAVE_SUCCESS_MSG printf("\nPassword saved successfully. ")
 #define PWD_WRITE_SUCCESS_MSG printf("\nEntries successfully saved. ")
+#define PWD_DELETE_SEARCH_MSG printf("\nEnter website address to delete: ")
+#define PWD_DELETE_SUCCESS_MSG printf("\nPassword deleted succesfully. ")
+#define MULTIPLE_PWD_MSG printf("\nMultiple passwords found. ")
+#define PWD_DELETE_CHOICE(x) printf("Which password do you want to delete? (1-%d, 0 to abort): ", x)
+#define INVALID_DELETE_MSG(x) printf("Invalid choice. Enter a valid choice (1-%d, 0 to abort): ", x)
+#define PWD_DELETE_ABORT_MSG printf("\nPassword deletion aborted. ")
 
 //File handling strings.
 #define FILE_OPEN_MSG printf("\nEnter file to open: ")

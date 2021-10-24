@@ -15,4 +15,5 @@ CMakeFiles/ProjectChristopherRomano.dir/password_functions.c.o: \
  ../helper_functions.h \
  ../main.h \
  ../password_functions.c \
+ ../password_functions.h \
  ../strings.h
