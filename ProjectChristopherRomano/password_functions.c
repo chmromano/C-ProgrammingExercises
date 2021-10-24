@@ -26,12 +26,11 @@ char *crypt(const char *pwd, int pwd_len, char *master) {
 
 //Function to delete an entry.
 ENTRY *delete_entry(ENTRY *entry_array, int *array_len) {
-    char *addr;
-
     if (*array_len == 0) {
         NO_PWD_MSG;
     } else {
         PWD_DELETE_SEARCH_MSG;
+        char *addr;
         addr = input_string();
 
         int indexes_len = 0;
@@ -160,13 +159,13 @@ void print_entries(char *addr, ENTRY *entry_array, int array_len) {
                 if (strcmp(PRINT_ALL, addr) == 0 || strcmp(entry_array[i].addr, addr) == 0) {
                     index++;
                     char *decrypted_pwd;
-                    decrypted_pwd = NULL;
                     decrypted_pwd = crypt(entry_array[i].pwd, entry_array[i].pwd_len, master_buffer);
                     printf("| %*d | %-*s | %-*s |\n", longest_index, index, longest_addr, entry_array[i].addr,
                            longest_pwd, decrypted_pwd);
                     free(decrypted_pwd);
                 }
             }
+
             free(master_buffer);
 
             //Spacing.
@@ -177,21 +176,17 @@ void print_entries(char *addr, ENTRY *entry_array, int array_len) {
 
 //Function to read existing entries from a file. Returns an ENTRY* array with all entries.
 ENTRY *read_entries(int *array_len, FILE *file) {
-    ENTRY entry_buffer;
     ENTRY *entry_array;
-    entry_array = NULL;
 
     //Read number of entries stored.
     fread(array_len, sizeof(int), 1, file);
 
     //Read each entry while allocating memory as needed. First ENTRY structure then strings based on stored lengths.
-    int i;
-    for (i = 0; i < *array_len; i++) {
-        fread(&entry_buffer, sizeof(ENTRY), 1, file);
+    for (int i = 0; i < *array_len; i++) {
         entry_array = realloc(entry_array, sizeof(ENTRY) * (i + 1));
         mem_check(entry_array);
 
-        entry_array[i] = entry_buffer;
+        fread(&entry_array[i], sizeof(ENTRY), 1, file);
 
         entry_array[i].addr = malloc(sizeof(char) * entry_array[i].addr_len);
         mem_check(entry_array[i].addr);

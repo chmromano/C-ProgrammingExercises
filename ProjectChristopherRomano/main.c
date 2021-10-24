@@ -9,17 +9,14 @@ int main() {
     while (chosen_option != QUIT) {
         int array_len;
         ENTRY *entry_array;
-        entry_array = NULL;
 
         char *file_name;
-        file_name = NULL;
-        FILE *working_file = NULL;
+        FILE *working_file;
 
         OPTIONS_PROMPT;
 
         //Enter option selection loop.
         while (chosen_option == NO_OPTION) {
-            char character = 0;
 
             int choice_main;
             while (input_integer(&choice_main) == false) INVALID_INT_MAIN_MSG;
@@ -32,17 +29,18 @@ int main() {
                     if (working_file == NULL) {
                         FILE_ERROR_MSG;
                     } else {
-                        chosen_option = OPEN_EXISTING;
+                        chosen_option = OPERATE;
                         //Read entries in the chosen file.
                         entry_array = read_entries(&array_len, working_file);
-                        fclose(working_file);
                     }
+                    fclose(working_file);
                     break;
                 case 2:
                     //Create a new file.
                     FILE_CREATE_MSG;
                     file_name = input_string();
                     //Check if the file exists. If it does ask user if the file should be overwritten.
+                    char character = 0;
                     working_file = fopen(file_name, READ_BIN);
                     if (working_file != NULL) {
                         FILE_EXISTS_MSG;
@@ -50,18 +48,13 @@ int main() {
                     }
                     fclose(working_file);
                     if (character != NO_CHAR) {
-                        working_file = fopen(file_name, WRITE_BIN);
-                        if (working_file == NULL) {
-                            FILE_ERROR_MSG;
-                        } else {
-                            chosen_option = CREATE_NEW;
-                        }
-                        array_len = 0;
+                        chosen_option = OPERATE;
                         entry_array = malloc(sizeof(ENTRY));
                         mem_check(entry_array);
                     } else {
                         //If the file is not overwritten user is taken to option choice.
                         chosen_option = NO_OPTION;
+                        free(file_name);
                         OPTIONS_PROMPT;
                     }
                     break;
@@ -77,8 +70,8 @@ int main() {
         }
 
         //Enter entry operations loop.
-        if (chosen_option == CREATE_NEW || chosen_option == OPEN_EXISTING) ENTRY_OPERATIONS_PROMPT;
-        while (chosen_option == CREATE_NEW || chosen_option == OPEN_EXISTING) {
+        if (chosen_option == OPERATE) ENTRY_OPERATIONS_PROMPT;
+        while (chosen_option == OPERATE) {
             int chosen_operation;
             while (input_integer(&chosen_operation) == false) INVALID_INT_COMMAND_MSG;
             switch (chosen_operation) {
@@ -92,11 +85,15 @@ int main() {
                     break;
                 case 2:
                     //Search for an entry by website address.
-                    WEBSITE_SEARCH_MSG;
-                    char *addr_search;
-                    addr_search = input_string();
-                    print_entries(addr_search, entry_array, array_len);
-                    free(addr_search);
+                    if (array_len == 0) {
+                        NO_PWD_MSG;
+                    } else {
+                        WEBSITE_SEARCH_MSG;
+                        char *addr_search;
+                        addr_search = input_string();
+                        print_entries(addr_search, entry_array, array_len);
+                        free(addr_search);
+                    }
                     //Letting user look at output.
                     PRESS_ENTER_MSG;
                     getchar();
@@ -118,19 +115,19 @@ int main() {
                     break;
                 case 5:
                     //Save and exit. Take user back to initial option selection.
-                    chosen_option = NO_OPTION;
                     working_file = fopen(file_name, WRITE_BIN);
                     if (working_file == NULL) {
                         FILE_ERROR_MSG;
                     } else {
                         write_entries(entry_array, array_len, working_file);
-                        fclose(working_file);
                         PWD_WRITE_SUCCESS_MSG;
                         PRESS_ENTER_MSG;
+                        getchar();
                     }
+                    fclose(working_file);
+                    chosen_option = NO_OPTION;
                     free(file_name);
                     array_len = 0;
-                    getchar();
                     break;
                 case 6:
                     //Exit without saving. Take user back to initial option selection.

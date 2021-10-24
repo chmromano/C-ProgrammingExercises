@@ -24,7 +24,7 @@ typedef struct entry_ {
 
 //Typedef makes choices in main easier to track.
 typedef enum {
-    NO_OPTION, OPEN_EXISTING, CREATE_NEW, QUIT
+    NO_OPTION, OPERATE, QUIT
 } OPTION;
 
 #endif
